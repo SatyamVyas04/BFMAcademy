@@ -11,6 +11,20 @@ const mont = Montserrat({
 export const metadata: Metadata = {
 	title: 'BFM Academy',
 	description: 'where web3 wizards are made.',
+	icons: {
+		icon: [
+			{
+				media: '(prefers-color-scheme: light)',
+				url: '/page/logo-light.png',
+				href: '/page/logo-light.png',
+			},
+			{
+				media: '(prefers-color-scheme: dark)',
+				url: '/page/logo-dark.png',
+				href: '/page/logo-dark.png',
+			},
+		],
+	},
 }
 
 export default function RootLayout({
@@ -23,8 +37,7 @@ export default function RootLayout({
 			<body className={`${mont.className}`}>
 				<ThemeProvider
 					attribute="class"
-					defaultTheme="system"
-					enableSystem
+					defaultTheme="light"
 					disableTransitionOnChange
 				>
 					{children}

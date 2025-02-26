@@ -1,3 +1,9 @@
+import { ModeToggle } from '@/components/ui/mode-toggle'
+
 export default function Footer() {
-	return <div>Footer</div>
+	return (
+		<footer>
+			Footer <ModeToggle />
+		</footer>
+	)
 }

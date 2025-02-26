@@ -1,3 +1,3 @@
 export default function Section3() {
-	return <div>Section3</div>
+	return <section>Section3</section>
 }

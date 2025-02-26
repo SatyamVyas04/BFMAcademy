@@ -1,3 +1,4 @@
+'use client'
 import Navbar from '@/pages/navbar'
 import Hero from '@/pages/hero'
 import Section2 from '@/pages/section2'
@@ -12,20 +13,18 @@ import Footer from '@/pages/footer'
 
 export default function Home() {
 	return (
-		<>
+		<main className="max-w-screen-2xl p-2 md:p-4 lg:p-6">
 			<Navbar />
-			<main className="max-w-screen-2xl">
-				<Hero />
-				<Section2 />
-				<Section3 />
-				<Section4 />
-				<Section5 />
-				<Section6 />
-				<Section7 />
-				<Section8 />
-				<Section9 />
-			</main>
+			<Hero />
+			<Section2 />
+			<Section3 />
+			<Section4 />
+			<Section5 />
+			<Section6 />
+			<Section7 />
+			<Section8 />
+			<Section9 />
 			<Footer />
-		</>
+		</main>
 	)
 }
