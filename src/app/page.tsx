@@ -13,7 +13,7 @@ import Footer from '@/pages/footer'
 
 export default function Home() {
 	return (
-		<main className="max-w-screen-2xl p-2 md:p-4 lg:p-6">
+		<main className="mx-auto max-w-screen-2xl p-3 md:p-6 lg:p-9 xl:p-12 xl:pt-9">
 			<Navbar />
 			<Hero />
 			<Section2 />
