@@ -1,6 +1,7 @@
+import './globals.css'
 import type { Metadata } from 'next'
 import { Montserrat } from 'next/font/google'
-import './globals.css'
+import { ThemeProvider } from 'next-themes'
 
 const mont = Montserrat({
 	weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
@@ -18,8 +19,17 @@ export default function RootLayout({
 	children: React.ReactNode
 }>) {
 	return (
-		<html lang="en">
-			<body className={`${mont.className}`}>{children}</body>
+		<html lang="en" suppressHydrationWarning>
+			<body className={`${mont.className}`}>
+				<ThemeProvider
+					attribute="class"
+					defaultTheme="system"
+					enableSystem
+					disableTransitionOnChange
+				>
+					{children}
+				</ThemeProvider>
+			</body>
 		</html>
 	)
 }
