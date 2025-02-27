@@ -43,7 +43,7 @@ export default function Hero() {
 					width={2400}
 					height={2400}
 					alt="A web3 student on his computer"
-					className="relative -z-10 h-fit w-fit"
+					className="relative -z-10 h-fit max-h-[85dvh] w-full rounded-xl object-cover object-bottom"
 				/>
 				<div className="absolute bottom-2 flex w-full flex-1 flex-row items-start justify-stretch px-2 lg:bottom-10 lg:px-10">
 					<div className="w-full space-y-3 self-end sm:space-y-5">
