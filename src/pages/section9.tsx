@@ -1,10 +1,8 @@
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import {
-	IconBrandAndroid,
 	IconBrandApple,
 	IconBrandGooglePlay,
-	IconBrandTelegram,
 } from '@tabler/icons-react'
 import Image from 'next/image'
 
