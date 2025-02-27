@@ -21,7 +21,7 @@ export default function Hero() {
 					alt="A web3 student on his computer"
 					className="mx-auto w-full max-w-md rounded-lg"
 				/>
-				<div className="mx-auto w-full max-w-md space-y-3 rounded-xl bg-black/50 p-12 px-16 text-center text-white backdrop-blur-sm sm:space-y-5">
+				<div className="mx-auto w-full max-w-md space-y-3 rounded-xl bg-zinc-200/25 px-4 py-12 text-center backdrop-blur-sm sm:space-y-5 sm:px-16">
 					<h1 className="text-2xl">
 						<span className="font-bold">learn.</span> earn.{' '}
 						<span className="font-bold">own.</span> repeat
