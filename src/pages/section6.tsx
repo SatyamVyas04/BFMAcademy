@@ -30,7 +30,7 @@ export default function Section6() {
 							Smart Contracts &amp; Solidity
 						</strong>
 						<div className="mt-2">Code the backbone of Web3 apps</div>
-						<hr className="w-fullmd:mx-0 mx-auto my-2 max-w-80 border-2 border-foreground md:mr-auto md:max-w-sm md:-translate-x-12" />
+						<hr className="mx-auto my-2 w-full max-w-80 border-2 border-foreground md:mx-0 md:mr-auto md:max-w-sm md:-translate-x-12" />
 						<strong className="my-6 text-2xl tracking-wide">
 							Metaverse &amp; AI Integration
 						</strong>
@@ -47,7 +47,7 @@ export default function Section6() {
 						<div className="mt-2">
 							Protect your assets &amp; blockchain networks
 						</div>
-						<hr className="w-fullmd:mx-0 mx-auto my-2 max-w-80 border-2 border-foreground md:mr-auto md:max-w-sm md:-translate-x-12" />
+						<hr className="mx-auto my-2 w-full max-w-80 border-2 border-foreground md:mx-0 md:mr-auto md:max-w-sm md:-translate-x-12" />
 						<strong className="my-6 text-2xl tracking-wide">
 							NFT &amp; Digital Artistry
 						</strong>
