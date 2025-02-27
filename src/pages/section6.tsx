@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 export default function Section6() {
 	return (
-		<section className="mx-auto my-4 flex max-w-md flex-col items-center justify-evenly space-y-4 py-8 sm:py-10 md:w-full md:max-w-none md:flex-row md:items-stretch md:space-y-8">
+		<section className="mx-auto my-4 flex max-w-lg flex-col items-center justify-evenly space-y-4 py-8 sm:py-10 md:w-full md:max-w-none md:flex-row md:items-stretch md:gap-32 md:space-y-8">
 			<div>
 				<Image
 					src="/page/section6.png"
@@ -17,8 +17,8 @@ export default function Section6() {
 					What <br />
 					can you <br /> learn?
 				</h1>
-				<div className="space-y-3 md:mr-auto">
-					<div className="relative z-30 w-full px-8 text-sm md:mr-auto md:px-0 md:text-base">
+				<div className="w-full md:mr-auto">
+					<div className="relative z-30 w-full px-4 text-sm md:mr-auto md:px-0 md:text-base">
 						<strong className="my-6 text-2xl tracking-wide">
 							Web3 &amp; Blockchain Mastery
 						</strong>
@@ -30,7 +30,7 @@ export default function Section6() {
 							Smart Contracts &amp; Solidity
 						</strong>
 						<div className="mt-2">Code the backbone of Web3 apps</div>
-						<hr className="max-w-80mx-auto w-fullmd:mx-0 my-2 border-2 border-foreground md:mr-auto md:max-w-sm md:-translate-x-12" />
+						<hr className="w-fullmd:mx-0 mx-auto my-2 max-w-80 border-2 border-foreground md:mr-auto md:max-w-sm md:-translate-x-12" />
 						<strong className="my-6 text-2xl tracking-wide">
 							Metaverse &amp; AI Integration
 						</strong>
@@ -47,7 +47,7 @@ export default function Section6() {
 						<div className="mt-2">
 							Protect your assets &amp; blockchain networks
 						</div>
-						<hr className="max-w-80mx-auto w-fullmd:mx-0 my-2 border-2 border-foreground md:mr-auto md:max-w-sm md:-translate-x-12" />
+						<hr className="w-fullmd:mx-0 mx-auto my-2 max-w-80 border-2 border-foreground md:mr-auto md:max-w-sm md:-translate-x-12" />
 						<strong className="my-6 text-2xl tracking-wide">
 							NFT &amp; Digital Artistry
 						</strong>
