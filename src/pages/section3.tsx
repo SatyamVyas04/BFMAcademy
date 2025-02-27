@@ -29,7 +29,7 @@ export default function Section3() {
 					className="absolute bottom-0 right-0 z-20 h-[300px] w-fit rounded-br-xl md:h-[600px]"
 				/>
 			</div>
-			<h1 className="px-3 text-end text-5xl font-bold uppercase tracking-wide text-brandblue dark:text-foreground md:-translate-y-4 md:text-start md:text-7xl lg:text-9xl">
+			<h1 className="relative -z-10 px-3 text-end text-5xl font-bold uppercase tracking-wide text-brandblue dark:text-foreground md:-translate-y-4 md:text-start md:text-7xl lg:text-9xl">
 				BFM Community
 			</h1>
 		</section>
