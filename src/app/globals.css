@@ -113,3 +113,27 @@
 		@apply bg-background text-foreground;
 	}
 }
+
+::selection {
+	@apply bg-[#222] text-[#dedede] dark:bg-[#cecece] dark:text-[#222];
+}
+
+::-moz-selection {
+	@apply bg-[#222] text-[#dedede] dark:bg-[#cecece] dark:text-[#222];
+}
+
+::-webkit-scrollbar {
+	width: 4px;
+}
+
+::-webkit-scrollbar-track {
+	@apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	@apply rounded-full bg-muted-foreground/50;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	@apply bg-muted-foreground;
+}
