@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 export default function Section4() {
 	return (
-		<section className="space-y-3 py-4 md:space-y-6 xl:space-y-12">
+		<section className="space-y-3 py-8 md:space-y-6 xl:space-y-12">
 			<p className="text-end text-lg md:text-2xl">
 				it is not just a platform - <br />{' '}
 				<span className="font-bold">it&apos;s a movement</span>
