@@ -9,7 +9,7 @@ export default function Section4() {
 				<span className="font-bold">it&apos;s a movement</span>
 			</p>
 			<div className="flex flex-row flex-wrap items-center justify-center gap-4 xl:gap-12">
-				<Card className="relative h-96 w-80 overflow-clip rounded-xl bg-zinc-100 text-foreground transition-all hover:-translate-y-2 hover:shadow-xl dark:text-background">
+				<Card className="relative h-[440px] w-80 overflow-clip rounded-xl bg-zinc-100 text-foreground transition-all hover:-translate-y-2 hover:shadow-xl dark:text-background">
 					<CardHeader className="text-lg font-bold">
 						<CardTitle className="mt-2 font-normal uppercase">
 							Network with{' '}
@@ -24,11 +24,11 @@ export default function Section4() {
 							alt="Card Image"
 							width={600}
 							height={600}
-							className="h-64 w-full object-cover object-center"
+							className="h-80 w-full object-cover object-center"
 						/>
 					</CardContent>
 				</Card>
-				<Card className="relative h-96 w-80 overflow-clip rounded-xl bg-zinc-100 text-foreground transition-all hover:-translate-y-2 hover:shadow-xl dark:text-background">
+				<Card className="relative h-[440px] w-80 overflow-clip rounded-xl bg-zinc-100 text-foreground transition-all hover:-translate-y-2 hover:shadow-xl dark:text-background">
 					<CardHeader className="text-lg font-bold">
 						<CardTitle className="mt-2 font-normal uppercase">
 							Join <span className="font-bold">Discord & Telegram</span> for
@@ -41,11 +41,11 @@ export default function Section4() {
 							alt="Card Image"
 							width={600}
 							height={600}
-							className="h-64 w-full object-cover object-center"
+							className="h-80 w-full object-cover object-center"
 						/>
 					</CardContent>
 				</Card>
-				<Card className="relative h-96 w-80 overflow-clip rounded-xl bg-zinc-100 text-foreground transition-all hover:-translate-y-2 hover:shadow-xl dark:text-background">
+				<Card className="relative h-[440px] w-80 overflow-clip rounded-xl bg-zinc-100 text-foreground transition-all hover:-translate-y-2 hover:shadow-xl dark:text-background">
 					<CardHeader className="text-lg font-bold">
 						<CardTitle className="mt-2 font-normal uppercase">
 							Participate in{' '}
@@ -60,7 +60,7 @@ export default function Section4() {
 							alt="Card Image"
 							width={600}
 							height={600}
-							className="h-64 w-full object-cover object-center"
+							className="h-80 w-full object-cover object-center"
 						/>
 					</CardContent>
 				</Card>

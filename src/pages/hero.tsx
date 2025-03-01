@@ -46,10 +46,10 @@ export default function Hero() {
 					className="relative -z-10 h-fit max-h-[85dvh] w-full rounded-xl object-cover object-bottom"
 				/>
 				<div className="absolute bottom-2 flex w-full flex-1 flex-row items-start justify-stretch px-2 lg:bottom-10 lg:px-10">
-					<div className="w-full space-y-3 self-end sm:space-y-5">
-						<h1 className="space-y-3 text-xl sm:space-y-5 lg:text-3xl">
+					<div className="w-full space-y-3 self-end sm:space-y-4">
+						<h1 className="space-y-3 text-xl sm:space-y-5 lg:text-4xl">
 							Welcome to <br />
-							<span className="text-3xl font-bold text-brandblue dark:text-foreground sm:text-5xl">
+							<span className="text-3xl font-bold text-brandblue dark:text-foreground sm:text-6xl">
 								BFM ACADEMY
 							</span>
 							<hr className="w-60 border-2 border-foreground text-xl" />

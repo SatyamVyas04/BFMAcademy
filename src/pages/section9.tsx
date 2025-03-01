@@ -1,9 +1,6 @@
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
-import {
-	IconBrandApple,
-	IconBrandGooglePlay,
-} from '@tabler/icons-react'
+import { IconBrandApple, IconBrandGooglePlay } from '@tabler/icons-react'
 import Image from 'next/image'
 
 export default function Section9() {
@@ -13,11 +10,11 @@ export default function Section9() {
 				<h1 className="relative z-10 p-4 text-center text-5xl font-bold uppercase md:ml-auto md:text-start md:text-7xl">
 					Learn <br /> anytime, <br /> anywhere.
 				</h1>
-				<div className="relative z-10 max-w-xl p-4 pt-0 text-center font-bold md:text-start">
+				<div className="relative z-10 p-4 pt-0 text-center font-bold md:max-w-xl md:text-start">
 					Interactive courses, quizzes and blockchain-powered credentials – all
 					in your pocket
 				</div>
-				<div className="relative z-10 flex w-fit flex-row items-center justify-start gap-2 px-4 max-md:flex-wrap md:px-0">
+				<div className="relative z-10 flex flex-row items-center gap-2 px-4 max-md:flex-wrap md:w-fit md:justify-start md:px-0">
 					<Button className="group w-full rounded-full bg-white text-black hover:bg-white/90">
 						<IconBrandApple
 							className="relative left-12 opacity-0 transition-all group-hover:left-0 group-hover:opacity-100"
@@ -43,7 +40,7 @@ export default function Section9() {
 				height={1200}
 				width={1200}
 				alt="Image of a lady holding a laptop"
-				className="absolute left-0 top-0 z-0 h-full w-fit object-cover max-md:opacity-25"
+				className="absolute left-0 top-0 z-0 h-full w-fit object-cover max-lg:opacity-25"
 			/>
 		</Card>
 	)

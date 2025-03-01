@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { ArrowRight } from 'lucide-react'
+import { ModeToggle } from '@/components/ui/mode-toggle'
 
 export default function Navbar() {
 	return (
@@ -22,15 +23,18 @@ export default function Navbar() {
 				/>
 				<h1 className="text-lg font-bold md:text-3xl">academy</h1>
 			</div>
-			<Button className="group rounded-full bg-brandblue text-white transition-all hover:bg-brandblue/90">
-				<span className="translate-x-[12px] transition-all group-hover:translate-x-0">
-					Enroll Now
-				</span>
-				<ArrowRight
-					className="relative right-12 opacity-0 transition-all group-hover:right-0 group-hover:opacity-100"
-					size={24}
-				/>
-			</Button>
+			<div className="flex flex-row items-center justify-between space-x-4">
+				<ModeToggle />
+				<Button className="group rounded-full bg-brandblue text-white transition-all hover:bg-brandblue/90">
+					<span className="translate-x-[12px] transition-all group-hover:translate-x-0">
+						Enroll Now
+					</span>
+					<ArrowRight
+						className="relative right-12 opacity-0 transition-all group-hover:right-0 group-hover:opacity-100"
+						size={24}
+					/>
+				</Button>
+			</div>
 		</nav>
 	)
 }

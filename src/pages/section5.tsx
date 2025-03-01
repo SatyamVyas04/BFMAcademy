@@ -62,8 +62,10 @@ export default function Section5() {
 				</Card>
 				{/* Card 4 */}
 				<Card className="group relative flex h-72 w-full flex-col overflow-hidden rounded-lg bg-[#2cc4f6] p-4 text-foreground shadow-md transition-all hover:-translate-y-1 hover:shadow-xl dark:text-background md:col-span-4 md:min-h-[500px] md:rounded-xl">
-					<h1 className="text-xl font-bold uppercase">DAO Involvement</h1>
-					<p className="text-sm md:text-base">
+					<h1 className="relative z-10 text-xl font-bold uppercase">
+						DAO Involvement
+					</h1>
+					<p className="relative z-10 text-sm md:text-base">
 						Vote on platform updates & shape BFM&apos;s future.
 					</p>
 					<div className="relative flex h-full w-full items-end justify-center">
@@ -72,7 +74,7 @@ export default function Section5() {
 							alt="Card Image"
 							height={3000}
 							width={3000}
-							className="h-[120%] w-auto translate-y-12 transition-all group-hover:translate-y-6 group-hover:scale-105"
+							className="h-[130%] w-auto translate-y-12 transition-all group-hover:translate-y-6 group-hover:scale-105"
 						/>
 					</div>
 				</Card>

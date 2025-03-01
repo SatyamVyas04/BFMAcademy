@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import { ModeToggle } from '@/components/ui/mode-toggle'
 import {
 	IconBrandFacebook,
 	IconBrandInstagram,
@@ -7,81 +6,150 @@ import {
 	IconBrandTelegram,
 	IconBrandTwitter,
 	IconBrandYoutube,
+	IconMail,
 } from '@tabler/icons-react'
+import { Button } from '@/components/ui/button'
 
 export default function Footer() {
 	return (
-		<footer className="relative overflow-hidden py-6 pb-0">
-			<div className="mx-auto my-8 mb-10 flex items-center justify-center gap-2 md:gap-4">
-				{/* Light mode logo */}
-				<Image
-					src="/page/logo-light.png"
-					alt="Logo"
-					width={500}
-					height={500}
-					className="h-10 w-10 dark:hidden md:h-12 md:w-12"
-				/>
-				{/* Dark mode logo */}
-				<Image
-					src="/page/logo-dark.png"
-					alt="Logo"
-					width={500}
-					height={500}
-					className="hidden h-10 w-10 dark:block md:h-12 md:w-12"
-				/>
-				<h1 className="text-lg font-bold md:text-2xl">academy</h1>
-			</div>
+		<footer className="mx-auto bg-background px-6 py-10 text-foreground">
+			<div className="mx-auto">
+				<div className="grid gap-8 md:grid-cols-12">
+					{/* Left Column - Logo and Social Icons */}
+					<div className="md:col-span-1">
+						{/* Logo */}
+						<div className="mb-8">
+							<Image
+								src="/page/logo-blue.png"
+								alt="Logo"
+								width={50}
+								height={50}
+								className="mx-auto dark:hidden"
+							/>
+							<Image
+								src="/page/logo-dark.png"
+								alt="Logo"
+								width={50}
+								height={50}
+								className="mx-auto hidden dark:block"
+							/>
+						</div>
 
-			{/* Main footer content */}
-			<div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center gap-6 px-4 md:flex-row md:justify-between">
-				<p className="text-sm">@Unchain Academy©2025.</p>
-				<div className="flex flex-col items-center gap-3 text-center md:flex-row md:text-left">
-					<nav className="flex flex-wrap items-center justify-center gap-8 text-sm">
-						<a href="#" className="transition-all hover:text-brandblue">
-							Pricing
-						</a>
-						<a href="#" className="transition-all hover:text-brandblue">
-							Tutor
-						</a>
-						<a href="#" className="transition-all hover:text-brandblue">
-							Contact
-						</a>
-						<a href="#" className="transition-all hover:text-brandblue">
-							Terms &amp; Conditions
-						</a>
-						<a href="#" className="transition-all hover:text-brandblue">
-							Privacy Policy
-						</a>
-					</nav>
+						{/* Vertical Line */}
+						<div className="mx-auto mb-4 mt-20 h-16 w-fit border-l border-brandblue dark:border-foreground max-md:hidden"></div>
+
+						{/* Social Icons - Vertical Stack */}
+						<div className="flex flex-row items-center gap-0 max-md:justify-center md:flex-col md:space-y-1">
+							<Button variant="ghost" size="icon" className="group">
+								<IconBrandTelegram className="h-[1.2rem] w-[1.2rem] text-foreground" />
+							</Button>
+							<Button variant="ghost" size="icon" className="group">
+								<IconBrandInstagram className="h-[1.2rem] w-[1.2rem] text-foreground" />
+							</Button>
+							<Button variant="ghost" size="icon" className="group">
+								<IconBrandTwitter className="h-[1.2rem] w-[1.2rem] text-foreground" />
+							</Button>
+							<Button variant="ghost" size="icon" className="group">
+								<IconBrandYoutube className="h-[1.2rem] w-[1.2rem] text-foreground" />
+							</Button>
+							<Button variant="ghost" size="icon" className="group">
+								<IconBrandFacebook className="h-[1.2rem] w-[1.2rem] text-foreground" />
+							</Button>
+							<Button variant="ghost" size="icon" className="group">
+								<IconBrandLinkedin className="h-[1.2rem] w-[1.2rem] text-foreground" />
+							</Button>
+						</div>
+					</div>
+
+					{/* Center Column - Let's Learn Together */}
+					<div className="place-content-end md:col-span-5">
+						<h1 className="text-5xl font-bold uppercase tracking-tighter text-brandblue dark:text-foreground lg:text-6xl lg:leading-[0.8]">
+							<span className="text-8xl tracking-tighter lg:text-9xl lg:leading-[0.8]">
+								Let&apos;s
+							</span>
+							<br />
+							<span className="text-8xl tracking-tighter lg:text-9xl lg:leading-[0.8]">
+								Learn
+							</span>
+							<br />
+							Together
+						</h1>
+					</div>
+
+					{/* Products Column */}
+					<div className="md:col-span-3">
+						<h2 className="mb-4 uppercase text-brandblue/50 dark:text-muted-foreground">
+							LEGAL
+						</h2>
+						<ul className="space-y-1.5 text-brandblue dark:text-foreground">
+							<li>
+								<a
+									href="/WhitePaper.pdf"
+									target="_blank"
+									className="transition-all hover:text-foreground dark:hover:text-brandblue"
+								>
+									White Paper
+								</a>
+							</li>
+							<li>
+								<a
+									href="/Tokenomics.pdf"
+									target="_blank"
+									className="transition-all hover:text-foreground dark:hover:text-brandblue"
+								>
+									Tokenomics
+								</a>
+							</li>
+							<li>
+								<a
+									href="/privacy-policy"
+									className="transition-all hover:text-foreground dark:hover:text-brandblue"
+								>
+									Privacy Policy
+								</a>
+							</li>
+							<li>
+								<a
+									href="/terms-and-conditions"
+									className="transition-all hover:text-foreground dark:hover:text-brandblue"
+								>
+									Terms and Conditions
+								</a>
+							</li>
+						</ul>
+					</div>
+
+					{/* Contact Column */}
+					<div className="md:col-span-3">
+						<h2 className="mb-4 uppercase text-brandblue/50 dark:text-muted-foreground">
+							EMAIL ADDRESS
+						</h2>
+						<p className="text-brandblue dark:text-foreground">
+							support@bfmacademy.in
+						</p>
+						<div className="mt-2">
+							<Button className="group rounded-full bg-brandblue text-white transition-all hover:bg-brandblue/90 dark:bg-foreground dark:text-background dark:hover:bg-foreground/90">
+								<IconMail
+									className="relative left-12 opacity-0 transition-all group-hover:left-0 group-hover:opacity-100"
+									size={24}
+								/>
+								<a
+									href="mailto:support@bfmacademy.in"
+									className="translate-x-[-12px] transition-all group-hover:translate-x-0"
+									aria-label="Contact BFM Academy"
+								>
+									Contact us
+								</a>
+							</Button>
+						</div>
+					</div>
 				</div>
 
-				{/* Right: Social Icons (placeholders) & Mode Toggle */}
-				<div className="flex items-center gap-4">
-					{/* Replace these placeholder divs with actual icons */}
-					<div className="mx-auto h-6 w-6 rounded-full bg-muted p-[16px]">
-						<IconBrandTelegram className="-translate-x-1/2 -translate-y-1/2" />
-					</div>
-					<div className="mx-auto h-6 w-6 rounded-full bg-muted p-[16px]">
-						<IconBrandInstagram className="-translate-x-1/2 -translate-y-1/2" />
-					</div>
-					<div className="mx-auto h-6 w-6 rounded-full bg-muted p-[16px]">
-						<IconBrandTwitter className="-translate-x-1/2 -translate-y-1/2" />
-					</div>
-					<div className="mx-auto h-6 w-6 rounded-full bg-muted p-[16px]">
-						<IconBrandYoutube className="-translate-x-1/2 -translate-y-1/2" />
-					</div>
-					<div className="mx-auto h-6 w-6 rounded-full bg-muted p-[16px]">
-						<IconBrandFacebook className="-translate-x-1/2 -translate-y-1/2" />
-					</div>
-					<div className="mx-auto h-6 w-6 rounded-full bg-muted p-[16px]">
-						<IconBrandLinkedin className="-translate-x-1/2 -translate-y-1/2" />
-					</div>
-					<ModeToggle />
+				{/* Copyright Text - Bottom Right */}
+				<div className="text-right text-xs text-brandblue/50 dark:text-muted-foreground max-md:mt-12">
+					©BFM Academy © 2025.
 				</div>
 			</div>
-			<h1 className="relative -z-10 -mb-8 mt-4 px-3 text-center text-5xl font-bold uppercase tracking-wide text-brandblue dark:text-foreground md:text-7xl lg:text-8xl">
-				let’s learn together
-			</h1>
 		</footer>
 	)
 }
