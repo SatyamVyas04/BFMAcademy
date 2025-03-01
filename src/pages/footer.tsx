@@ -63,12 +63,12 @@ export default function Footer() {
 
 					{/* Center Column - Let's Learn Together */}
 					<div className="place-content-end md:col-span-5">
-						<h1 className="text-5xl font-bold uppercase tracking-tighter text-brandblue dark:text-foreground lg:text-6xl lg:leading-[0.8]">
-							<span className="text-8xl tracking-tighter lg:text-9xl lg:leading-[0.8]">
+						<h1 className="text-4xl font-bold uppercase tracking-tighter text-brandblue dark:text-foreground lg:text-6xl lg:leading-[0.8]">
+							<span className="text-6xl tracking-tighter lg:text-9xl lg:leading-[0.8]">
 								Let&apos;s
 							</span>
 							<br />
-							<span className="text-8xl tracking-tighter lg:text-9xl lg:leading-[0.8]">
+							<span className="text-6xl tracking-tighter lg:text-9xl lg:leading-[0.8]">
 								Learn
 							</span>
 							<br />

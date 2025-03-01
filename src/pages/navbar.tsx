@@ -23,7 +23,7 @@ export default function Navbar() {
 				/>
 				<h1 className="text-lg font-bold md:text-3xl">academy</h1>
 			</div>
-			<div className="flex flex-row items-center justify-between space-x-4">
+			<div className="flex flex-row items-center justify-between space-x-1 md:space-x-2">
 				<ModeToggle />
 				<Button className="group rounded-full bg-brandblue text-white transition-all hover:bg-brandblue/90">
 					<span className="translate-x-[12px] transition-all group-hover:translate-x-0">
