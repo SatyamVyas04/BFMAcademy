@@ -69,7 +69,7 @@ export default function Hero() {
 								}}
 								className="h-full w-full"
 							>
-								<Image
+								<img
 									src={images[currentIndex]}
 									width={1200}
 									height={1200}
@@ -141,7 +141,7 @@ export default function Hero() {
 								}}
 								className="h-full w-full"
 							>
-								<Image
+								<img
 									src={images[currentIndex]}
 									width={1200}
 									height={1200}
@@ -155,14 +155,14 @@ export default function Hero() {
 
 				<div className="absolute bottom-2 flex w-full flex-1 flex-row items-start justify-stretch px-2 lg:bottom-10 lg:px-6 lg:pr-10">
 					<div className="w-full space-y-3 self-end sm:space-y-4">
-						<div className="left-0 right-0 flex -translate-y-8 justify-start gap-2 px-2 lg:-translate-y-10 xl:-translate-y-14 2xl:-translate-y-24">
+						<div className="left-0 right-0 flex -translate-y-8 justify-start gap-2 px-2 lg:-translate-y-10 xl:-translate-y-14 2xl:-translate-y-16">
 							{images.map((_, index) => (
 								<button
 									key={index}
 									className={`h-2 w-2 rounded-full transition-all ${
 										currentIndex === index
-											? 'w-8 bg-foreground'
-											: 'bg-foreground/50 hover:bg-opacity-70'
+											? 'w-8 bg-white'
+											: 'bg-white bg-opacity-50 hover:bg-opacity-70'
 									}`}
 									onClick={() => goToSlide(index)}
 								/>
