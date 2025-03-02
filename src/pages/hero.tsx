@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+
 'use client'
 import { useState, useEffect, SetStateAction } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -7,13 +9,24 @@ import Image from 'next/image'
 
 const images = [
 	'/page/carousel/1.jpeg',
-	'/page/carousel/2.jpg',
-	'/page/carousel/3.jpg',
-	'/page/carousel/4.jpg',
-	'/page/carousel/5.jpg',
-	'/page/carousel/6.jpg',
-	'/page/carousel/7.jpg',
-	'/page/carousel/8.jpg',
+	'/page/carousel/2.jpeg',
+	'/page/carousel/3.jpeg',
+	'/page/carousel/4.jpeg',
+	'/page/carousel/5.jpeg',
+	'/page/carousel/6.jpeg',
+	'/page/carousel/7.jpeg',
+	'/page/carousel/8.jpeg',
+]
+
+const placeholders = [
+	'/page/carousel/placeholders/1.jpeg',
+	'/page/carousel/placeholders/2.jpeg',
+	'/page/carousel/placeholders/3.jpeg',
+	'/page/carousel/placeholders/4.jpeg',
+	'/page/carousel/placeholders/5.jpeg',
+	'/page/carousel/placeholders/6.jpeg',
+	'/page/carousel/placeholders/7.jpeg',
+	'/page/carousel/placeholders/8.jpeg',
 ]
 
 export default function Hero() {
@@ -70,7 +83,8 @@ export default function Hero() {
 								className="h-full w-full"
 							>
 								<Image
-									priority
+									placeholder="blur"
+									blurDataURL={placeholders[currentIndex]}
 									src={images[currentIndex]}
 									width={1200}
 									height={1200}
@@ -143,7 +157,8 @@ export default function Hero() {
 								className="h-full w-full"
 							>
 								<Image
-									priority
+									placeholder="blur"
+									blurDataURL={placeholders[currentIndex]}
 									src={images[currentIndex]}
 									width={1200}
 									height={1200}
