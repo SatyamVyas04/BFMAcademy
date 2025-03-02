@@ -3,6 +3,7 @@ import { useState, useEffect, SetStateAction } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { IconBrandTelegram } from '@tabler/icons-react'
 import { Button } from '@/components/ui/button'
+import Image from 'next/image'
 
 const images = [
 	'/page/carousel/1.jpeg',
@@ -68,7 +69,8 @@ export default function Hero() {
 								}}
 								className="h-full w-full"
 							>
-								<img
+								<Image
+									priority
 									src={images[currentIndex]}
 									width={1200}
 									height={1200}
@@ -140,7 +142,8 @@ export default function Hero() {
 								}}
 								className="h-full w-full"
 							>
-								<img
+								<Image
+									priority
 									src={images[currentIndex]}
 									width={1200}
 									height={1200}

@@ -16,14 +16,14 @@ export default function Home() {
 	return (
 		<>
 			<Head>
-				<link rel="preload" href="/page/carousel/1.jpeg" as="image" />
-				<link rel="preload" href="/page/carousel/2.jpg" as="image" />
-				<link rel="preload" href="/page/carousel/3.jpg" as="image" />
-				<link rel="preload" href="/page/carousel/4.jpg" as="image" />
-				<link rel="preload" href="/page/carousel/5.jpg" as="image" />
-				<link rel="preload" href="/page/carousel/6.jpg" as="image" />
-				<link rel="preload" href="/page/carousel/7.jpg" as="image" />
-				<link rel="preload" href="/page/carousel/8.jpg" as="image" />
+				<link rel="preload" href="/page/carousel/1.jpeg" />
+				<link rel="preload" href="/page/carousel/2.jpg" />
+				<link rel="preload" href="/page/carousel/3.jpg" />
+				<link rel="preload" href="/page/carousel/4.jpg" />
+				<link rel="preload" href="/page/carousel/5.jpg" />
+				<link rel="preload" href="/page/carousel/6.jpg" />
+				<link rel="preload" href="/page/carousel/7.jpg" />
+				<link rel="preload" href="/page/carousel/8.jpg" />
 			</Head>
 			<main className="mx-auto max-w-screen-2xl overflow-x-hidden p-3 !pb-0 md:p-6 lg:p-9 xl:p-12 xl:pt-9">
 				<Navbar />
