@@ -69,7 +69,9 @@ export default function Hero() {
 								}}
 								className="h-full w-full"
 							>
-								<img
+								<Image
+									fetchPriority="high"
+									priority
 									src={images[currentIndex]}
 									width={1200}
 									height={1200}
@@ -141,7 +143,9 @@ export default function Hero() {
 								}}
 								className="h-full w-full"
 							>
-								<img
+								<Image
+									fetchPriority="high"
+									priority
 									src={images[currentIndex]}
 									width={1200}
 									height={1200}
