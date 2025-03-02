@@ -1,5 +1,5 @@
 import React from 'react'
-import { MouseBadge } from './mouseBadge'
+import { MouseBadge } from '@/components/ui/mouseBadge'
 import { AnimatedTooltip } from '@/components/ui/animated-tooltip'
 
 const people = [
