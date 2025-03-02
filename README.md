@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+![image](https://github.com/user-attachments/assets/b4d158b2-1d48-48b0-a307-e68bcd6a4dfe)
+
+Welcome to the repository for **BFM Academy**, a pioneering Web3 educational platform designed to revolutionize learning through blockchain technology, tokenized incentives, and decentralized governance.
+
+## Project Overview
+
+BFM Academy aims to bridge the gap in Web3 education by providing an **interactive, rewarding, and decentralized learning experience**. Learners can **earn $BFM tokens**, receive **NFT-based certifications**, and participate in a **community-governed** education system.
+
+## Features
+
+- **Learn-to-Earn Model**: Users earn $BFM tokens by completing courses and assessments.
+- **NFT-Based Certifications**: Verifiable and tamper-proof credentials issued as NFTs.
+- **Community Governance**: DAO-driven decision-making for platform updates.
+- **Gamified Learning**: Leaderboards, quests, and interactive learning paths for engagement.
+- **Corporate & B2B Training**: Custom blockchain training solutions for enterprises.
+- **Web3 Startup Incubation**: Support for early-stage blockchain projects.
+
+## Technologies Used
+
+- **Next.js**: React framework for building scalable applications.
+- **TypeScript**: Statically typed language for enhanced maintainability.
+- **TailwindCSS**: Utility-first CSS framework for modern UI design.
+- **ShadCN**: for reusable and consistent components, across the website
+- **Framer-Motion**: for sleek animations.
 
 ## Getting Started
 
-First, run the development server:
+1. **Clone the repository**:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+   ```bash
+   git clone https://github.com/SatyamVyas04/BFMAcademy.git
+   cd bfmacademy
+   ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Install dependencies**:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+   ```bash
+   npm install
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. **Run the development server**:
 
-## Learn More
+   ```bash
+   npm run dev
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+   The application will be available at `http://localhost:3000`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The platform is deployed using **Vercel**. For more details on deployment, refer to the [Next.js deployment documentation](https://nextjs.org/docs/deployment).
