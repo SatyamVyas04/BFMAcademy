@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 export default function Section9() {
 	return (
-		<Card className="relative my-12 min-h-96 w-full overflow-clip rounded-lg bg-brandblue text-zinc-100 transition-all hover:-translate-y-2 hover:shadow-xl md:rounded-xl">
+		<Card className="relative my-12 mb-4 min-h-96 w-full overflow-clip rounded-lg bg-brandblue text-zinc-100 transition-all hover:-translate-y-2 hover:shadow-xl md:rounded-xl">
 			<div className="ml-auto max-w-3xl">
 				<h1 className="relative z-10 p-4 text-center text-5xl font-bold uppercase md:ml-auto md:text-start md:text-7xl">
 					Learn <br /> anytime, <br /> anywhere.

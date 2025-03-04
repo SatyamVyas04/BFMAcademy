@@ -3,8 +3,8 @@ import Image from 'next/image'
 
 export default function Section4() {
 	return (
-		<section className="space-y-3 py-8 md:space-y-6 xl:space-y-12">
-			<p className="text-end text-lg md:text-2xl">
+		<section className="space-y-3 pb-4 md:space-y-6 xl:space-y-8">
+			<p className="text-center text-lg md:text-end md:text-2xl">
 				it is not just a platform - <br />{' '}
 				<span className="font-bold">it&apos;s a movement</span>
 			</p>
@@ -65,9 +65,10 @@ export default function Section4() {
 					</CardContent>
 				</Card>
 			</div>
-			<p className="text-centertext-start text-lg md:text-2xl">
+			<p className="text-center text-lg md:text-start md:text-2xl">
 				be part of the biggest{' '}
-				<span className="font-bold">web3 learning hub</span> - <br /> because{' '}
+				<span className="font-bold">web3 learning hub</span> -{' '}
+				<br className="max-md:hidden" /> because{' '}
 				<span className="font-bold">knowledge is power</span>
 			</p>
 		</section>
