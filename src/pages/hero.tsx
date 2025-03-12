@@ -27,12 +27,12 @@ export default function Hero() {
 						/>
 					</div>
 				</div>
-				<div className="mx-auto w-full max-w-md space-y-3 rounded-xl bg-zinc-200/25 px-4 py-12 text-center backdrop-blur-sm sm:space-y-5 sm:px-16">
+				<div className="mx-auto w-full max-w-md space-y-3 rounded-xl bg-brandblue/25 px-4 py-12 text-center backdrop-blur-sm sm:space-y-5 sm:px-16">
 					<h1 className="text-2xl uppercase">
 						<span className="font-bold">learn.</span> earn.{' '}
 						<span className="font-bold">own.</span> repeat
 					</h1>
-					<Button className="group w-full rounded-full bg-brandblue text-white py-5 hover:bg-brandblue/90">
+					<Button className="group w-full rounded-full bg-brandblue py-5 text-white hover:bg-brandblue/90">
 						<IconBrandTelegram
 							className="relative left-12 opacity-0 transition-all group-hover:left-0 group-hover:opacity-100"
 							size={24}
