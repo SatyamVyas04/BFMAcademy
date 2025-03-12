@@ -37,7 +37,7 @@ export default function RootLayout({
 			<body className={`${mont.className}`}>
 				<ThemeProvider
 					attribute="class"
-					defaultTheme="light"
+					defaultTheme="dark"
 					disableTransitionOnChange
 				>
 					{children}

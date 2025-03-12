@@ -44,32 +44,18 @@ export default function Hero() {
 				</div>
 			</div>
 			<div className="relative mt-4 hidden space-y-12 md:block">
-				<div className="relative max-h-[800px] w-full rounded-3xl">
-					<div
-						className="h-full w-full rounded-3xl"
-						style={{
-							maskImage: 'url(/page/heroimageclip.png)',
-							WebkitMaskImage: 'url(/page/heroimageclip.png)',
-							maskSize: 'cover',
-							WebkitMaskSize: 'cover',
-							maskRepeat: 'no-repeat',
-							WebkitMaskRepeat: 'no-repeat',
-							maskPosition: 'bottom',
-							WebkitMaskPosition: 'bottom',
-						}}
-					>
-						<Image
-							src="/page/carousel.png"
-							width={1200}
-							height={1200}
-							alt="Carousel Image"
-							className="h-full w-full object-cover"
-							priority={true}
-						/>
-					</div>
+				<div className="relative w-full rounded-3xl">
+					<Image
+						src="/page/carousel.png"
+						width={1200}
+						height={1200}
+						alt="Carousel Image"
+						className="h-full w-full object-cover object-bottom"
+						priority={true}
+					/>
 				</div>
 
-				<div className="relative bottom-2 flex w-full flex-1 flex-row items-start justify-stretch px-2 lg:bottom-48 lg:px-6 lg:pr-10">
+				<div className="absolute bottom-10 flex w-full flex-1 flex-row items-start justify-stretch px-2 lg:px-6 lg:pr-10">
 					<div className="w-full space-y-3 self-end sm:space-y-4">
 						<h1 className="space-y-3 text-xl sm:space-y-5 md:text-2xl xl:text-4xl">
 							Welcome to <br />

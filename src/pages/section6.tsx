@@ -3,7 +3,7 @@ import Image from 'next/image'
 export default function Section6() {
 	return (
 		<section className="mx-auto mb-12 flex max-w-lg flex-col items-center justify-evenly space-y-4 md:w-full md:max-w-none md:flex-row md:items-center md:gap-32">
-			<div className="h-60 w-60 overflow-hidden rounded-lg md:h-96 md:w-96 md:rounded-xl xl:h-[500px] xl:w-[500px]">
+			<div className="h-60 w-60 rounded-lg md:h-96 md:w-96 md:rounded-xl xl:h-[500px] xl:w-[500px]">
 				<Image
 					src="/page/section6.png"
 					alt="Image describing the vision of BFM Academy"
@@ -11,7 +11,7 @@ export default function Section6() {
 					width={2400}
 					className="h-full w-full object-cover"
 					style={{
-						filter: 'drop-shadow(0px 0px 40px #212AFF)',
+						filter: 'drop-shadow(0px 0px 60px #212AFF)',
 					}}
 				/>
 			</div>
