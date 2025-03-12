@@ -4,7 +4,7 @@ import Image from 'next/image'
 export default function Section5() {
 	return (
 		<section className="my-12 text-center md:text-start">
-			<h1 className="my-2 text-4xl font-bold uppercase text-brandblue md:-mt-8 md:text-5xl lg:text-7xl">
+			<h1 className="my-2 text-4xl font-bold uppercase text-brandblue dark:text-foreground md:-mt-8 md:text-5xl lg:text-7xl">
 				Gamify Your Learnings
 			</h1>
 			<p className="text-sm uppercase md:text-xl">

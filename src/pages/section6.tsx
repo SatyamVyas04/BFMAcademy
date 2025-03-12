@@ -17,7 +17,7 @@ export default function Section6() {
 			</div>
 
 			<div className="items-between flex flex-col justify-between space-y-6 text-center md:text-start">
-				<h1 className="text-5xl font-bold uppercase text-brandblue md:-translate-x-12 lg:text-8xl">
+				<h1 className="text-5xl font-bold uppercase text-brandblue dark:text-foreground md:-translate-x-12 lg:text-8xl">
 					What <br />
 					can you <br /> learn?
 				</h1>
