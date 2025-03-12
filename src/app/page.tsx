@@ -17,31 +17,31 @@ export default function Home() {
 		<>
 			<main className="mx-auto max-w-screen-2xl overflow-x-hidden p-3 !pb-0 md:p-6 lg:p-9 xl:p-12 xl:pt-9">
 				<Navbar />
-				<BlurFade inView={true} delay={0.3}>
+				<BlurFade inView={true} duration={0.6}>
 					<Hero />
 				</BlurFade>
-				<BlurFade inView={true} delay={0.3}>
+				<BlurFade inView={true} duration={0.6}>
 					<Section2 />
 				</BlurFade>
-				<BlurFade inView={true} delay={0.3}>
+				<BlurFade inView={true} duration={0.6}>
 					<Section3 />
 				</BlurFade>
-				<BlurFade inView={true} delay={0.3}>
+				<BlurFade inView={true} duration={0.6}>
 					<Section4 />
 				</BlurFade>
-				<BlurFade inView={true} delay={0.3}>
+				<BlurFade inView={true} duration={0.6}>
 					<Section5 />
 				</BlurFade>
-				<BlurFade inView={true} delay={0.3}>
+				<BlurFade inView={true} duration={0.6}>
 					<Section6 />
 				</BlurFade>
-				<BlurFade inView={true} delay={0.3}>
+				<BlurFade inView={true} duration={0.6}>
 					<Section7 />
 				</BlurFade>
-				<BlurFade inView={true} delay={0.3}>
+				<BlurFade inView={true} duration={0.6}>
 					<Section8 />
 				</BlurFade>
-				<BlurFade inView={true} delay={0.3}>
+				<BlurFade inView={true} duration={0.6}>
 					<Section9 />
 				</BlurFade>
 				<Footer />

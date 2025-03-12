@@ -13,7 +13,7 @@ export default function Section2() {
 				/>
 			</div>
 			<div className="items-between flex flex-col justify-between space-y-6 py-4 text-center md:text-end">
-				<h1 className="text-3xl font-bold uppercase md:-mt-8 md:text-5xl lg:text-7xl">
+				<h1 className="text-3xl font-bold uppercase text-brandblue md:-mt-8 md:text-5xl lg:text-7xl">
 					Forget Outdated Textbooks
 				</h1>
 				<div className="md:ml-auto">

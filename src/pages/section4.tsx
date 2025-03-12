@@ -9,19 +9,19 @@ export default function Section4() {
 				it is not just a platform - <br />{' '}
 				<span className="font-bold">it&apos;s a movement</span>
 			</p>
-			<div className="flex flex-row flex-wrap items-center justify-center gap-4 xl:gap-12">
-				<Card className="relative h-[420px] w-80 overflow-clip rounded-xl border-none bg-zinc-900 text-foreground shadow-brandblue transition-all hover:-translate-y-2 hover:shadow-xl hover:shadow-brandblue dark:text-background">
+			<div className="flex flex-row flex-wrap items-center justify-center gap-4 xl:justify-between xl:gap-12">
+				<Card className="relative h-[420px] w-80 overflow-clip rounded-xl border-none bg-zinc-900 text-foreground shadow-foreground transition-all hover:-translate-y-2 hover:shadow-xl hover:shadow-brandblue dark:text-background xl:h-[600px] xl:w-[420px]">
 					<CardHeader className="p-3">
 						<Image
 							src="/page/section4-1.png"
 							alt="Card Image"
 							width={600}
 							height={600}
-							className="h-80 rounded-lg object-cover object-center"
+							className="h-80 rounded-lg object-cover object-center xl:h-[420px]"
 						/>
 					</CardHeader>
 					<CardContent>
-						<CardTitle className="mt-2 text-center font-normal uppercase text-zinc-100">
+						<CardTitle className="mt-2 text-center font-normal uppercase text-zinc-100 xl:mt-6 xl:text-2xl">
 							Network with{' '}
 							<span className="font-bold">
 								100k+ Learners, Builders & Blockchain Pros
@@ -29,16 +29,16 @@ export default function Section4() {
 						</CardTitle>
 					</CardContent>
 				</Card>
-				<Card className="relative h-[420px] w-80 overflow-clip rounded-xl border-none bg-zinc-900 text-foreground shadow-brandblue transition-all hover:-translate-y-2 hover:shadow-xl hover:shadow-brandblue dark:text-background">
-					<CardHeader className="text-lg font-bold">
-						<CardTitle className="relative z-10 mt-2 text-center font-normal uppercase text-zinc-100">
+				<Card className="relative h-[420px] w-80 overflow-clip rounded-xl border-none bg-zinc-900 text-foreground shadow-foreground transition-all hover:-translate-y-2 hover:shadow-xl hover:shadow-brandblue dark:text-background xl:h-[600px] xl:w-[420px]">
+					<CardHeader className="text-lg font-bold xl:text-xl">
+						<CardTitle className="relative z-10 mt-2 text-center font-normal uppercase text-zinc-100 xl:mt-4">
 							<div>
 								Join <span className="font-bold">Discord & Telegram</span> for
 								Daily <span className="font-bold">Web3 Discussions</span>
 							</div>
-							<div className="my-2 flex w-full flex-row items-center justify-center gap-2">
-								<IconBrandDiscord className="h-6 w-6" />
-								<IconBrandTelegram className="h-6 w-6" />
+							<div className="my-2 flex w-full flex-row items-center justify-center gap-2 xl:my-6">
+								<IconBrandDiscord className="h-6 w-6 xl:h-12 xl:w-12" />
+								<IconBrandTelegram className="h-6 w-6 xl:h-12 xl:w-12" />
 							</div>
 						</CardTitle>
 					</CardHeader>
@@ -48,22 +48,22 @@ export default function Section4() {
 							alt="Card Image"
 							width={600}
 							height={600}
-							className="h-80 w-full object-cover object-center"
+							className="h-80 w-full object-cover object-center xl:h-[420px]"
 						/>
 					</CardContent>
 				</Card>
-				<Card className="relative h-[420px] w-80 overflow-clip rounded-xl border-none bg-zinc-900 text-foreground shadow-brandblue transition-all hover:-translate-y-2 hover:shadow-xl hover:shadow-brandblue dark:text-background">
+				<Card className="relative h-[420px] w-80 overflow-clip rounded-xl border-none bg-zinc-900 text-foreground shadow-foreground transition-all hover:-translate-y-2 hover:shadow-xl hover:shadow-brandblue dark:text-background xl:h-[600px] xl:w-[420px]">
 					<CardHeader className="p-3">
 						<Image
 							src="/page/section4-3.png"
 							alt="Card Image"
 							width={600}
 							height={600}
-							className="h-80 rounded-lg object-cover object-center"
+							className="h-80 rounded-lg object-cover object-center xl:h-[420px]"
 						/>
 					</CardHeader>
 					<CardContent>
-						<CardTitle className="mt-2 text-center font-normal uppercase text-zinc-100">
+						<CardTitle className="mt-2 text-center font-normal uppercase text-zinc-100 xl:mt-6 xl:text-2xl">
 							Participate in{' '}
 							<span className="font-bold">
 								Live AMAS, Hackathons & Web3 Meet-ups

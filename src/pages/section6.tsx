@@ -17,7 +17,7 @@ export default function Section6() {
 			</div>
 
 			<div className="items-between flex flex-col justify-between space-y-6 text-center md:text-start">
-				<h1 className="text-5xl font-bold uppercase md:-translate-x-12 lg:text-8xl">
+				<h1 className="text-5xl font-bold uppercase text-brandblue md:-translate-x-12 lg:text-8xl">
 					What <br />
 					can you <br /> learn?
 				</h1>
@@ -29,40 +29,40 @@ export default function Section6() {
 						<div className="mt-2 text-sm">
 							NFTs, DAOs, DeFi and everything decentralization
 						</div>
-						<hr className="mx-auto my-2 w-full max-w-60 border-2 border-foreground md:mx-0 md:mr-auto md:max-w-60 md:-translate-x-12 lg:border-4" />
+						<hr className="mx-auto my-2 w-full max-w-60 border-2 border-brandblue md:mx-0 md:mr-auto md:max-w-60 md:-translate-x-12 lg:border-4" />
 						<strong className="my-6 text-xl tracking-wide">
 							Smart Contracts &amp; Solidity
 						</strong>
 						<div className="mt-2 text-sm">Code the backbone of Web3 apps</div>
-						<hr className="mx-auto my-2 w-full max-w-60 border-2 border-foreground md:mx-0 md:mr-auto md:max-w-60 md:-translate-x-12 lg:border-4" />
+						<hr className="mx-auto my-2 w-full max-w-60 border-2 border-brandblue md:mx-0 md:mr-auto md:max-w-60 md:-translate-x-12 lg:border-4" />
 						<strong className="my-6 text-xl tracking-wide">
 							Metaverse &amp; AI Integration
 						</strong>
 						<div className="mt-2 text-sm">
 							Be part of the digital revolution
 						</div>
-						<hr className="mx-auto my-2 w-full max-w-60 border-2 border-foreground md:mx-0 md:mr-auto md:max-w-60 md:-translate-x-12 lg:border-4" />
+						<hr className="mx-auto my-2 w-full max-w-60 border-2 border-brandblue md:mx-0 md:mr-auto md:max-w-60 md:-translate-x-12 lg:border-4" />
 						<strong className="my-6 text-xl tracking-wide">
 							Crypto Investing &amp; Tokenomics
 						</strong>
 						<div className="mt-2 text-sm">
 							Learn the strategies behind Web3 wealth
 						</div>
-						<hr className="mx-auto my-2 w-full max-w-60 border-2 border-foreground md:mx-0 md:mr-auto md:max-w-60 md:-translate-x-12 lg:border-4" />
+						<hr className="mx-auto my-2 w-full max-w-60 border-2 border-brandblue md:mx-0 md:mr-auto md:max-w-60 md:-translate-x-12 lg:border-4" />
 						<strong className="my-6 text-xl tracking-wide">
 							Cybersecurity &amp; Ethical Hacking
 						</strong>
 						<div className="mt-2 text-sm">
 							Protect your assets &amp; blockchain networks
 						</div>
-						<hr className="mx-auto my-2 w-full max-w-60 border-2 border-foreground md:mx-0 md:mr-auto md:max-w-60 md:-translate-x-12 lg:border-4" />
+						<hr className="mx-auto my-2 w-full max-w-60 border-2 border-brandblue md:mx-0 md:mr-auto md:max-w-60 md:-translate-x-12 lg:border-4" />
 						<strong className="my-6 text-xl tracking-wide">
 							NFT &amp; Digital Artistry
 						</strong>
 						<div className="mt-2 text-sm">
 							Create &amp; market your own NFT collection
 						</div>
-						<hr className="mx-auto my-2 w-full max-w-60 border-2 border-foreground md:mx-0 md:mr-auto md:max-w-60 md:-translate-x-12 lg:border-4" />
+						<hr className="mx-auto my-2 w-full max-w-60 border-2 border-brandblue md:mx-0 md:mr-auto md:max-w-60 md:-translate-x-12 lg:border-4" />
 						<strong className="my-6 text-xl tracking-wide">
 							Web3 Marketing &amp; Growth Hacking
 						</strong>
