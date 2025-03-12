@@ -5,7 +5,7 @@ export default function Section7() {
 	return (
 		<Card className="relative mt-6 min-h-96 w-full overflow-clip rounded-lg bg-zinc-100 text-brandblue transition-all hover:-translate-y-2 hover:shadow-xl md:rounded-xl">
 			<div className="absolute inset-0 z-10 from-background/20 to-background dark:from-foreground/20 dark:to-foreground max-md:bg-gradient-to-b"></div>
-			<h1 className="relative z-10 max-w-3xl p-4 text-center text-5xl font-bold uppercase md:text-start md:text-7xl">
+			<h1 className="relative z-10 max-w-3xl p-4 text-center text-3xl md:text-5xl font-bold uppercase md:text-start lg:text-7xl">
 				INCUBATION & PROJECT LAUNCH SUPPORT
 			</h1>
 			<Image
