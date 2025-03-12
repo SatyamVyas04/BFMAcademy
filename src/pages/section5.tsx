@@ -78,7 +78,7 @@ export default function Section5() {
 							alt="Card Image"
 							height={3000}
 							width={3000}
-							className="h-[130%] w-auto translate-y-12 transition-all group-hover:translate-y-6 group-hover:scale-105"
+							className="h-[130%] w-auto transition-all group-hover:scale-105"
 						/>
 					</div>
 				</Card>
