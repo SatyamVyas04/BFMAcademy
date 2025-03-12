@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import {
-	IconBrandFacebook,
 	IconBrandInstagram,
 	IconBrandLinkedin,
 	IconBrandTelegram,
@@ -51,9 +50,6 @@ export default function Footer() {
 							</Button>
 							<Button variant="ghost" size="icon" className="group">
 								<IconBrandYoutube className="h-[1.2rem] w-[1.2rem] text-foreground" />
-							</Button>
-							<Button variant="ghost" size="icon" className="group">
-								<IconBrandFacebook className="h-[1.2rem] w-[1.2rem] text-foreground" />
 							</Button>
 							<Button variant="ghost" size="icon" className="group">
 								<IconBrandLinkedin className="h-[1.2rem] w-[1.2rem] text-foreground" />

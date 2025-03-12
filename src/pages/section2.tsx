@@ -2,13 +2,13 @@ import Image from 'next/image'
 
 export default function Section2() {
 	return (
-		<section className="mx-auto my-4 flex max-w-md flex-col items-center justify-between space-y-4 py-8 sm:py-10 md:w-full md:max-w-none md:flex-row md:items-stretch md:space-y-8">
+		<section className="mx-auto my-4 flex max-w-md flex-col items-center justify-between space-y-4 py-8 sm:py-10 md:grid md:w-full md:max-w-none md:grid-cols-[60%_40%] md:space-y-8">
 			<div>
 				<Image
-					src="/page/section2.jpeg"
+					src="/page/section2.png"
 					alt="Image describing the vision of BFM Academy"
-					height={2400}
-					width={2400}
+					height={2800}
+					width={2800}
 					className="h-full w-full rounded-lg md:rounded-xl"
 				/>
 			</div>

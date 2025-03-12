@@ -84,28 +84,28 @@ export default function Section8() {
 				<MouseBadge
 					text="Satyam"
 					color="#37c0f8"
-					badgePos="bottom-2 left-2 md:bottom-8 md:left-8 xl:bottom-16 xl:left-16"
+					badgePos="bottom-8 left-8 xl:bottom-16 xl:left-16"
 					arrowPos="-top-5 -right-5"
 					index={1}
 				/>
 				<MouseBadge
 					text="Mathew"
 					color="#fe7689"
-					badgePos="right-2 bottom-2 md:right-8 md:bottom-8 xl:right-16 xl:bottom-16"
+					badgePos="right-8 bottom-8 xl:right-16 xl:bottom-16"
 					arrowPos="-top-5 -left-5 rotate-[270deg]"
 					index={2}
 				/>
 				<MouseBadge
 					text="Velma"
 					color="#fdce0f"
-					badgePos="top-2 right-2 md:top-8 md:right-8 xl:top-16 xl:right-16"
+					badgePos="top-8 right-8 xl:top-16 xl:right-16"
 					arrowPos="-bottom-5 -left-5 rotate-[180deg]"
 					index={3}
 				/>
 				<MouseBadge
 					text="Jake"
 					color="#e976f3"
-					badgePos="left-2 top-2 md:left-8 md:top-8 xl:left-16 xl:top-16"
+					badgePos="left-8 top-8 xl:left-16 xl:top-16"
 					arrowPos="-bottom-5 -right-5 rotate-[90deg]"
 					index={4}
 				/>

@@ -9,6 +9,9 @@ export default function Section3() {
 				height={2400}
 				alt="Vector png"
 				className="relative z-10 ml-auto hidden max-w-4xl rounded-2xl md:translate-y-44 dark:md:block"
+				style={{
+					filter: 'drop-shadow(0 0 8px rgba(0, 0, 0, 0.5))',
+				}}
 			/>
 			<Image
 				src="/page/section3-bg-light.png"
@@ -16,8 +19,11 @@ export default function Section3() {
 				height={2400}
 				alt="Vector png"
 				className="relative z-10 ml-auto hidden max-w-4xl rounded-2xl md:block md:translate-y-44 dark:md:hidden"
+				style={{
+					filter: 'drop-shadow(0 0 8px rgba(0, 0, 0, 0.5))',
+				}}
 			/>
-			<div className="relative my-4 flex h-96 w-full flex-col rounded-lg bg-foreground p-2 px-6 dark:bg-brandblue md:items-start md:justify-end md:rounded-xl">
+			<div className="relative my-4 flex h-96 w-full flex-col rounded-lg bg-[url(/page/section3lines.png)] bg-cover p-2 px-6 md:items-start md:justify-end md:rounded-xl">
 				<h1 className="text-5xl font-bold uppercase text-background dark:text-foreground md:text-7xl lg:text-9xl">
 					JOIN THE
 				</h1>
