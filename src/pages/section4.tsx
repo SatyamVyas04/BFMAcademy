@@ -9,8 +9,8 @@ export default function Section4() {
 				it is not just a platform - <br />{' '}
 				<span className="font-bold">it&apos;s a movement</span>
 			</p>
-			<div className="flex flex-row flex-wrap items-center justify-center gap-4 xl:justify-between xl:gap-12">
-				<Card className="relative h-[420px] w-80 overflow-clip rounded-xl border-none bg-zinc-900 text-foreground shadow-foreground transition-all hover:-translate-y-2 hover:shadow-xl hover:shadow-brandblue dark:text-background xl:h-[600px] xl:w-[420px]">
+			<div className="flex flex-row flex-wrap items-center justify-center gap-4 xl:justify-between xl:gap-8">
+				<Card className="relative h-[420px] w-80 overflow-clip rounded-xl border-none bg-zinc-900 text-foreground shadow-foreground transition-all hover:-translate-y-2 hover:shadow-xl hover:shadow-brandblue dark:text-background xl:h-[600px] xl:w-[400px]">
 					<CardHeader className="p-3">
 						<Image
 							src="/page/section4-1.png"
@@ -29,7 +29,7 @@ export default function Section4() {
 						</CardTitle>
 					</CardContent>
 				</Card>
-				<Card className="relative h-[420px] w-80 overflow-clip rounded-xl border-none bg-zinc-900 text-foreground shadow-foreground transition-all hover:-translate-y-2 hover:shadow-xl hover:shadow-brandblue dark:text-background xl:h-[600px] xl:w-[420px]">
+				<Card className="relative h-[420px] w-80 overflow-clip rounded-xl border-none bg-zinc-900 text-foreground shadow-foreground transition-all hover:-translate-y-2 hover:shadow-xl hover:shadow-brandblue dark:text-background xl:h-[600px] xl:w-[400px]">
 					<CardHeader className="text-lg font-bold xl:text-xl">
 						<CardTitle className="relative z-10 mt-2 text-center font-normal uppercase text-zinc-100 xl:mt-4">
 							<div>
@@ -52,7 +52,7 @@ export default function Section4() {
 						/>
 					</CardContent>
 				</Card>
-				<Card className="relative h-[420px] w-80 overflow-clip rounded-xl border-none bg-zinc-900 text-foreground shadow-foreground transition-all hover:-translate-y-2 hover:shadow-xl hover:shadow-brandblue dark:text-background xl:h-[600px] xl:w-[420px]">
+				<Card className="relative h-[420px] w-80 overflow-clip rounded-xl border-none bg-zinc-900 text-foreground shadow-foreground transition-all hover:-translate-y-2 hover:shadow-xl hover:shadow-brandblue dark:text-background xl:h-[600px] xl:w-[400px]">
 					<CardHeader className="p-3">
 						<Image
 							src="/page/section4-3.png"
