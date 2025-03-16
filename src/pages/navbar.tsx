@@ -1,9 +1,12 @@
+'use client'
 import Image from 'next/image'
 import { ModeToggle } from '@/components/ui/mode-toggle'
 import { ConnectButton } from 'thirdweb/react'
 import { client } from '../../actions/wallet'
 import { useTheme } from 'next-themes'
-import { useEffect, useState } from 'react'
+import { Suspense, useEffect, useState } from 'react'
+import { Button } from '@/components/ui/button'
+import { ArrowRight } from 'lucide-react'
 
 function useWindowSize() {
 	const [windowSize, setWindowSize] = useState({
@@ -56,19 +59,33 @@ export default function Navbar() {
 				<div className="hidden h-fit w-fit flex-row items-center sm:flex">
 					<ModeToggle />
 				</div>
-				<ConnectButton
-					client={client}
-					connectButton={{
-						label: 'Enroll Now',
-						className: 'connect-wallet',
-					}}
-					connectModal={{
-						title: 'Get started with BFMAcademy',
-						titleIcon: `${theme == 'dark' ? '/page/logo-dark.png' : '/page/logo-light.png'}`,
-						size: `${useWindowSize().width < 640 ? 'compact' : 'wide'}`,
-					}}
-					theme={theme == 'dark' ? 'dark' : 'light'}
-				/>
+				<Suspense
+					fallback={
+						<Button className="group rounded-full bg-brandblue text-white transition-all hover:bg-brandblue/90">
+							<span className="translate-x-[12px] transition-all group-hover:translate-x-0">
+								Enroll Now
+							</span>
+							<ArrowRight
+								className="relative right-12 opacity-0 transition-all group-hover:right-0 group-hover:opacity-100"
+								size={24}
+							/>
+						</Button>
+					}
+				>
+					<ConnectButton
+						client={client}
+						connectButton={{
+							label: 'Enroll Now',
+							className: 'connect-wallet',
+						}}
+						connectModal={{
+							title: 'Get started with BFMAcademy',
+							titleIcon: `${theme == 'dark' ? '/page/logo-dark.png' : '/page/logo-light.png'}`,
+							size: `${useWindowSize().width < 640 ? 'compact' : 'wide'}`,
+						}}
+						theme={theme == 'dark' ? 'dark' : 'light'}
+					/>
+				</Suspense>
 			</div>
 		</nav>
 	)
