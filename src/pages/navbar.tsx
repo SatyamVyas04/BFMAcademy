@@ -7,6 +7,7 @@ import { useTheme } from 'next-themes'
 import { Suspense, useEffect, useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { ArrowRight } from 'lucide-react'
+import Link from 'next/link'
 
 function useWindowSize() {
 	const [windowSize, setWindowSize] = useState({
@@ -36,9 +37,20 @@ function useWindowSize() {
 
 export default function Navbar() {
 	const theme = useTheme().theme
+
+	const welcomeScreen = {
+		title: 'BFM Academy',
+		subtitle: 'where web3 wizards are made',
+		img: {
+			src: `${theme == 'dark' ? '/page/logo-dark.png' : '/page/logo-light.png'}`,
+			width: 200,
+			height: 200,
+		},
+	}
+
 	return (
 		<nav className="mb-16 flex flex-row items-center justify-between md:mb-4">
-			<div className="flex flex-row items-center gap-2 md:gap-4">
+			<Link href="/" className="flex flex-row items-center gap-2 md:gap-4">
 				<Image
 					src="/page/logo-light.png"
 					alt="Logo"
@@ -54,7 +66,7 @@ export default function Navbar() {
 					className="hidden h-8 w-8 dark:block md:h-12 md:w-12"
 				/>
 				<h1 className="text-lg font-bold md:text-3xl">academy</h1>
-			</div>
+			</Link>
 			<div className="flex flex-row items-center justify-between space-x-1 md:space-x-2">
 				<div className="hidden h-fit w-fit flex-row items-center sm:flex">
 					<ModeToggle />
@@ -79,8 +91,10 @@ export default function Navbar() {
 							className: 'connect-wallet',
 						}}
 						connectModal={{
+							welcomeScreen: welcomeScreen,
 							title: 'Get started with BFMAcademy',
-							titleIcon: `${theme == 'dark' ? '/page/logo-dark.png' : '/page/logo-light.png'}`,
+							titleIcon: '/page/logo-blue.png',
+							privacyPolicyUrl: 'https://www.bfmacademy.in/privacy-policy',
 							size: `${useWindowSize().width < 640 ? 'compact' : 'wide'}`,
 						}}
 						theme={theme == 'dark' ? 'dark' : 'light'}

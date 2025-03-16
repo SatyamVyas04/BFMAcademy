@@ -10,19 +10,45 @@ const mont = Montserrat({
 })
 
 export const metadata: Metadata = {
+	metadataBase: new URL('https://bfmacademy.in'),
 	title: 'BFM Academy',
-	description: 'where web3 wizards are made.',
+	description:
+		'BFM Academy is where education meets innovation. Earn crypto, own your knowledge with NFT credentials and be part of the next-gen learning revolution.',
+	keywords: [
+		'blockchain',
+		'education',
+		'NFT credentials',
+		'crypto learning',
+		'web3 academy',
+	],
+	authors: [{ name: 'BFM Academy Team' }],
+	openGraph: {
+		title: 'BFM Academy',
+		description: 'Earn crypto while learning with NFT credentials',
+		url: 'https://bfmacademy.in',
+		siteName: 'BFM Academy',
+		images: [
+			{
+				url: '/og-image.png',
+				width: 1200,
+				height: 630,
+				alt: 'BFM Academy - Web3 Learning Platform',
+			},
+		],
+		locale: 'en_US',
+		type: 'website',
+	},
+	twitter: {
+		card: 'summary_large_image',
+		title: 'BFM Academy',
+		description: 'Learn blockchain and Web3 technologies with BFM Academy',
+		images: ['/twitter-image.png'],
+	},
 	icons: {
 		icon: [
 			{
-				media: '(prefers-color-scheme: light)',
-				url: '/icon-light.png',
-				href: '/icon-light.png',
-			},
-			{
-				media: '(prefers-color-scheme: dark)',
-				url: '/icon-dark.png',
-				href: '/icon-dark.png',
+				url: '/icon-blue.png',
+				href: '/icon-blue.png',
 			},
 		],
 	},
