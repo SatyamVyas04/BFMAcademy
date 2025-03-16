@@ -137,3 +137,24 @@
 ::-webkit-scrollbar-thumb:hover {
 	@apply bg-muted-foreground;
 }
+
+.connect-wallet {
+	display: inline-flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	gap: 0.5rem !important;
+	white-space: nowrap !important;
+	border-radius: 500rem !important;
+	font-size: 0.875rem !important;
+	font-weight: 500 !important;
+	height: 2.5rem !important;
+	transition-property:
+		color, background-color, border-color, text-decoration-color, fill, stroke !important;
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+	transition-duration: 150ms !important;
+	background-color: hsl(var(--primary)) !important;
+	color: hsl(var(--primary-foreground)) !important;
+	box-shadow:
+		0 1px 3px 0 rgb(0 0 0 / 0.1),
+		0 1px 2px -1px rgb(0 0 0 / 0.1) !important;
+}

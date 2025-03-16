@@ -23,7 +23,8 @@
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0",
 		"tailwind-merge": "^3.0.2",
-		"tailwindcss-animate": "^1.0.7"
+		"tailwindcss-animate": "^1.0.7",
+		"thirdweb": "^5.92.1"
 	},
 	"devDependencies": {
 		"@eslint/eslintrc": "^3",

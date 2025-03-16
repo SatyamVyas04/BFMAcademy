@@ -8,6 +8,7 @@ import {
 	IconMail,
 } from '@tabler/icons-react'
 import { Button } from '@/components/ui/button'
+import { ModeToggle } from '@/components/ui/mode-toggle'
 
 export default function Footer() {
 	return (
@@ -123,7 +124,7 @@ export default function Footer() {
 						<p className="text-brandblue dark:text-foreground">
 							support@bfmacademy.in
 						</p>
-						<div className="mt-2">
+						<div className="mt-2 flex flex-row items-center gap-2">
 							<Button className="group rounded-full bg-brandblue text-white transition-all hover:bg-brandblue/90 dark:bg-foreground dark:text-background dark:hover:bg-foreground/90">
 								<IconMail
 									className="relative left-12 opacity-0 transition-all group-hover:left-0 group-hover:opacity-100"
@@ -137,13 +138,14 @@ export default function Footer() {
 									Contact us
 								</a>
 							</Button>
+							<ModeToggle />
 						</div>
 					</div>
 				</div>
 
 				{/* Copyright Text - Bottom Right */}
 				<div className="text-right text-xs text-brandblue/50 dark:text-muted-foreground max-md:mt-12">
-					©BFM Academy © 2025.
+					BFM Academy © 2025
 				</div>
 			</div>
 		</footer>

@@ -2,6 +2,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Montserrat } from 'next/font/google'
 import { ThemeProvider } from 'next-themes'
+import { ThirdwebProvider } from 'thirdweb/react'
 
 const mont = Montserrat({
 	weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
@@ -35,13 +36,15 @@ export default function RootLayout({
 	return (
 		<html lang="en" suppressHydrationWarning>
 			<body className={`${mont.className}`}>
-				<ThemeProvider
-					attribute="class"
-					defaultTheme="dark"
-					disableTransitionOnChange
-				>
-					{children}
-				</ThemeProvider>
+				<ThirdwebProvider>
+					<ThemeProvider
+						attribute="class"
+						defaultTheme="dark"
+						disableTransitionOnChange
+					>
+						{children}
+					</ThemeProvider>
+				</ThirdwebProvider>
 			</body>
 		</html>
 	)
