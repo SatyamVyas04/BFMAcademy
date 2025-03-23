@@ -81,7 +81,7 @@ export default function Footer() {
 						<ul className="space-y-1.5 text-brandblue dark:text-foreground">
 							<li>
 								<a
-									href="https://docsend.com/view/v8yyibu9gd6i8b46"
+									href="https://docsend.com/v/4gtmx/bfmacademy"
 									target="_blank"
 									className="transition-all hover:text-foreground dark:hover:text-brandblue"
 								>
