@@ -75,7 +75,7 @@ export default function Footer() {
 
 					{/* Products Column */}
 					<div className="md:col-span-3">
-						<h2 className="mb-4 uppercase text-brandblue/50 dark:text-muted-foreground">
+						<h2 className="mb-4 text-lg uppercase text-brandblue/50 dark:text-muted-foreground">
 							LEGAL
 						</h2>
 						<ul className="space-y-1.5 text-brandblue dark:text-foreground">
@@ -123,11 +123,34 @@ export default function Footer() {
 								</a>
 							</li>
 						</ul>
+						<h2 className="mb-4 mt-6 text-lg uppercase text-brandblue/50 dark:text-muted-foreground">
+							EDUCATION
+						</h2>
+						<ul className="space-y-1.5 text-brandblue dark:text-foreground">
+							<li>
+								<a
+									href="https://docs.google.com/forms/d/e/1FAIpQLSePTUNg74BZiCv-_tb1KoDKlJZkuzwQ8PQnuNgAeam0zFi9bQ/viewform?usp=sharing"
+									target="_blank"
+									className="transition-all hover:text-foreground dark:hover:text-brandblue"
+								>
+									Join Training Program
+								</a>
+							</li>
+							<li>
+								<a
+									href="/"
+									target="_blank"
+									className="transition-all hover:text-foreground dark:hover:text-brandblue"
+								>
+									Startup Mentorship
+								</a>
+							</li>
+						</ul>
 					</div>
 
 					{/* Contact Column */}
 					<div className="md:col-span-3">
-						<h2 className="mb-4 uppercase text-brandblue/50 dark:text-muted-foreground">
+						<h2 className="mb-4 text-lg uppercase text-brandblue/50 dark:text-muted-foreground">
 							EMAIL ADDRESS
 						</h2>
 						<p className="text-brandblue dark:text-foreground">
