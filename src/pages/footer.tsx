@@ -138,7 +138,7 @@ export default function Footer() {
 							</li>
 							<li>
 								<a
-									href="/"
+									href="https://docs.google.com/forms/d/e/1FAIpQLSeBQ22mRqlle_6pSIPhUba8kHJpGNH5aPENYl7qi9YM-Va0qA/viewform"
 									target="_blank"
 									className="transition-all hover:text-foreground dark:hover:text-brandblue"
 								>
