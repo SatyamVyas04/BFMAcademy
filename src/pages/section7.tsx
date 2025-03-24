@@ -7,7 +7,7 @@ export default function Section7() {
 	return (
 		<Card className="relative mt-6 min-h-96 w-full overflow-clip rounded-lg bg-zinc-100 pl-3 pt-1 text-brandblue transition-all hover:-translate-y-2 hover:shadow-xl md:rounded-xl">
 			<div className="absolute inset-0 z-10 from-background/20 to-background dark:from-foreground/20 dark:to-foreground max-md:bg-gradient-to-b"></div>
-			<h1 className="relative z-10 max-w-3xl p-4 text-center text-3xl font-bold uppercase md:text-start md:text-5xl lg:text-6xl">
+			<h1 className="relative z-10 max-w-3xl p-4 text-center text-3xl font-bold uppercase md:text-start md:text-5xl lg:text-7xl">
 				INCUBATION & PROJECT LAUNCH SUPPORT
 			</h1>
 			<Image
@@ -15,7 +15,10 @@ export default function Section7() {
 				height={1200}
 				width={1200}
 				alt="Avatars"
-				className="absolute right-0 top-0 z-0 h-full w-fit object-cover mix-blend-multiply max-xl:opacity-20"
+				className="absolute right-0 top-0 z-0 h-full w-fit object-cover max-xl:opacity-20"
+				style={{
+					maskImage: 'linear-gradient(to right, transparent, black 30%)',
+				}}
 			/>
 			<p className="relative z-10 px-4 py-2 text-lg md:text-start">
 				We don&apos;t just teach Web3 - we help you build in Web3!
