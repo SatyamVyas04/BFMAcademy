@@ -41,7 +41,7 @@ export default function Section7() {
 					</span>
 				</li>
 				<li className="flex max-w-xl items-start justify-start gap-2">
-					<Button className="group mt-4 rounded-full bg-brandblue text-white transition-all hover:bg-brandblue/90 dark:bg-foreground dark:text-background dark:hover:bg-foreground/90">
+					<Button className="group mt-4 rounded-full bg-brandblue text-white transition-all hover:bg-brandblue/90">
 						<PhoneCall
 							className="relative left-12 opacity-0 transition-all group-hover:left-0 group-hover:opacity-100"
 							size={24}
