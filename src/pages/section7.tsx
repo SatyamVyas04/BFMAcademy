@@ -1,4 +1,6 @@
+import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
+import { PhoneCall } from 'lucide-react'
 import Image from 'next/image'
 
 export default function Section7() {
@@ -37,6 +39,22 @@ export default function Section7() {
 						Launch your project with our network of investors, DAOs and
 						blockchain accelerators.
 					</span>
+				</li>
+				<li className="flex max-w-xl items-start justify-start gap-2">
+					<Button className="group mt-4 rounded-full bg-brandblue text-white transition-all hover:bg-brandblue/90 dark:bg-foreground dark:text-background dark:hover:bg-foreground/90">
+						<PhoneCall
+							className="relative left-12 opacity-0 transition-all group-hover:left-0 group-hover:opacity-100"
+							size={24}
+						/>
+						<a
+							href="https://calendly.com/bfmacademy/"
+							className="translate-x-[-12px] transition-all group-hover:translate-x-0"
+							aria-label="Contact BFM Academy"
+							target="_blank"
+						>
+							Book a Call
+						</a>
+					</Button>
 				</li>
 			</ul>
 		</Card>
