@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import { Montserrat } from 'next/font/google'
 import { ThemeProvider } from 'next-themes'
 import { ThirdwebProvider } from 'thirdweb/react'
-import { GoogleTagManager } from '@next/third-parties/google'
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 const mont = Montserrat({
 	weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
@@ -62,7 +62,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en" suppressHydrationWarning>
-			<GoogleTagManager gtmId="G-GTBZG5VLFB" />
+			<GoogleAnalytics gaId="G-GTBZG5VLFB" />
 			<body className={`${mont.className}`}>
 				<ThirdwebProvider>
 					<ThemeProvider
