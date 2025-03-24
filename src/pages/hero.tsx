@@ -2,6 +2,7 @@
 import { IconBrandTelegram } from '@tabler/icons-react'
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Hero() {
 	return (
@@ -28,19 +29,21 @@ export default function Hero() {
 					</div>
 				</div>
 				<div className="mx-auto w-full max-w-md space-y-3 rounded-xl bg-brandblue/25 px-4 py-12 text-center backdrop-blur-sm sm:space-y-5 sm:px-16">
-					<h1 className="text-2xl uppercase">
+					<h1 className="mb-4 text-2xl uppercase">
 						<span className="font-bold">learn.</span> earn.{' '}
 						<span className="font-bold">own.</span> repeat
 					</h1>
-					<Button className="group w-full rounded-full bg-brandblue py-5 text-white hover:bg-brandblue/90">
-						<IconBrandTelegram
-							className="relative left-12 opacity-0 transition-all group-hover:left-0 group-hover:opacity-100"
-							size={24}
-						/>
-						<span className="translate-x-[-12px] transition-all group-hover:translate-x-0">
-							Join Telegram Community
-						</span>
-					</Button>
+					<Link href="https://t.me/bfmacademyy" target="_blank">
+						<Button className="group w-full rounded-full bg-brandblue py-5 text-white hover:bg-brandblue/90">
+							<IconBrandTelegram
+								className="relative left-12 opacity-0 transition-all group-hover:left-0 group-hover:opacity-100"
+								size={24}
+							/>
+							<span className="translate-x-[-12px] transition-all group-hover:translate-x-0">
+								Join Telegram Community
+							</span>
+						</Button>
+					</Link>
 				</div>
 			</div>
 			<div className="relative mt-4 hidden space-y-12 md:block">
@@ -67,19 +70,21 @@ export default function Hero() {
 						<p>where web3 wizards are made!</p>
 					</div>
 					<div className="mx-auto w-full space-y-3 rounded-xl bg-black/50 p-12 px-16 text-center text-white backdrop-blur-sm sm:space-y-5">
-						<h1 className="text-2xl uppercase sm:text-3xl">
+						<h1 className="mb-6 text-2xl uppercase sm:text-3xl">
 							<span className="font-bold">learn.</span> earn.{' '}
 							<span className="font-bold">own.</span> repeat
 						</h1>
-						<Button className="group w-full rounded-full bg-brandblue py-6 text-white hover:bg-brandblue/90">
-							<IconBrandTelegram
-								className="relative left-12 opacity-0 transition-all group-hover:left-0 group-hover:opacity-100"
-								size={24}
-							/>
-							<span className="translate-x-[-12px] transition-all group-hover:translate-x-0">
-								Join Telegram Community
-							</span>
-						</Button>
+						<Link href="https://t.me/bfmacademyy" target="_blank">
+							<Button className="group w-full rounded-full bg-brandblue py-6 text-white hover:bg-brandblue/90">
+								<IconBrandTelegram
+									className="relative left-12 opacity-0 transition-all group-hover:left-0 group-hover:opacity-100"
+									size={24}
+								/>
+								<span className="translate-x-[-12px] transition-all group-hover:translate-x-0">
+									Join Telegram Community
+								</span>
+							</Button>
+						</Link>
 					</div>
 				</div>
 			</div>

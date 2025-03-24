@@ -9,6 +9,7 @@ import {
 } from '@tabler/icons-react'
 import { Button } from '@/components/ui/button'
 import { ModeToggle } from '@/components/ui/mode-toggle'
+import Link from 'next/link'
 
 export default function Footer() {
 	return (
@@ -40,9 +41,11 @@ export default function Footer() {
 
 						{/* Social Icons - Vertical Stack */}
 						<div className="flex flex-row items-center gap-0 max-md:justify-center md:flex-col md:space-y-1">
-							<Button variant="ghost" size="icon" className="group">
-								<IconBrandTelegram className="h-[1.2rem] w-[1.2rem] text-foreground" />
-							</Button>
+							<Link href="https://t.me/bfmacademyy" target="_blank">
+								<Button variant="ghost" size="icon" className="group">
+									<IconBrandTelegram className="h-[1.2rem] w-[1.2rem] text-foreground" />
+								</Button>
+							</Link>
 							<Button variant="ghost" size="icon" className="group">
 								<IconBrandInstagram className="h-[1.2rem] w-[1.2rem] text-foreground" />
 							</Button>

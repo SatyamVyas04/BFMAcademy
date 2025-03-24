@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { IconBrandDiscord, IconBrandTelegram } from '@tabler/icons-react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Section4() {
 	return (
@@ -38,7 +39,9 @@ export default function Section4() {
 							</div>
 							<div className="my-2 flex w-full flex-row items-center justify-center gap-2 xl:my-6">
 								<IconBrandDiscord className="h-6 w-6 xl:h-12 xl:w-12" />
-								<IconBrandTelegram className="h-6 w-6 xl:h-12 xl:w-12" />
+								<Link href="https://t.me/bfmacademyy" target="_blank">
+									<IconBrandTelegram className="h-6 w-6 xl:h-12 xl:w-12" />
+								</Link>
 							</div>
 						</CardTitle>
 					</CardHeader>

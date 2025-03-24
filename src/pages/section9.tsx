@@ -15,22 +15,23 @@ export default function Section9() {
 					in your pocket
 				</div>
 				<div className="relative z-10 flex flex-row items-center gap-2 px-4 max-md:flex-wrap md:w-fit md:justify-start md:px-0">
-					<Button className="group w-full rounded-full bg-white text-black hover:bg-white/90">
-						<IconBrandApple
-							className="relative left-12 opacity-0 transition-all group-hover:left-0 group-hover:opacity-100"
-							size={24}
-						/>
-						<span className="translate-x-[-12px] transition-all group-hover:translate-x-0">
+					<Button className="group relative w-full rounded-full bg-white text-black hover:bg-white/90">
+						<IconBrandApple size={24} />
+						<span className="ml-2 transition-opacity duration-200 group-hover:opacity-0">
 							Download from the App Store
 						</span>
+						<span className="absolute right-8 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+							Coming Soon on App Store
+						</span>
 					</Button>
-					<Button className="group w-full rounded-full bg-white text-black hover:bg-white/90">
-						<IconBrandGooglePlay
-							className="relative left-12 opacity-0 transition-all group-hover:left-0 group-hover:opacity-100"
-							size={24}
-						/>
-						<span className="translate-x-[-12px] transition-all group-hover:translate-x-0">
-							Get it from Google Play
+
+					<Button className="group relative w-full rounded-full bg-white text-black hover:bg-white/90">
+						<IconBrandGooglePlay size={24} />
+						<span className="ml-2 transition-opacity duration-200 group-hover:opacity-0">
+							Download from the Play Store
+						</span>
+						<span className="absolute right-8 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+							Coming Soon on Play Store
 						</span>
 					</Button>
 				</div>
