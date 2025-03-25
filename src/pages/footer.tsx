@@ -4,7 +4,7 @@ import {
 	IconBrandLinkedin,
 	IconBrandTelegram,
 	IconBrandTwitter,
-	IconBrandYoutube,
+	IconBrandReddit,
 	IconMail,
 } from '@tabler/icons-react'
 import { Button } from '@/components/ui/button'
@@ -46,18 +46,32 @@ export default function Footer() {
 									<IconBrandTelegram className="h-[1.2rem] w-[1.2rem] text-foreground" />
 								</Button>
 							</Link>
-							<Button variant="ghost" size="icon" className="group">
-								<IconBrandInstagram className="h-[1.2rem] w-[1.2rem] text-foreground" />
-							</Button>
-							<Button variant="ghost" size="icon" className="group">
-								<IconBrandTwitter className="h-[1.2rem] w-[1.2rem] text-foreground" />
-							</Button>
-							<Button variant="ghost" size="icon" className="group">
-								<IconBrandYoutube className="h-[1.2rem] w-[1.2rem] text-foreground" />
-							</Button>
-							<Button variant="ghost" size="icon" className="group">
-								<IconBrandLinkedin className="h-[1.2rem] w-[1.2rem] text-foreground" />
-							</Button>
+							<Link
+								href="https://www.instagram.com/bfmacademia"
+								target="_blank"
+							>
+								<Button variant="ghost" size="icon" className="group">
+									<IconBrandInstagram className="h-[1.2rem] w-[1.2rem] text-foreground" />
+								</Button>
+							</Link>
+							<Link href="https://x.com/BFMAcademy" target="_blank">
+								<Button variant="ghost" size="icon" className="group">
+									<IconBrandTwitter className="h-[1.2rem] w-[1.2rem] text-foreground" />
+								</Button>
+							</Link>
+							<Link href="https://www.reddit.com/u/BFMAcademy" target="_blank">
+								<Button variant="ghost" size="icon" className="group">
+									<IconBrandReddit className="h-[1.2rem] w-[1.2rem] text-foreground" />
+								</Button>
+							</Link>
+							<Link
+								href="https://www.linkedin.com/company/bfm-academy/"
+								target="_blank"
+							>
+								<Button variant="ghost" size="icon" className="group">
+									<IconBrandLinkedin className="h-[1.2rem] w-[1.2rem] text-foreground" />
+								</Button>
+							</Link>
 						</div>
 					</div>
 
