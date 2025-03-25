@@ -87,7 +87,7 @@ export default function Navbar() {
 					<ConnectButton
 						client={client}
 						connectButton={{
-							label: 'Enroll Now',
+							label: 'Connect Wallet',
 							className: 'connect-wallet',
 						}}
 						connectModal={{
