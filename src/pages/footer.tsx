@@ -42,7 +42,11 @@ export default function Footer() {
 						{/* Social Icons - Vertical Stack */}
 						<div className="flex flex-row items-center gap-0 max-md:justify-center md:flex-col md:space-y-1">
 							<Link href="https://t.me/bfmacademyy" target="_blank">
-								<Button variant="ghost" size="icon" className="group">
+								<Button
+									variant="ghost"
+									size="icon"
+									className="group rounded-full"
+								>
 									<IconBrandTelegram className="h-[1.2rem] w-[1.2rem] text-foreground" />
 								</Button>
 							</Link>
@@ -50,17 +54,29 @@ export default function Footer() {
 								href="https://www.instagram.com/bfmacademia"
 								target="_blank"
 							>
-								<Button variant="ghost" size="icon" className="group">
+								<Button
+									variant="ghost"
+									size="icon"
+									className="group rounded-full"
+								>
 									<IconBrandInstagram className="h-[1.2rem] w-[1.2rem] text-foreground" />
 								</Button>
 							</Link>
 							<Link href="https://x.com/BFMAcademy" target="_blank">
-								<Button variant="ghost" size="icon" className="group">
+								<Button
+									variant="ghost"
+									size="icon"
+									className="group rounded-full"
+								>
 									<IconBrandTwitter className="h-[1.2rem] w-[1.2rem] text-foreground" />
 								</Button>
 							</Link>
 							<Link href="https://www.reddit.com/u/BFMAcademy" target="_blank">
-								<Button variant="ghost" size="icon" className="group">
+								<Button
+									variant="ghost"
+									size="icon"
+									className="group rounded-full"
+								>
 									<IconBrandReddit className="h-[1.2rem] w-[1.2rem] text-foreground" />
 								</Button>
 							</Link>
@@ -68,7 +84,11 @@ export default function Footer() {
 								href="https://www.linkedin.com/company/bfm-academy/"
 								target="_blank"
 							>
-								<Button variant="ghost" size="icon" className="group">
+								<Button
+									variant="ghost"
+									size="icon"
+									className="group rounded-full"
+								>
 									<IconBrandLinkedin className="h-[1.2rem] w-[1.2rem] text-foreground" />
 								</Button>
 							</Link>
@@ -168,13 +188,36 @@ export default function Footer() {
 					{/* Contact Column */}
 					<div className="md:col-span-3">
 						<h2 className="mb-4 text-lg uppercase text-brandblue/50 dark:text-muted-foreground">
-							EMAIL ADDRESS
+							CAREERS
+						</h2>
+						<ul className="space-y-1.5 text-brandblue dark:text-foreground">
+							<li>
+								<a
+									href="https://forms.gle/7FonKf2PQgEYnWk17"
+									target="_blank"
+									className="transition-all hover:text-foreground dark:hover:text-brandblue"
+								>
+									Internships and Jobs
+								</a>
+							</li>
+							<li>
+								<a
+									href="https://forms.gle/bU4PRhuYotGu86rL6"
+									target="_blank"
+									className="transition-all hover:text-foreground dark:hover:text-brandblue"
+								>
+									Campus Ambassador
+								</a>
+							</li>
+						</ul>
+						<h2 className="mb-1 mt-6 text-lg uppercase text-brandblue/50 dark:text-muted-foreground">
+							Contact Us
 						</h2>
 						<p className="text-brandblue dark:text-foreground">
 							support@bfmacademy.in
 						</p>
 						<div className="mt-2 flex flex-row items-center gap-2">
-							<Button className="group rounded-full bg-brandblue text-white transition-all hover:bg-brandblue/90 dark:bg-foreground dark:text-background dark:hover:bg-foreground/90">
+							<Button className="group rounded-full bg-brandblue px-8 text-white transition-all hover:bg-brandblue/90 dark:bg-foreground dark:text-background dark:hover:bg-foreground/90">
 								<IconMail
 									className="relative left-12 opacity-0 transition-all group-hover:left-0 group-hover:opacity-100"
 									size={24}
