@@ -9,9 +9,11 @@ export default function Hero() {
 		<section className="mx-auto flex flex-col">
 			<div className="space-y-6 sm:space-y-8 md:hidden">
 				<div className="items-center space-y-3 text-center sm:space-y-5">
-					<h1 className="space-y-3 text-xl sm:space-y-5">
-						Welcome to <br />
-						<span className="text-3xl font-bold sm:text-5xl">BFM ACADEMY</span>
+					<h1 className="text-xl sm:space-y-5">
+						<div>Welcome to</div>
+						<div className="mx-auto my-1 w-fit rounded-md bg-brandblue p-3 text-3xl font-bold text-white sm:text-5xl">
+							BFM ACADEMY
+						</div>
 						<hr className="mx-auto w-36 border-2 border-foreground" />
 					</h1>
 					<p>where web3 wizards are made!</p>

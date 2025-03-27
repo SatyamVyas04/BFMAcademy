@@ -93,7 +93,7 @@ export default function page() {
 									<div className="mt-4 inline-block rounded-full border-[1px] bg-brandblue px-2 py-1 font-semibold text-white">
 										{item.date}
 									</div>
-									<div className="mt-4 text-xl font-semibold text-brandblue xl:text-3xl">
+									<div className="mt-4 text-xl font-semibold text-brandblue dark:text-foreground xl:text-3xl">
 										{item.title}
 									</div>
 									<div className="mt-4 text-sm text-muted-foreground">
@@ -133,7 +133,7 @@ export default function page() {
 											<div className="mt-4 inline-block rounded-full border-[1px] bg-brandblue px-2 py-1 font-semibold text-white">
 												{item.date}
 											</div>
-											<div className="mt-4 text-xl font-semibold text-brandblue xl:text-3xl">
+											<div className="mt-4 text-xl font-semibold text-brandblue dark:text-foreground xl:text-3xl">
 												{item.title}
 											</div>
 											<div className="mt-4 text-sm text-muted-foreground">
@@ -171,7 +171,7 @@ export default function page() {
 											<div className="mt-4 inline-block rounded-full border-[1px] bg-brandblue px-2 py-1 font-semibold text-white">
 												{item.date}
 											</div>
-											<div className="mt-4 text-xl font-semibold text-brandblue xl:text-3xl">
+											<div className="mt-4 text-xl font-semibold text-brandblue dark:text-foreground xl:text-3xl">
 												{item.title}
 											</div>
 											<div className="mt-4 text-sm text-muted-foreground">
