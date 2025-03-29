@@ -3,6 +3,7 @@ import Footer from '@/pages/footer'
 import Navbar from '@/pages/navbar'
 import Section9 from '@/pages/section9'
 import { LoaderPinwheel } from 'lucide-react'
+import Image from 'next/image'
 
 export default function page() {
 	const roadmapItems = [
@@ -72,9 +73,9 @@ export default function page() {
 	]
 
 	return (
-		<main className="max-w-screen-4xl mx-auto space-y-3 p-3 !pb-0 md:p-6 lg:p-9 xl:space-y-6 xl:p-12 xl:pt-9">
+		<main className="mx-auto max-w-screen-2xl overflow-x-hidden p-3 !pb-0 md:p-6 lg:p-9 xl:p-12 xl:pt-9">
 			<Navbar />
-			<h1 className="mt-6 text-center text-2xl font-bold uppercase text-brandblue dark:text-white md:mt-12 md:text-3xl lg:mt-16 lg:text-4xl xl:mt-20">
+			<h1 className="text-center text-2xl font-bold md:text-3xl lg:text-4xl">
 				Roadmap
 			</h1>
 			<div className="flex w-full justify-center">
@@ -89,7 +90,10 @@ export default function page() {
 						>
 							<div className="mx-auto flex min-h-80 flex-col rounded-xl border-2 shadow-lg dark:border-brandblue dark:bg-gradient-to-br dark:from-card dark:to-brandblue/10">
 								<div className="h-[45%] rounded-xl">
-									<img
+									<Image
+										height={1000}
+										width={1000}
+										priority
 										src={item.image}
 										alt="roadmap image"
 										className="h-full w-full rounded-t-xl object-cover"
@@ -129,7 +133,10 @@ export default function page() {
 								>
 									<div className="mx-auto mr-8 flex min-h-80 flex-col overflow-hidden rounded-2xl border-2 border-brandblue/20 bg-gradient-to-br from-card to-brandblue/10 shadow-lg transition-all hover:to-brandblue/20 hover:shadow-xl">
 										<div className="h-[45%] rounded-xl">
-											<img
+											<Image
+												height={1000}
+												width={1000}
+												priority
 												src={item.image}
 												alt="roadmap image"
 												className="h-full w-full rounded-t-xl object-cover"
@@ -167,7 +174,10 @@ export default function page() {
 								>
 									<div className="mx-auto flex min-h-80 flex-col overflow-hidden rounded-2xl border-2 border-brandblue/20 bg-gradient-to-br from-card to-brandblue/10 shadow-lg transition-all hover:to-brandblue/20 hover:shadow-xl">
 										<div className="h-[45%] rounded-xl">
-											<img
+											<Image
+												height={1000}
+												width={1000}
+												priority
 												src={item.image}
 												alt="roadmap image"
 												className="h-full w-full rounded-t-xl object-cover"
