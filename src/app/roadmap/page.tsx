@@ -2,65 +2,72 @@ import { BlurFade } from '@/components/magicui/blur-fade'
 import Footer from '@/pages/footer'
 import Navbar from '@/pages/navbar'
 import Section9 from '@/pages/section9'
-import { Loader } from 'lucide-react'
+import { LoaderPinwheel } from 'lucide-react'
 
 export default function page() {
 	const roadmapItems = [
 		{
 			date: 'Q1 2025',
-			title: 'Metaverse Aggregator Platform',
+			title: 'The BFM Telegram Mini App - Learning at Your Fingertips',
 			description:
-				'An educational hub that brings together all existing platforms in the metaverse ecosystem, fostering collaboration and awareness. This platform aims to unite the community and streamline the metaverse experience.',
-			image: '/page/carousel-mob.png',
+				'The BFM Telegram Mini App is your instant gateway to Web3 education. Access courses, earn coins, real-time discussions, quizzes, games and AI-powered news/insights—all within Telegram. Earn on-chain certificates and join a vibrant learning community.',
+			image: '/roadmap/TGMini.svg',
 		},
 		{
 			date: 'Q2 2025',
-			title: 'Metaverse Services',
+			title: 'Web3 Nexus - The Ultimate Blockchain & Crypto Course',
 			description:
-				'A dynamic team dedicated to building metaverses for clients, driving ecosystem growth. Future offerings include no-code tools to enhance efficiency and reduce costs, accelerating metaverse development.',
-			image: '/page/carousel-mob.png',
+				'Master crypto, NFTs, DeFi, DAOs, and smart contracts with Web3 Nexus. Get hands-on experience, build a Web3 portfolio, and earn NFT-based certifications. Stay ahead in the fast-growing blockchain industry.',
+			image: '/roadmap/Crypto.svg',
 		},
 		{
 			date: 'Q3 2025',
-			title: 'Metaverse Pitch Competition',
+			title: 'AI Voice Assistant - Your Personal Learning Companion',
 			description:
-				'A platform for startups, budding entrepreneurs, and college students to showcase their metaverse ideas through competitions, hackathons, and funding opportunities.',
-			image: '/page/carousel-mob.png',
+				'Meet your AI-powered study assistant. Ask questions, get instant answers, and receive personalized learning recommendations. Make studying smarter, faster, and more interactive than ever.',
+			image: '/roadmap/VoiceAssistant.svg',
 		},
 		{
-			date: 'Q1 2025',
-			title: 'Metaverse Events',
+			date: 'Q4 2025',
+			title: 'Online Classrooms - Live, Interactive & Immersive',
 			description:
-				'A centralized platform where all metaverse events worldwide can be registered, promoted, and tracked, giving users detailed descriptions and sales options.',
-			image: '/page/carousel-mob.png',
+				'Join live instructor-led sessions with AI-driven mentorship. Experience a next-gen digital classroom that adapts to your learning style. Say goodbye to boring lectures and hello to engaging, interactive learning.',
+			image: '/roadmap/OnlineClasses.svg',
 		},
 		{
 			date: 'Q1 2026',
-			title: 'Metaverse Aggregator Platform',
+			title: 'The BFM Networking App - Connect, Collaborate, Succeed',
 			description:
-				'An educational hub that brings together all existing platforms in the metaverse ecosystem, fostering collaboration and awareness. This platform aims to unite the community and streamline the metaverse experience.',
-			image: '/page/carousel-mob.png',
+				'Our AI-powered networking app connects students, mentors, and Web3 companies. Find internships, jobs, and startup funding while building industry connections that open doors to your future.',
+			image: '/roadmap/BFMN.svg',
 		},
 		{
 			date: 'Q2 2026',
-			title: 'Metaverse Services',
+			title: 'AI Agents - The Future of Smart Learning',
 			description:
-				'A dynamic team dedicated to building metaverses for clients, driving ecosystem growth. Future offerings include no-code tools to enhance efficiency and reduce costs, accelerating metaverse development.',
-			image: '/page/carousel-mob.png',
+				'Imagine having an AI tutor that adapts to you. Our AI agents help with coding, finance, and blockchain analytics. Get real-time feedback and accelerate your learning and current updates with intelligent automation.',
+			image: '/roadmap/AIAgents.svg',
 		},
 		{
 			date: 'Q3 2026',
-			title: 'Metaverse Pitch Competition',
+			title: 'VR-Based Courses - Step Into the Metaverse',
 			description:
-				'A platform for startups, budding entrepreneurs, and college students to showcase their metaverse ideas through competitions, hackathons, and funding opportunities.',
-			image: '/page/carousel-mob.png',
+				'Step into VR-powered classrooms where learning feels real. Explore finance simulations, blockchain ecosystems, and immersive labs. Experience education like never before.',
+			image: '/roadmap/VRCourses.svg',
 		},
 		{
 			date: 'Q4 2026',
-			title: 'Metaverse Events',
+			title: 'AI Robot - The Future of Interactive Learning',
 			description:
-				'A centralized platform where all metaverse events worldwide can be registered, promoted, and tracked, giving users detailed descriptions and sales options.',
-			image: '/page/carousel-mob.png',
+				'We’re building an AI-powered learning robot. Get real-time assistance, instant problem-solving solutions, innovative tools, statistics and interactive study sessions. Your personal learning partner is here.',
+			image: '/roadmap/AIRobots.svg',
+		},
+		{
+			date: 'Q1 2027',
+			title: 'The BFM Innovation Centre - A Playground for Disruptive Ideas',
+			description:
+				'The BFM Innovation Centre is where AI, blockchain, and robotics come together. Get tools, incubation, funding, mentorship, and industry collaborations. Build your own Web3 startup and shape the future.',
+			image: '/roadmap/InnoCentre.svg',
 		},
 	]
 
@@ -93,7 +100,7 @@ export default function page() {
 									<div className="mt-4 inline-block rounded-full border-[1px] bg-brandblue px-2 py-1 font-semibold text-white">
 										{item.date}
 									</div>
-									<div className="mt-4 text-xl font-semibold text-brandblue dark:text-foreground xl:text-3xl">
+									<div className="mt-4 text-xl font-semibold text-brandblue dark:text-foreground xl:text-2xl">
 										{item.title}
 									</div>
 									<div className="mt-4 text-sm text-muted-foreground">
@@ -102,7 +109,7 @@ export default function page() {
 								</div>
 							</div>
 							<div className="absolute -left-11 -top-1 w-max rounded-full bg-brandblue p-1">
-								<Loader className="h-4 w-4 stroke-white" />
+								<LoaderPinwheel className="h-4 w-4 stroke-white" />
 							</div>
 						</BlurFade>
 					))}
@@ -112,7 +119,7 @@ export default function page() {
 				<div className="grid grid-cols-2">
 					<div className="my-10 flex w-full flex-col gap-32 border-r-2 border-dashed border-brandblue pl-8 max-lg:hidden">
 						{roadmapItems
-							.slice(0, (roadmapItems.length + 1) / 2)
+							.filter((_, index) => index % 2 === 0)
 							.map((item, index) => (
 								<BlurFade
 									duration={0.6}
@@ -133,7 +140,7 @@ export default function page() {
 											<div className="mt-4 inline-block rounded-full border-[1px] bg-brandblue px-2 py-1 font-semibold text-white">
 												{item.date}
 											</div>
-											<div className="mt-4 text-xl font-semibold text-brandblue dark:text-foreground xl:text-3xl">
+											<div className="mt-4 text-xl font-semibold text-brandblue dark:text-foreground xl:text-2xl">
 												{item.title}
 											</div>
 											<div className="mt-4 text-sm text-muted-foreground">
@@ -142,7 +149,7 @@ export default function page() {
 										</div>
 									</div>
 									<div className="absolute -right-[14px] -top-1 w-max rounded-full bg-brandblue p-1">
-										<Loader className="h-4 w-4 stroke-white" />
+										<LoaderPinwheel className="h-4 w-4 stroke-white" />
 									</div>
 								</BlurFade>
 							))}
@@ -150,7 +157,7 @@ export default function page() {
 
 					<div className="mt-48 flex w-full flex-col gap-32 pl-8 max-lg:hidden">
 						{roadmapItems
-							.slice((roadmapItems.length + 1) / 2, roadmapItems.length)
+							.filter((_, index) => index % 2 !== 0)
 							.map((item, index) => (
 								<BlurFade
 									duration={0.6}
@@ -171,7 +178,7 @@ export default function page() {
 											<div className="mt-4 inline-block rounded-full border-[1px] bg-brandblue px-2 py-1 font-semibold text-white">
 												{item.date}
 											</div>
-											<div className="mt-4 text-xl font-semibold text-brandblue dark:text-foreground xl:text-3xl">
+											<div className="mt-4 text-xl font-semibold text-brandblue dark:text-foreground xl:text-2xl">
 												{item.title}
 											</div>
 											<div className="mt-4 text-sm text-muted-foreground">
@@ -180,7 +187,7 @@ export default function page() {
 										</div>
 									</div>
 									<div className="absolute -left-[44px] -top-1 w-max rounded-full bg-brandblue p-1">
-										<Loader className="h-4 w-4 stroke-white" />
+										<LoaderPinwheel className="h-4 w-4 stroke-white" />
 									</div>
 								</BlurFade>
 							))}
