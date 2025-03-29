@@ -4,9 +4,9 @@ import React from 'react'
 
 export default function Page() {
 	return (
-		<main className="max-w-screen-4xl mx-auto space-y-3 p-3 !pb-0 md:p-6 lg:p-9 xl:space-y-6 xl:p-12 xl:pt-9">
+		<main className="mx-auto max-w-screen-2xl overflow-x-hidden p-3 !pb-0 md:p-6 lg:p-9 xl:p-12 xl:pt-9">
 			<Navbar />
-			<h1 className="mt-6 text-center text-2xl font-bold md:mt-12 md:text-3xl lg:mt-16 lg:text-4xl xl:mt-20">
+			<h1 className="text-center text-2xl font-bold md:text-3xl lg:text-4xl">
 				Privacy Policy
 			</h1>
 			<section className="mx-auto mt-8 max-w-4xl px-4">
