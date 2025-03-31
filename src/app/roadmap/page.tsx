@@ -8,63 +8,63 @@ import Image from 'next/image'
 export default function page() {
 	const roadmapItems = [
 		{
-			date: 'Q1 2025',
+			date: 'Phase 1',
 			title: 'The BFM Telegram Mini App - Learning at Your Fingertips',
 			description:
 				'The BFM Telegram Mini App is your instant gateway to Web3 education. Access courses, earn coins, real-time discussions, quizzes, games and AI-powered news/insights—all within Telegram. Earn on-chain certificates and join a vibrant learning community.',
 			image: '/roadmap/TGMini.png',
 		},
 		{
-			date: 'Q2 2025',
+			date: 'Phase 2',
 			title: 'Web3 Nexus - The Ultimate Blockchain & Crypto Course',
 			description:
 				'Master crypto, NFTs, DeFi, DAOs, and smart contracts with Web3 Nexus. Get hands-on experience, build a Web3 portfolio, and earn NFT-based certifications. Stay ahead in the fast-growing blockchain industry.',
 			image: '/roadmap/CryptoCourse.png',
 		},
 		{
-			date: 'Q3 2025',
+			date: 'Phase 3',
 			title: 'AI Voice Assistant - Your Personal Learning Companion',
 			description:
 				'Meet your AI-powered study assistant. Ask questions, get instant answers, and receive personalized learning recommendations. Make studying smarter, faster, and more interactive than ever.',
 			image: '/roadmap/VoiceAssistant.png',
 		},
 		{
-			date: 'Q4 2025',
+			date: 'Phase 4',
 			title: 'Online Classrooms - Live, Interactive & Immersive',
 			description:
 				'Join live instructor-led sessions with AI-driven mentorship. Experience a next-gen digital classroom that adapts to your learning style. Say goodbye to boring lectures and hello to engaging, interactive learning.',
 			image: '/roadmap/OnlineClasses.png',
 		},
 		{
-			date: 'Q1 2026',
+			date: 'Phase 5',
 			title: 'The BFM Networking App - Connect, Collaborate, Succeed',
 			description:
 				'Our AI-powered networking app connects students, mentors, and Web3 companies. Find internships, jobs, and startup funding while building industry connections that open doors to your future.',
 			image: '/roadmap/BFMN.png',
 		},
 		{
-			date: 'Q2 2026',
+			date: 'Phase 6',
 			title: 'AI Agents - The Future of Smart Learning',
 			description:
 				'Imagine having an AI tutor that adapts to you. Our AI agents help with coding, finance, and blockchain analytics. Get real-time feedback and accelerate your learning and current updates with intelligent automation.',
 			image: '/roadmap/AIAgents.png',
 		},
 		{
-			date: 'Q3 2026',
+			date: 'Phase 7',
 			title: 'VR-Based Courses - Step Into the Metaverse',
 			description:
 				'Step into VR-powered classrooms where learning feels real. Explore finance simulations, blockchain ecosystems, and immersive labs. Experience education like never before.',
 			image: '/roadmap/VRCourses.png',
 		},
 		{
-			date: 'Q4 2026',
+			date: 'Phase 8',
 			title: 'AI Robot - The Future of Interactive Learning',
 			description:
 				'We’re building an AI-powered learning robot. Get real-time assistance, instant problem-solving solutions, innovative tools, statistics and interactive study sessions. Your personal learning partner is here.',
 			image: '/roadmap/AIRobots.png',
 		},
 		{
-			date: 'Q1 2027',
+			date: 'Phase 9',
 			title: 'The BFM Innovation Centre - A Playground for Disruptive Ideas',
 			description:
 				'The BFM Innovation Centre is where AI, blockchain, and robotics come together. Get tools, incubation, funding, mentorship, and industry collaborations. Build your own Web3 startup and shape the future.',
