@@ -4,6 +4,7 @@ import { Montserrat } from 'next/font/google'
 import { ThemeProvider } from 'next-themes'
 import { ThirdwebProvider } from 'thirdweb/react'
 import { GoogleAnalytics } from '@next/third-parties/google'
+import Script from 'next/script'
 
 const mont = Montserrat({
 	weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
@@ -63,7 +64,7 @@ export default function RootLayout({
 	return (
 		<html lang="en" suppressHydrationWarning>
 			<GoogleAnalytics gaId="G-GTBZG5VLFB" />
-			<body className={`${mont.className}`}>
+			<body className={mont.className}>
 				<ThirdwebProvider>
 					<ThemeProvider
 						attribute="class"
@@ -73,6 +74,11 @@ export default function RootLayout({
 						{children}
 					</ThemeProvider>
 				</ThirdwebProvider>
+				<Script
+					id="bp-tg-script"
+					src="https://cdn.botpenguin.com/telegram-widget.js"
+					data-chat-id="cc2b3922-237c-44a6-8327-67da09aca36c"
+				/>
 			</body>
 		</html>
 	)
