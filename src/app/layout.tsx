@@ -64,6 +64,13 @@ export default function RootLayout({
 	return (
 		<html lang="en" suppressHydrationWarning>
 			<GoogleAnalytics gaId="G-GTBZG5VLFB" />
+			<Script
+				id="botpenguin-script-container"
+				strategy="beforeInteractive"
+				dangerouslySetInnerHTML={{
+					__html: `<script id="bp-tg-script" src="https://cdn.botpenguin.com/telegram-widget.js">cc2b3922-237c-44a6-8327-67da09aca36c</script>`,
+				}}
+			/>
 			<body className={mont.className}>
 				<ThirdwebProvider>
 					<ThemeProvider
@@ -74,11 +81,6 @@ export default function RootLayout({
 						{children}
 					</ThemeProvider>
 				</ThirdwebProvider>
-				<Script
-					id="bp-tg-script"
-					src="https://cdn.botpenguin.com/telegram-widget.js"
-					data-chat-id="cc2b3922-237c-44a6-8327-67da09aca36c"
-				/>
 			</body>
 		</html>
 	)
