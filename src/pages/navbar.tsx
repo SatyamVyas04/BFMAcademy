@@ -114,7 +114,7 @@ export default function Navbar() {
 					</div>
 					<SheetContent
 						side="bottom"
-						className="h-screen w-screen bg-brandblue text-white"
+						className="h-dvh w-screen bg-brandblue text-white"
 					>
 						<SheetHeader>
 							<SheetTitle className="flex items-center justify-between">
