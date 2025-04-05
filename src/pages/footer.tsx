@@ -170,7 +170,7 @@ export default function Footer() {
 									target="_blank"
 									className="transition-all hover:text-foreground dark:hover:text-brandblue"
 								>
-									Early Access
+									Get Early Access!
 								</a>
 							</li>
 							<li>
