@@ -11,6 +11,7 @@ import Section7 from '@/pages/section7'
 import Section8 from '@/pages/section8'
 import Section9 from '@/pages/section9'
 import Footer from '@/pages/footer'
+import CookieConsent from '@/components/CookieConsent'
 
 export default function Home() {
 	return (
@@ -45,6 +46,7 @@ export default function Home() {
 					<Section9 />
 				</BlurFade>
 				<Footer />
+				<CookieConsent />
 			</main>
 		</>
 	)
