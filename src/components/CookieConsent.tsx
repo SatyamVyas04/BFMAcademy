@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client'
 import { useState, useEffect } from 'react'
 import {
@@ -14,7 +15,7 @@ import Link from 'next/link'
 const CookieConsent = () => {
 	// State to track if consent has been given
 	const [showConsent, setShowConsent] = useState(false)
-	const [_, setConsentGiven] = useState(false)
+	const [consentGiven, setConsentGiven] = useState(false)
 
 	useEffect(() => {
 		// Check if consent has already been stored
