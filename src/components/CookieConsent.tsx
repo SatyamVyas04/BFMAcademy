@@ -47,7 +47,7 @@ const CookieConsent = () => {
 	if (!showConsent) return null
 
 	return (
-		<div className="fixed bottom-4 left-4 z-50 max-w-sm">
+		<div className="fixed bottom-2 left-2 z-50 max-w-xs">
 			<Card className="bg-card/75 shadow-lg backdrop-blur-md">
 				<CardHeader className="pb-2">
 					<CardTitle className="text-lg text-brandblue">
