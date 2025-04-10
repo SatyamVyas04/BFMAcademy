@@ -22,10 +22,9 @@ import { useTheme } from 'next-themes'
 import confetti from 'canvas-confetti'
 import { z } from 'zod'
 import { countries } from '../../lib/countries'
-import { BorderBeam } from '@/components/magicui/border-beam'
 
 const formSchema = z.object({
-	fullName: z.string().optional(),
+	fullName: z.string(),
 	email: z.string().email({ message: 'Invalid email address' }),
 	phoneCountryCode: z.string().optional(),
 	phoneNumber: z
@@ -131,8 +130,8 @@ export default function Page() {
 			type: 'text',
 			label: 'Enter Full Name',
 			placeholder: 'Enter Full Name',
-			required: false,
-			skippable: true,
+			required: true,
+			skippable: false,
 		},
 		{
 			id: 'email',
@@ -167,8 +166,8 @@ export default function Page() {
 					required: false,
 				},
 			],
-			required: true,
-			skippable: false,
+			required: false,
+			skippable: true,
 		},
 		{
 			id: 'userType',
@@ -258,11 +257,8 @@ export default function Page() {
 						formData.userType === 'STARTUP' ||
 						formData.userType === 'BUSINESS'
 					) {
-						if (!formData.websiteUrl?.trim()) {
-							throw new Error('Website URL is required.')
-						}
-						if (!/^https?:\/\/.+\..+/.test(formData.websiteUrl)) {
-							throw new Error('Please enter a valid URL.')
+						if (!formData.companyName?.trim()) {
+							throw new Error('Company name is required.')
 						}
 					}
 					break
@@ -358,18 +354,7 @@ export default function Page() {
 			<main className="mx-auto max-w-screen-2xl overflow-x-hidden p-3 !pb-0 text-center md:p-6 lg:p-9 xl:p-12 xl:pt-4">
 				<Navbar />
 				<div className="my-12 flex min-h-[70dvh] items-stretch justify-center">
-					<div className="relative grid w-full max-w-7xl place-items-center rounded-3xl border-2 border-border">
-						<BorderBeam
-							duration={12}
-							size={800}
-							className="from-transparent via-brandblue to-foreground"
-						/>
-						<BorderBeam
-							duration={12}
-							delay={6}
-							size={800}
-							className="from-transparent via-brandblue to-foreground"
-						/>
+					<div className="relative grid w-full max-w-7xl place-items-center rounded-3xl border-2 border-brandblue">
 						<div className="p-8 lg:p-12 xl:p-16">
 							<h1 className="mb-2 text-4xl font-bold">Congratulations 🎉</h1>
 							<p className="mb-4 text-xl">You are almost there!</p>
@@ -414,18 +399,7 @@ export default function Page() {
 			<main className="mx-auto max-w-screen-2xl overflow-x-hidden p-3 !pb-0 text-center md:p-6 lg:p-9 xl:p-12 xl:pt-4">
 				<Navbar />
 				<div className="my-12 flex min-h-[70dvh] items-stretch justify-center">
-					<div className="relative grid w-full max-w-7xl place-items-center rounded-3xl border-2 border-border bg-brandblue">
-						<BorderBeam
-							duration={12}
-							size={800}
-							className="from-transparent via-brandblue to-foreground"
-						/>
-						<BorderBeam
-							duration={12}
-							delay={6}
-							size={800}
-							className="from-transparent via-brandblue to-foreground"
-						/>
+					<div className="relative grid w-full max-w-7xl place-items-center rounded-3xl border-2 border-brandblue bg-brandblue">
 						<div className="p-8 lg:p-12 xl:p-16">
 							<div className="mb-16 flex flex-row items-center justify-center gap-4">
 								<Image
@@ -467,18 +441,7 @@ export default function Page() {
 			<main className="mx-auto max-w-screen-2xl overflow-x-hidden p-3 !pb-0 text-center md:p-6 lg:p-9 xl:p-12 xl:pt-4">
 				<Navbar />
 				<div className="my-12 flex min-h-[70dvh] items-stretch justify-center">
-					<div className="relative grid w-full max-w-7xl place-items-center rounded-3xl border-2 border-border">
-						<BorderBeam
-							duration={12}
-							size={800}
-							className="from-transparent via-brandblue to-foreground"
-						/>
-						<BorderBeam
-							duration={12}
-							delay={6}
-							size={800}
-							className="from-transparent via-brandblue to-foreground"
-						/>
+					<div className="relative grid w-full max-w-7xl place-items-center rounded-3xl border-2 border-brandblue">
 						<div className="p-8 lg:p-12 xl:p-16">
 							<h1 className="mb-2 text-center text-3xl font-bold md:text-5xl xl:text-6xl">
 								Get Your Early Access
@@ -496,13 +459,13 @@ export default function Page() {
 										<div className="flex">
 											<div className="flex items-center pr-2">
 												<Select
-													value={formData['phoneCountryCode'] || '+91'}
+													value={formData['phoneCountryCode'] || 91}
 													onValueChange={(value) =>
 														handleChange('phoneCountryCode', value)
 													}
 												>
 													<SelectTrigger className="mr-2">
-														<SelectValue placeholder="Country Code" />
+														<SelectValue placeholder={91} />
 													</SelectTrigger>
 													<SelectContent>
 														{countries.map((country) => (
@@ -523,7 +486,7 @@ export default function Page() {
 												onChange={(e) =>
 													handleChange(currentQuestion.id, e.target.value)
 												}
-												className="w-full focus:ring-0"
+												className="w-full focus:outline-transparent focus:ring-0"
 											/>
 										</div>
 									) : (
@@ -534,7 +497,7 @@ export default function Page() {
 											onChange={(e) =>
 												handleChange(currentQuestion.id, e.target.value)
 											}
-											className="w-full border-b-2 border-transparent focus:ring-0"
+											className="w-full border-b-[3px] border-brandblue/50 border-l-transparent border-r-transparent border-t-transparent focus:outline-transparent focus:ring-0"
 										/>
 									)}
 								</div>
@@ -555,7 +518,7 @@ export default function Page() {
 														e.target.value,
 													)
 												}
-												className="w-full border-b-2 border-transparent focus:ring-0"
+												className="border-b-3 w-ful[3px] border-brandblue/50 border-l-transparent border-r-transparent border-t-transparent focus:outline-transparent focus:ring-0"
 											/>
 										))}
 									</div>
@@ -599,7 +562,7 @@ export default function Page() {
 												onChange={(e) =>
 													handleChange('instituteName', e.target.value)
 												}
-												className="w-full border-b-2 border-transparent focus:ring-0"
+												className="w-full border-b-[3px] border-brandblue/50 border-l-transparent border-r-transparent border-t-transparent focus:outline-transparent focus:ring-0"
 											/>
 										</div>
 									)}
@@ -613,14 +576,23 @@ export default function Page() {
 												onChange={(e) =>
 													handleChange('companyName', e.target.value)
 												}
-												className="w-full border-b-2 border-transparent focus:ring-0"
+												className="w-full border-b-[3px] border-brandblue/50 border-l-transparent border-r-transparent border-t-transparent focus:outline-transparent focus:ring-0"
 											/>
 										</div>
 									)}
 
 									{(formData.userType === 'STARTUP' ||
 										formData.userType === 'BUSINESS') && (
-										<div>
+										<div className="space-y-4">
+											<Input
+												type="text"
+												placeholder="Enter Your Company Name"
+												value={formData.companyName || ''}
+												onChange={(e) =>
+													handleChange('companyName', e.target.value)
+												}
+												className="border-b-3 w-ful[3px] border-brandblue/50 border-l-transparent border-r-transparent border-t-transparent focus:outline-transparent focus:ring-0"
+											/>
 											<Input
 												type="text"
 												placeholder="Enter Your Website URL"
@@ -628,7 +600,7 @@ export default function Page() {
 												onChange={(e) =>
 													handleChange('websiteUrl', e.target.value)
 												}
-												className="w-full border-b-2 border-transparent focus:ring-0"
+												className="border-b-3 w-ful[3px] border-brandblue/50 border-l-transparent border-r-transparent border-t-transparent focus:outline-transparent focus:ring-0"
 											/>
 										</div>
 									)}
@@ -650,21 +622,21 @@ export default function Page() {
 										</Button>
 									</div>
 									<div className="flex items-center gap-4">
+										{currentQuestion.skippable && (
+											<Button
+												variant="outline"
+												onClick={skipStep}
+												className="text-muted-foreground"
+											>
+												Skip
+											</Button>
+										)}
 										<Button
 											onClick={nextStep}
 											className="rounded-md bg-brandblue px-6 py-2 text-white hover:bg-brandblue/90"
 										>
 											<ArrowRight size={20} />
 										</Button>
-										{currentQuestion.skippable && (
-											<Button
-												variant="link"
-												onClick={skipStep}
-												className="mt-2 text-muted-foreground"
-											>
-												Skip
-											</Button>
-										)}
 									</div>
 								</div>
 							) : (

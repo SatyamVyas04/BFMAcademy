@@ -13,7 +13,7 @@ import Link from 'next/link'
 
 export default function Footer() {
 	return (
-		<footer className="mx-auto bg-background px-6 py-10 text-foreground">
+		<footer className="mx-auto bg-background px-6 py-10 text-start text-foreground">
 			<div className="mx-auto">
 				<div className="grid gap-8 md:grid-cols-12">
 					{/* Left Column - Logo and Social Icons */}

@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client'
+
 import { useState, useEffect } from 'react'
 import {
 	Card,
@@ -11,39 +11,47 @@ import {
 } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
+import { getCookie, setCookie } from 'cookies-next'
 
-const CookieConsent = () => {
-	// State to track if consent has been given
+export default function CookieConsent() {
+	// State to track if consent has been given and if banner should show
 	const [showConsent, setShowConsent] = useState(false)
-	const [consentGiven, setConsentGiven] = useState(false)
 
 	useEffect(() => {
 		// Check if consent has already been stored
-		const storedConsent = localStorage.getItem('cookieConsent')
+		const storedConsent = getCookie('cookieConsent')
 
-		if (storedConsent === null) {
+		if (!storedConsent) {
 			// If no consent stored, show the consent dialog after a short delay
 			const timer = setTimeout(() => {
 				setShowConsent(true)
 			}, 1000)
 
 			return () => clearTimeout(timer)
-		} else {
-			setConsentGiven(storedConsent === 'accepted')
 		}
 	}, [])
 
 	const handleAccept = () => {
-		localStorage.setItem('cookieConsent', 'accepted')
-		setConsentGiven(true)
+		// Set the cookie with a long expiration (1 year)
+		setCookie('cookieConsent', 'accepted', {
+			maxAge: 60 * 60 * 24 * 365,
+			path: '/',
+			sameSite: 'strict',
+		})
 		setShowConsent(false)
 	}
 
 	const handleDecline = () => {
-		setConsentGiven(false)
+		// Set a cookie to remember that the user declined
+		setCookie('cookieConsent', 'declined', {
+			maxAge: 60 * 60 * 24 * 30, // 30 days
+			path: '/',
+			sameSite: 'strict',
+		})
 		setShowConsent(false)
 	}
 
+	// Don't render anything if consent shouldn't be shown
 	if (!showConsent) return null
 
 	return (
@@ -96,5 +104,3 @@ const CookieConsent = () => {
 		</div>
 	)
 }
-
-export default CookieConsent
