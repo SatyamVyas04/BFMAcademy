@@ -151,21 +151,18 @@ export default function Page() {
 			skippable: false,
 		},
 		{
-			id: 'socialLinks',
-			type: 'multiInput',
-			label: 'Provide Social Profiles',
-			inputs: [
-				{
-					id: 'linkedin',
-					placeholder: 'Paste LinkedIn URL',
-					required: false,
-				},
-				{
-					id: 'telegram',
-					placeholder: 'Paste Telegram URL',
-					required: false,
-				},
-			],
+			id: 'linkedin',
+			type: 'text',
+			label: 'Paste Linkedin URL',
+			placeholder: 'Paste Linkedin URL',
+			required: false,
+			skippable: true,
+		},
+		{
+			id: 'telegram',
+			type: 'text',
+			label: 'Paste Telegram ID',
+			placeholder: 'Paste Telegram ID',
 			required: false,
 			skippable: true,
 		},
@@ -355,10 +352,9 @@ export default function Page() {
 				<Navbar />
 				<div className="my-12 flex min-h-[70dvh] items-stretch justify-center">
 					<div className="relative grid w-full max-w-7xl place-items-center rounded-3xl border-2 border-brandblue">
-						<div className="p-8 lg:p-12 xl:p-16">
-							<h1 className="mb-2 text-4xl font-bold">Congratulations 🎉</h1>
-							<p className="mb-4 text-xl">You are almost there!</p>
-							<p className="mb-8">
+						<div className="space-y-6 p-8 lg:p-12 xl:p-16">
+							<h1 className="text-4xl font-bold">You are almost there!</h1>
+							<p className="text-xl">
 								Connect your Crypto Wallet &amp; earn BFM Tokens
 							</p>
 							<div className="mx-auto flex max-w-sm flex-col items-stretch justify-stretch gap-2">
