@@ -22,6 +22,7 @@ import {
 	IconBrandTelegram,
 	IconBrandTwitter,
 } from '@tabler/icons-react'
+import { ShimmerButton } from '@/components/magicui/shimmer-button'
 
 export default function Navbar() {
 	const theme = useTheme().theme
@@ -61,10 +62,14 @@ export default function Navbar() {
 			{/* Desktop Navigation */}
 			<div className="hidden flex-row items-center justify-between space-x-2 md:flex">
 				<ModeToggle />
-				<Link href="/roadmap">
-					<Button className="group rounded-lg bg-brandblue p-5 text-white transition-all hover:bg-brandblue/90">
-						Roadmap
-					</Button>
+				<Link href="/early-access">
+					<ShimmerButton
+						className="bg-brandblue text-white hover:bg-brandblue/90"
+						shimmerColor={`${theme == 'dark' ? '#ffffff' : '#222222'}`}
+						shimmerSize="2px"
+					>
+						Get Early Access
+					</ShimmerButton>
 				</Link>
 				<Suspense
 					fallback={
@@ -95,6 +100,14 @@ export default function Navbar() {
 						theme={theme == 'dark' ? 'dark' : 'light'}
 					/>
 				</Suspense>
+				<Link href="/roadmap">
+					<Button
+						className="group rounded-lg bg-neutral-700 p-5 text-white transition-all hover:bg-neutral-700/90 dark:bg-secondary dark:hover:bg-secondary/90"
+						variant="secondary"
+					>
+						Roadmap
+					</Button>
+				</Link>
 			</div>
 
 			{/* Mobile Navigation */}
@@ -131,6 +144,13 @@ export default function Navbar() {
 						</SheetHeader>
 
 						<div className="mt-8 flex flex-col space-y-4">
+							<SheetTrigger asChild>
+								<Link href="/early-access" className="w-full">
+									<Button className="group w-full rounded-lg bg-brandblue py-6 text-base text-white shadow-none transition-all hover:bg-brandblue/90">
+										Early Access
+									</Button>
+								</Link>
+							</SheetTrigger>
 							<SheetTrigger asChild>
 								<Link href="/roadmap" className="w-full">
 									<Button className="group w-full rounded-lg bg-brandblue py-6 text-base text-white shadow-none transition-all hover:bg-brandblue/90">

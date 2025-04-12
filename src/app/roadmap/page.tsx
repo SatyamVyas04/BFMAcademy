@@ -129,7 +129,7 @@ export default function page() {
 									duration={0.6}
 									inView={true}
 									key={index}
-									className="relative max-w-xl self-end"
+									className="relative max-w-[600px] self-end"
 								>
 									<div className="mx-auto mr-8 flex min-h-60 flex-col overflow-hidden rounded-2xl border-2 border-brandblue/20 bg-gradient-to-br from-card to-brandblue/10 shadow-lg transition-all hover:to-brandblue/20 hover:shadow-xl">
 										<div className="h-[45%] rounded-xl">

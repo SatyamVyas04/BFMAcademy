@@ -166,11 +166,11 @@ export default function Footer() {
 						<ul className="space-y-1.5 text-brandblue dark:text-foreground">
 							<li>
 								<a
-									href="https://forms.gle/zdBbyf5uX1jYUs5M6"
+									href="/early-access"
 									target="_blank"
 									className="transition-all hover:text-foreground dark:hover:text-brandblue"
 								>
-									Get Early Access!
+									Get Early Access
 								</a>
 							</li>
 							<li>

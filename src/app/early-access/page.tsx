@@ -351,7 +351,7 @@ export default function Page() {
 			<main className="mx-auto max-w-screen-2xl overflow-x-hidden p-3 !pb-0 text-center md:p-6 lg:p-9 xl:p-12 xl:pt-4">
 				<Navbar />
 				<div className="my-12 flex min-h-[70dvh] items-stretch justify-center">
-					<div className="relative grid w-full max-w-7xl place-items-center rounded-3xl border-2 border-brandblue">
+					<div className="relative grid w-full max-w-7xl place-items-center rounded-3xl border-2 border-brandblue bg-brandblue text-white">
 						<div className="space-y-6 p-8 lg:p-12 xl:p-16">
 							<h1 className="text-4xl font-bold">You are almost there!</h1>
 							<p className="text-xl">
@@ -376,7 +376,7 @@ export default function Page() {
 								/>
 								<Button
 									onClick={connectWallet}
-									className="bg-brandblue px-5 py-5 text-white hover:bg-brandblue/90"
+									className="bg-white px-5 py-5 text-brandblue hover:bg-white/90"
 								>
 									<Wallet className="mr-2" size={20} /> Join the waitlist
 								</Button>
@@ -437,12 +437,12 @@ export default function Page() {
 			<main className="mx-auto max-w-screen-2xl overflow-x-hidden p-3 !pb-0 text-center md:p-6 lg:p-9 xl:p-12 xl:pt-4">
 				<Navbar />
 				<div className="my-12 flex min-h-[70dvh] items-stretch justify-center">
-					<div className="relative grid w-full max-w-7xl place-items-center rounded-3xl border-2 border-brandblue">
+					<div className="relative grid w-full max-w-7xl place-items-center rounded-3xl border-2 border-brandblue bg-brandblue !text-white">
 						<div className="p-8 lg:p-12 xl:p-16">
 							<h1 className="mb-2 text-center text-3xl font-bold md:text-5xl xl:text-6xl">
 								Get Your Early Access
 							</h1>
-							<p className="mb-8 text-center text-sm text-muted-foreground lg:text-base">
+							<p className="mb-8 text-center text-sm text-white lg:text-base">
 								A platform with world-class tools &amp; features.
 							</p>
 							<div className="mb-8">
@@ -536,8 +536,8 @@ export default function Page() {
 												}
 												className={
 													formData[currentQuestion.id] === option
-														? 'bg-brandblue text-white hover:bg-brandblue/90'
-														: 'btn-outline'
+														? 'bg-white text-brandblue hover:bg-white/90'
+														: 'border-white bg-brandblue text-white hover:bg-brandblue/90 hover:text-white/50'
 												}
 												onClick={() => handleChange(currentQuestion.id, option)}
 											>
@@ -612,7 +612,7 @@ export default function Page() {
 									<div className="flex items-center">
 										<Button
 											onClick={prevStep}
-											className="rounded-md bg-brandblue px-6 py-2 text-white hover:bg-brandblue/90"
+											className="rounded-md bg-white px-6 py-2 text-brandblue hover:bg-white/90"
 										>
 											<ArrowLeft size={20} />
 										</Button>
@@ -629,7 +629,7 @@ export default function Page() {
 										)}
 										<Button
 											onClick={nextStep}
-											className="rounded-md bg-brandblue px-6 py-2 text-white hover:bg-brandblue/90"
+											className="rounded-md bg-white px-6 py-2 text-brandblue hover:bg-white/90"
 										>
 											<ArrowRight size={20} />
 										</Button>
@@ -639,7 +639,7 @@ export default function Page() {
 								<div className="flex flex-col items-center">
 									<Button
 										onClick={nextStep}
-										className="rounded-md bg-brandblue px-6 py-2 text-white hover:bg-brandblue/90"
+										className="rounded-md bg-white px-6 py-2 text-brandblue hover:bg-white/90"
 									>
 										<ArrowRight size={20} />
 									</Button>

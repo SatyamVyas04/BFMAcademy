@@ -64,13 +64,6 @@ export default function RootLayout({
 		<html lang="en" suppressHydrationWarning>
 			<GoogleAnalytics gaId="G-GTBZG5VLFB" />
 			<body className={mont.className}>
-				<script
-					id="bp-tg-script"
-					src="https://cdn.botpenguin.com/telegram-widget.js"
-					async
-				>
-					cc2b3922-237c-44a6-8327-67da09aca36c
-				</script>
 				<ThirdwebProvider>
 					<ThemeProvider
 						attribute="class"
