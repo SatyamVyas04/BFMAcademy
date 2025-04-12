@@ -32,7 +32,7 @@ export default function Home() {
 						<Tooltip>
 							<TooltipTrigger asChild>
 								<Link
-									href="https://web.telegram.org/k/#@Piyanka_bot"
+									href="https://t.me/Piyanka_bot"
 									target="_blank"
 									rel="noopener noreferrer"
 									className="flex rounded-full bg-brandblue p-3 shadow-lg transition-colors hover:bg-brandblue/90"

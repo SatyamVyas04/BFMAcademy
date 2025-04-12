@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { IconBrandTelegram } from '@tabler/icons-react'
+import { IconBrandDiscord, IconBrandTelegram } from '@tabler/icons-react'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -38,7 +38,9 @@ export default function Section4() {
 								Daily <span className="font-bold">Web3 Discussions</span>
 							</div>
 							<div className="my-2 flex w-full flex-row items-center justify-center gap-2 xl:my-6">
-								{/* <IconBrandDiscord className="h-6 w-6 xl:h-12 xl:w-12" /> */}
+								<Link href="https://discord.gg/u2fDFSwX" target="_blank">
+									<IconBrandDiscord className="h-6 w-6 xl:h-12 xl:w-12" />
+								</Link>
 								<Link href="https://t.me/bfmacademyy" target="_blank">
 									<IconBrandTelegram className="h-6 w-6 xl:h-12 xl:w-12" />
 								</Link>

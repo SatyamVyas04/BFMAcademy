@@ -22,7 +22,6 @@ import {
 	IconBrandTelegram,
 	IconBrandTwitter,
 } from '@tabler/icons-react'
-import { ShimmerButton } from '@/components/magicui/shimmer-button'
 
 export default function Navbar() {
 	const theme = useTheme().theme
@@ -63,13 +62,9 @@ export default function Navbar() {
 			<div className="hidden flex-row items-center justify-between space-x-2 md:flex">
 				<ModeToggle />
 				<Link href="/early-access">
-					<ShimmerButton
-						className="bg-brandblue text-white hover:bg-brandblue/90"
-						shimmerColor={`${theme == 'dark' ? '#ffffff' : '#222222'}`}
-						shimmerSize="2px"
-					>
+					<Button className="bg-brandblue p-5 text-white hover:bg-brandblue/90">
 						Get Early Access
-					</ShimmerButton>
+					</Button>
 				</Link>
 				<Suspense
 					fallback={
@@ -102,7 +97,7 @@ export default function Navbar() {
 				</Suspense>
 				<Link href="/roadmap">
 					<Button
-						className="group rounded-lg bg-neutral-700 p-5 text-white transition-all hover:bg-neutral-700/90 dark:bg-secondary dark:hover:bg-secondary/90"
+						className="group rounded-lg bg-zinc-700 p-5 text-white transition-all hover:bg-zinc-700/90 dark:bg-secondary dark:hover:bg-secondary/90"
 						variant="secondary"
 					>
 						Roadmap
