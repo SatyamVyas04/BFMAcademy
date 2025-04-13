@@ -3,9 +3,10 @@ import Footer from '@/pages/footer'
 import Navbar from '@/pages/navbar'
 import Section9 from '@/pages/section9'
 import { LoaderPinwheel } from 'lucide-react'
+import { Metadata } from 'next'
 import Image from 'next/image'
 
-export const metadata = {
+export const metadata: Metadata = {
 	title: 'Roadmap',
 	description:
 		"Discover the roadmap of BFM, a Web3 learning platform. Explore our phases, from the Telegram Mini App to the BFM Innovation Centre, and see how we're revolutionizing education with AI, blockchain, and robotics.",

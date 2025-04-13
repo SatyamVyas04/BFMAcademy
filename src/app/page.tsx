@@ -1,4 +1,3 @@
-'use client'
 import { BlurFade } from '@/components/magicui/blur-fade'
 import Navbar from '@/pages/navbar'
 import Hero from '@/pages/hero'

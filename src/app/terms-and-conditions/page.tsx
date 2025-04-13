@@ -1,8 +1,9 @@
 import Footer from '@/pages/footer'
 import Navbar from '@/pages/navbar'
+import { Metadata } from 'next'
 import React from 'react'
 
-export const metadata = {
+export const metadata: Metadata = {
 	title: 'Terms & Conditions',
 	description:
 		'Explore the Terms and Conditions of BFM Academy. Understand your rights and responsibilities while using our platform for Web3 education.',

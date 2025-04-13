@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import { MouseBadge } from '@/components/ui/mouseBadge'
 import { AnimatedTooltip } from '@/components/ui/animated-tooltip'

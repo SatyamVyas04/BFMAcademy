@@ -1,8 +1,9 @@
 import Footer from '@/pages/footer'
 import Navbar from '@/pages/navbar'
+import { Metadata } from 'next'
 import React from 'react'
 
-export const metadata = {
+export const metadata: Metadata = {
 	title: 'Privacy Policy',
 	description:
 		'Explore the Privacy Policy of BFM Academy. Understand how we collect, use, and protect your personal information while you learn with us.',
