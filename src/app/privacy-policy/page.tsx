@@ -2,6 +2,14 @@ import Footer from '@/pages/footer'
 import Navbar from '@/pages/navbar'
 import React from 'react'
 
+export const metadata = {
+	title: 'Privacy Policy',
+	description:
+		'Explore the Privacy Policy of BFM Academy. Understand how we collect, use, and protect your personal information while you learn with us.',
+	keywords:
+		'privacy policy, BFM Academy, personal information, data protection, user privacy',
+}
+
 export default function Page() {
 	return (
 		<main className="mx-auto max-w-screen-2xl overflow-x-hidden p-3 !pb-0 md:p-6 lg:p-9 xl:p-12 xl:pt-9">

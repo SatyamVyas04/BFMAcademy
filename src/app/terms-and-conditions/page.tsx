@@ -2,6 +2,14 @@ import Footer from '@/pages/footer'
 import Navbar from '@/pages/navbar'
 import React from 'react'
 
+export const metadata = {
+	title: 'Terms & Conditions',
+	description:
+		'Explore the Terms and Conditions of BFM Academy. Understand your rights and responsibilities while using our platform for Web3 education.',
+	keywords:
+		'terms and conditions, BFM Academy, Web3 education, user agreement, legal terms',
+}
+
 export default function Page() {
 	return (
 		<main className="mx-auto max-w-screen-2xl overflow-x-hidden p-3 !pb-0 md:p-6 lg:p-9 xl:p-12 xl:pt-9">

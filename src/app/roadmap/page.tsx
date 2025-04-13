@@ -5,6 +5,14 @@ import Section9 from '@/pages/section9'
 import { LoaderPinwheel } from 'lucide-react'
 import Image from 'next/image'
 
+export const metadata = {
+	title: 'Roadmap',
+	description:
+		"Discover the roadmap of BFM, a Web3 learning platform. Explore our phases, from the Telegram Mini App to the BFM Innovation Centre, and see how we're revolutionizing education with AI, blockchain, and robotics.",
+	keywords:
+		'roadmap, BFM, Web3 learning platform, Telegram Mini App, AI-powered education, blockchain, robotics, immersive learning, innovation centre',
+}
+
 export default function page() {
 	const roadmapItems = [
 		{

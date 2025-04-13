@@ -23,6 +23,12 @@ import confetti from 'canvas-confetti'
 import { z } from 'zod'
 import { countries } from '../../lib/countries'
 
+export const metadata = {
+	title: 'Early Access',
+	description: 'Get early access to BFM Academy, where web3 wizards are made.',
+	keywords: 'early access, BFM Academy, web3, blockchain, education',
+}
+
 const formSchema = z.object({
 	fullName: z.string(),
 	email: z.string().email({ message: 'Invalid email address' }),
