@@ -1,240 +1,83 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable react-hooks/exhaustive-deps */
 'use client'
-import { useState } from 'react'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Progress } from '@/components/ui/progress'
-import { ArrowRight, ArrowLeft, Wallet } from 'lucide-react'
-import Navbar from '@/pages/navbar'
-import Footer from '@/pages/footer'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import {
-	Select,
-	SelectContent,
-	SelectItem,
-	SelectTrigger,
-	SelectValue,
-} from '@/components/ui/select'
-import Image from 'next/image'
-import { ConnectButton, useActiveAccount } from 'thirdweb/react'
-import { client } from '../../actions/wallet'
 import { useTheme } from 'next-themes'
+import { useActiveAccount } from 'thirdweb/react'
+import { client } from '../../actions/wallet'
 import confetti from 'canvas-confetti'
 import { z } from 'zod'
-import { countries } from '@/lib/countries'
-// Add effect to watch for wallet connection
-import { useEffect } from 'react'
+import { Progress } from '@/components/ui/progress'
+import { ArrowRight, ArrowLeft } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 
-const formSchema = z.object({
-	fullname: z.string(),
-	email: z.string().email({ message: 'Invalid email address' }),
-	phone_country_code: z.string().optional(),
-	phone_number: z
-		.string()
-		.regex(/^\d{10,15}$/, { message: 'Invalid phone number' }),
-	socialLinks: z
-		.object({
-			linkedin: z.string().url().optional().or(z.literal('')),
-			telegram: z.string().url().optional().or(z.literal('')),
-		})
-		.refine((data) => !!data.linkedin || !!data.telegram, {
-			message: 'Please provide at least one social profile.',
-		}),
-	occupation: z.enum(['STUDENT', 'EMPLOYEE', 'STARTUP', 'BUSINESS']),
-	wallet_id: z.string(),
-	company_name: z.string().optional(),
-	company_url: z.string().optional(),
-})
+// Import components
+import Navbar from '@/pages/navbar'
+import Footer from '@/pages/footer'
+import {
+	Ticker,
+	SuccessScreen,
+	WaitlistScreen,
+	TextInput,
+	PhoneInput,
+	OccupationSelect,
+	RoleSpecificInputs,
+} from '@/components/FormInputs'
+import { formSchema, questionsList } from '@/lib/formConfig'
 
-/* -------------------------------
-   TYPE DEFINITIONS
--------------------------------- */
-interface MultiInput {
-	id: string
-	placeholder: string
-	required: boolean
-}
-
-type QuestionType =
-	| 'text'
-	| 'email'
-	| 'tel'
-	| 'multiInput'
-	| 'selectButtons'
-	| 'roleSpecific'
-
-interface Question {
-	id: string
-	type: QuestionType
-	label?: string
-	placeholder?: string
-	required: boolean
-	skippable: boolean
-	countryCode?: boolean
-	inputs?: MultiInput[]
-	options?: string[]
-	// New: Add condition to determine when this question should show
-	condition?: {
-		field: string
-		value: string | string[]
-	}
-}
-
-/* -------------------------------
-   TICKER COMPONENT
--------------------------------- */
-const Ticker = () => (
-	<>
-		<style jsx>{`
-			@keyframes ticker {
-				0% {
-					transform: translateX(0%);
-				}
-				100% {
-					transform: translateX(-100%);
-				}
-			}
-
-			.animate-ticker {
-				animation: ticker 15s linear infinite;
-			}
-		`}</style>
-		<div className="relative mt-2 overflow-hidden whitespace-nowrap bg-brandblue py-1 text-white">
-			<div className="animate-ticker flex">
-				{Array(20)
-					.fill('Live Classes Launching Soon ★')
-					.map((text, i) => (
-						<span key={i} className="mx-1">
-							{text}
-						</span>
-					))}
-			</div>
-		</div>
-	</>
-)
-
-/* -------------------------------
-   MAIN FORM COMPONENT
--------------------------------- */
 export default function Page() {
-	// Define all form questions and their properties
 	const theme = useTheme().theme
 	const router = useRouter()
-	const welcomeScreen = {
-		title: 'BFM Academy',
-		subtitle: 'where web3 wizards are made',
-		img: {
-			src: `${theme == 'dark' ? '/page/logo-dark.png' : '/page/logo-light.png'}`,
-			width: 200,
-			height: 200,
-		},
-	}
-	const questions: Question[] = [
-		{
-			id: 'fullname',
-			type: 'text',
-			label: 'Enter Full Name',
-			placeholder: 'Enter Full Name',
-			required: true,
-			skippable: false,
-		},
-		{
-			id: 'email',
-			type: 'email',
-			label: 'Enter Email Address',
-			placeholder: 'Enter Email Address',
-			required: true,
-			skippable: false,
-		},
-		{
-			id: 'phone_number',
-			type: 'tel',
-			label: 'Enter Contact Number',
-			placeholder: 'Enter Contact Number',
-			countryCode: true,
-			required: true,
-			skippable: false,
-		},
-		{
-			id: 'linkedin',
-			type: 'text',
-			label: 'Paste Linkedin URL',
-			placeholder: 'Paste Linkedin URL',
-			required: false,
-			skippable: true,
-		},
-		{
-			id: 'telegram',
-			type: 'text',
-			label: 'Paste Telegram ID',
-			placeholder: 'Paste Telegram ID',
-			required: false,
-			skippable: true,
-		},
-		{
-			id: 'occupation',
-			type: 'selectButtons',
-			label: 'Who are you?',
-			options: ['STUDENT', 'EMPLOYEE', 'STARTUP', 'BUSINESS'],
-			required: true,
-			skippable: false,
-		},
-		{
-			id: 'roleSpecificInfo',
-			type: 'roleSpecific',
-			label: 'Additional Information',
-			required: true,
-			skippable: false,
-		},
-	]
-
-	// ---------- STATE MANAGEMENT ----------
-	// Near the top of component where state is defined
 	const currentAccount = useActiveAccount()
 	const walletAddress = currentAccount?.address
 	const isWalletConnected = Boolean(walletAddress)
 
-	// Add to initial state
+	// State
+	const [currentStep, setCurrentStep] = useState(0)
+	const [formData, setFormData] = useState<Record<string, any>>({})
+	const [errorMessage, setErrorMessage] = useState('')
 	const [formStatus, setFormStatus] = useState<
 		'inProgress' | 'success' | 'waitlist'
 	>(isWalletConnected ? 'waitlist' : 'inProgress')
 
-	const [currentStep, setCurrentStep] = useState(0)
-	const [formData, setFormData] = useState<Record<string, any>>({})
-
-	const [errorMessage, setErrorMessage] = useState('')
+	const questions = questionsList
 	const totalSteps = questions.length
+	const progressPercentage = (currentStep / totalSteps) * 100
+	const currentQuestion = questions[currentStep]
 
+	// Effect to show confetti on successful wallet connection
 	useEffect(() => {
-		if (isWalletConnected && formStatus === 'success' && errorMessage === '') {
-			showConfetti()
-			setFormStatus('waitlist')
+		async function autoSubmitForm() {
+			if (
+				isWalletConnected &&
+				formStatus === 'success' &&
+				errorMessage === ''
+			) {
+				try {
+					const submissionData = await submitForm()
+					if (!submissionData) {
+						throw new Error('Submission failed')
+					}
+					showConfetti()
+					setFormStatus('waitlist')
+				} catch (err: any) {
+					setErrorMessage(`Auto submission failed: ${err.message}`)
+				}
+			}
 		}
-	}, [isWalletConnected, formStatus])
+		autoSubmitForm()
+	}, [isWalletConnected, formStatus, errorMessage])
 
-	// ---------- HANDLERS ----------
+	// Form handlers
 	const handleChange = (id: string, value: string) => {
 		setFormData((prev) => ({ ...prev, [id]: value }))
 		if (errorMessage) setErrorMessage('')
 	}
 
-	const handleMultiInputChange = (
-		parentId: string,
-		inputId: string,
-		value: string,
-	) => {
-		setFormData((prev) => ({
-			...prev,
-			[parentId]: { ...prev[parentId], [inputId]: value },
-		}))
-		if (errorMessage) setErrorMessage('')
-	}
-
 	const validateStep = () => {
-		const currentQuestion = questions[currentStep]
-
 		try {
-			// Validate only the current field using partial schema
+			// Field validation logic based on current question type
 			switch (currentQuestion.type) {
 				case 'email':
 					formSchema.pick({ email: true }).parse({ email: formData.email })
@@ -245,10 +88,11 @@ export default function Page() {
 						.parse({ phone_number: formData.phone_number })
 					break
 				case 'text':
-					if (currentQuestion.required) {
-						if (!formData[currentQuestion.id]?.trim()) {
-							throw new Error('This field is required.')
-						}
+					if (
+						currentQuestion.required &&
+						!formData[currentQuestion.id]?.trim()
+					) {
+						throw new Error('This field is required.')
 					}
 					break
 				case 'multiInput':
@@ -262,37 +106,46 @@ export default function Page() {
 					})
 					break
 				case 'roleSpecific':
-					if (formData.occupation === 'STUDENT') {
-						if (!formData.instituteName?.trim()) {
-							throw new Error('Institute name is required.')
-						}
-					} else if (formData.occupation === 'EMPLOYEE') {
-						if (!formData.company_name?.trim()) {
-							throw new Error('Company name is required.')
-						}
-					} else if (
-						formData.occupation === 'STARTUP' ||
-						formData.occupation === 'BUSINESS'
-					) {
-						if (!formData.company_name?.trim()) {
-							throw new Error('Company name is required.')
-						}
-					}
+					validateRoleSpecificFields()
 					break
 			}
 			setErrorMessage('')
 			return true
 		} catch (e: any) {
-			if (e instanceof z.ZodError) {
-				const messages = e.errors.map((err) => err.message).join('. ')
-				setErrorMessage(messages)
-			} else {
-				setErrorMessage(e.message || 'Invalid input.')
-			}
+			handleValidationError(e)
 			return false
 		}
 	}
 
+	const validateRoleSpecificFields = () => {
+		if (formData.occupation === 'STUDENT') {
+			if (!formData.instituteName?.trim()) {
+				throw new Error('Institute name is required.')
+			}
+		} else if (formData.occupation === 'EMPLOYEE') {
+			if (!formData.company_name?.trim()) {
+				throw new Error('Company name is required.')
+			}
+		} else if (
+			formData.occupation === 'STARTUP' ||
+			formData.occupation === 'BUSINESS'
+		) {
+			if (!formData.company_name?.trim()) {
+				throw new Error('Company name is required.')
+			}
+		}
+	}
+
+	const handleValidationError = (e: any) => {
+		if (e instanceof z.ZodError) {
+			const messages = e.errors.map((err) => err.message).join('. ')
+			setErrorMessage(messages)
+		} else {
+			setErrorMessage(e.message || 'Invalid input.')
+		}
+	}
+
+	// Navigation handlers
 	const nextStep = () => {
 		if (!validateStep()) return
 		if (currentStep < totalSteps - 1) {
@@ -316,58 +169,64 @@ export default function Page() {
 		}
 	}
 
+	// Form submission
 	const submitForm = async () => {
 		try {
 			if (isWalletConnected) {
-				// Format the data correctly
-				const submissionData = {
-					...formData,
-					company_name: formData.company_name || formData.instituteName || '',
-					linkedin: formData.linkedin || formData.socialLinks?.linkedin || '',
-					telegram: formData.telegram || formData.socialLinks?.telegram || '',
-					wallet_id: walletAddress,
-					phone_country_code: formData.phone_country_code || '91',
-				}
-
-				console.log('Submitting data:', submissionData) // Add logging
-
-				const response = await fetch('http://localhost:4000/user/', {
+				const response = await fetch('/api/waitlist', {
 					method: 'POST',
-					body: JSON.stringify(submissionData),
+					body: JSON.stringify({
+						...formData,
+						wallet_id: walletAddress,
+						phone_country_code: formData.phone_country_code || '91',
+					}),
 					headers: {
 						'Content-Type': 'application/json',
 					},
 				})
 
 				if (!response.ok) {
-					const errorData = await response.json().catch(() => null)
-					console.error('Server error:', errorData)
-					throw new Error(
-						`Failed to submit form: ${response.status} ${response.statusText}`,
-					)
+					let errorMessage = `Failed to submit form: ${response.status} ${response.statusText}`
+					try {
+						// Try to get more specific error from response body
+						const errorData = await response.json()
+						if (errorData && errorData.error) {
+							errorMessage += ` - ${errorData.error}`
+						}
+					} catch (jsonError) {
+						// Ignore if response body is not valid JSON or doesn't contain 'error'
+						console.warn('Could not parse error response JSON:', jsonError)
+					}
+					throw new Error(errorMessage)
 				}
 
-				const result = await response.json()
-				console.log('Form submission successful:', result)
+				const data = await response.json()
+				if (data.error) {
+					throw new Error(data.error)
+				}
 
+				// If submission is successful and wallet is connected, show confetti and waitlist
 				showConfetti()
 				setFormStatus('waitlist')
-				return
+				return data // Return the successful submission data
+			} else {
+				// If wallet is not connected, move to success screen to prompt connection
+				setFormStatus('success')
 			}
-
-			// Move to success screen to prompt wallet connection
-			setFormStatus('success')
 		} catch (error) {
-			console.error('Error submitting form:', error)
 			if (error instanceof Error) {
 				setErrorMessage(`Submission failed: ${error.message}`)
 			} else {
-				setErrorMessage('An unknown error occurred.')
+				setErrorMessage('An unknown error occurred during submission.')
+			}
+			// Ensure we don't proceed to waitlist on error
+			if (formStatus !== 'success') {
+				// Keep the form visible if it wasn't already moving to the success/connect screen
 			}
 		}
 	}
 
-	// Separate confetti function to reuse
+	// Visual effects
 	const showConfetti = () => {
 		const end = Date.now() + 2 * 1000 // 2 seconds
 		const colors = ['#a786ff', '#fd8bbc', '#eca184', '#f8deb1', '#212aff']
@@ -398,94 +257,106 @@ export default function Page() {
 		frame()
 	}
 
-	const goHome = () => {
-		router.push('/')
+	// Render the form content based on current question type
+	const renderCurrentQuestion = () => {
+		switch (currentQuestion.type) {
+			case 'text':
+			case 'email':
+				return (
+					<TextInput
+						type={currentQuestion.type}
+						placeholder={currentQuestion.placeholder}
+						value={formData[currentQuestion.id] || ''}
+						onChange={(value) => handleChange(currentQuestion.id, value)}
+					/>
+				)
+			case 'tel':
+				return (
+					<PhoneInput
+						value={formData[currentQuestion.id] || ''}
+						countryCode={formData['phone_country_code'] || 91}
+						onValueChange={(value) => handleChange(currentQuestion.id, value)}
+						onCountryCodeChange={(value) =>
+							handleChange('phone_country_code', value)
+						}
+					/>
+				)
+			case 'selectButtons':
+				return (
+					<OccupationSelect
+						label={currentQuestion.label}
+						options={currentQuestion.options || []}
+						value={formData[currentQuestion.id] || ''}
+						onChange={(value) => handleChange(currentQuestion.id, value)}
+					/>
+				)
+			case 'roleSpecific':
+				return (
+					<RoleSpecificInputs
+						occupation={formData.occupation}
+						formData={formData}
+						onChange={handleChange}
+					/>
+				)
+			default:
+				return null
+		}
 	}
 
-	// ---------- PROGRESS CALCULATION ----------
-	const progressPercentage = (currentStep / totalSteps) * 100
-
-	// ---------- RENDER SECTIONS BASED ON STATUS ----------
-	const renderSuccess = () => (
-		<>
-			<Ticker />
-			<main className="mx-auto max-w-screen-2xl overflow-x-hidden p-3 !pb-0 text-center md:p-6 lg:p-9 xl:p-12 xl:pt-4">
-				<Navbar />
-				<div className="my-12 flex min-h-[70dvh] items-stretch justify-center">
-					<div className="relative grid w-full max-w-7xl place-items-center rounded-3xl border-2 border-brandblue bg-brandblue text-white">
-						<div className="space-y-6 p-8 lg:p-12 xl:p-16">
-							<h1 className="text-4xl font-bold">You are almost there!</h1>
-							<p className="text-xl">
-								Connect your Crypto Wallet &amp; earn BFM Tokens
-							</p>
-							<div className="mx-auto flex max-w-sm flex-col items-stretch justify-stretch gap-2">
-								<ConnectButton
-									client={client}
-									connectButton={{
-										label: 'Connect Wallet',
-										className: 'connect-wallet',
-									}}
-									connectModal={{
-										welcomeScreen: welcomeScreen,
-										title: 'Get started with BFMAcademy',
-										titleIcon: '/page/logo-blue.png',
-										privacyPolicyUrl:
-											'https://www.bfmacademy.in/privacy-policy',
-										size: 'wide',
-									}}
-									theme={theme == 'dark' ? 'dark' : 'light'}
-								/>
-							</div>
-						</div>
-					</div>
-				</div>
-				<Footer />
-			</main>
-		</>
-	)
-
-	const renderWaitlist = () => (
-		<>
-			<Ticker />
-			<main className="mx-auto max-w-screen-2xl overflow-x-hidden p-3 !pb-0 text-center md:p-6 lg:p-9 xl:p-12 xl:pt-4">
-				<Navbar />
-				<div className="my-12 flex min-h-[70dvh] items-stretch justify-center">
-					<div className="relative grid w-full max-w-7xl place-items-center rounded-3xl border-2 border-brandblue bg-brandblue">
-						<div className="p-8 lg:p-12 xl:p-16">
-							<div className="mb-16 flex flex-row items-center justify-center gap-4">
-								<Image
-									src="/page/logo-dark.png"
-									alt="Logo"
-									width={500}
-									height={500}
-									className="h-16 w-16"
-								/>
-								<h1 className="text-3xl font-bold text-white">academy</h1>
-							</div>
-							<h1 className="mb-2 text-4xl font-bold text-white">
-								You are in the Waiting List
-							</h1>
-							<p className="mb-8 text-xl text-white">
-								BFM Academy will get back to you shortly.
-							</p>
+	// Navigation buttons
+	const renderNavigationButtons = () => {
+		if (currentStep > 0) {
+			return (
+				<div className="flex items-center justify-between gap-4">
+					<Button
+						onClick={prevStep}
+						className="rounded-md bg-white px-6 py-2 text-brandblue hover:bg-white/90"
+					>
+						<ArrowLeft size={20} />
+					</Button>
+					<div className="flex items-center gap-4">
+						{currentQuestion.skippable && (
 							<Button
-								onClick={goHome}
 								variant="outline"
-								className="btn-outline"
+								onClick={skipStep}
+								className="text-muted-foreground"
 							>
-								<ArrowLeft className="mr-2" size={16} /> Back Home
+								Skip
 							</Button>
-						</div>
+						)}
+						<Button
+							onClick={nextStep}
+							className="rounded-md bg-white px-6 py-2 text-brandblue hover:bg-white/90"
+						>
+							<ArrowRight size={20} />
+						</Button>
 					</div>
 				</div>
-				<Footer />
-			</main>
-		</>
-	)
+			)
+		}
 
-	// ---------- MAIN MULTI-STEP FORM ----------
-	const currentQuestion = questions[currentStep]
+		return (
+			<div className="flex flex-col items-center">
+				<Button
+					onClick={nextStep}
+					className="rounded-md bg-white px-6 py-2 text-brandblue hover:bg-white/90"
+				>
+					<ArrowRight size={20} />
+				</Button>
+				{currentQuestion.skippable && (
+					<Button
+						variant="link"
+						onClick={skipStep}
+						className="mt-2 text-muted-foreground"
+					>
+						Skip
+					</Button>
+				)}
+			</div>
+		)
+	}
 
+	// Form rendering
 	const renderForm = () => (
 		<>
 			<Ticker />
@@ -503,212 +374,19 @@ export default function Page() {
 							<div className="mb-8">
 								<Progress value={progressPercentage} className="h-2" />
 							</div>
-							{/* Render current question */}
-							{['text', 'email', 'tel'].includes(currentQuestion.type) && (
-								<div className="mb-8">
-									{currentQuestion.countryCode ? (
-										<div className="flex">
-											<div className="flex items-center pr-2">
-												<Select
-													value={formData['phone_country_code'] || 91}
-													onValueChange={(value) =>
-														handleChange('phone_country_code', value)
-													}
-												>
-													<SelectTrigger className="mr-2">
-														<SelectValue placeholder={91} />
-													</SelectTrigger>
-													<SelectContent>
-														{countries.map((country) => (
-															<SelectItem
-																key={country.code}
-																value={country.phone as unknown as string}
-															>
-																{country.name} ({country.phone})
-															</SelectItem>
-														))}
-													</SelectContent>
-												</Select>
-											</div>
-											<Input
-												type={currentQuestion.type}
-												placeholder={currentQuestion.placeholder}
-												value={formData[currentQuestion.id] || ''}
-												onChange={(e) =>
-													handleChange(currentQuestion.id, e.target.value)
-												}
-												className="w-full focus:outline-transparent focus:ring-0"
-											/>
-										</div>
-									) : (
-										<Input
-											type={currentQuestion.type}
-											placeholder={currentQuestion.placeholder}
-											value={formData[currentQuestion.id] || ''}
-											onChange={(e) =>
-												handleChange(currentQuestion.id, e.target.value)
-											}
-											className="w-full border-b-[3px] border-brandblue/50 border-l-transparent border-r-transparent border-t-transparent focus:outline-transparent focus:ring-0"
-										/>
-									)}
-								</div>
-							)}
-							{currentQuestion.type === 'multiInput' && (
-								<div className="mb-8">
-									<div className="space-y-4">
-										{currentQuestion.inputs?.map((input) => (
-											<Input
-												key={input.id}
-												type="text"
-												placeholder={input.placeholder}
-												value={formData[currentQuestion.id]?.[input.id] || ''}
-												onChange={(e) =>
-													handleMultiInputChange(
-														currentQuestion.id,
-														input.id,
-														e.target.value,
-													)
-												}
-												className="border-b-3 w-ful[3px] border-brandblue/50 border-l-transparent border-r-transparent border-t-transparent focus:outline-transparent focus:ring-0"
-											/>
-										))}
-									</div>
-								</div>
-							)}
-							{currentQuestion.type === 'selectButtons' && (
-								<div className="mb-8">
-									<div className="mb-4 text-center">
-										{currentQuestion.label}
-									</div>
-									<div className="grid grid-cols-2 gap-4">
-										{currentQuestion.options?.map((option) => (
-											<Button
-												key={option}
-												variant={
-													formData[currentQuestion.id] === option
-														? 'default'
-														: 'outline'
-												}
-												className={
-													formData[currentQuestion.id] === option
-														? 'bg-white text-brandblue hover:bg-white/90'
-														: 'border-white bg-brandblue text-white hover:bg-brandblue/90 hover:text-white/50'
-												}
-												onClick={() => handleChange(currentQuestion.id, option)}
-											>
-												{option}
-											</Button>
-										))}
-									</div>
-								</div>
-							)}
-							{currentQuestion.type === 'roleSpecific' && (
-								<div className="mb-8">
-									{formData.occupation === 'STUDENT' && (
-										<div>
-											<Input
-												type="text"
-												placeholder="Enter Your Institute Name"
-												value={formData.instituteName || ''}
-												onChange={(e) =>
-													handleChange('instituteName', e.target.value)
-												}
-												className="w-full border-b-[3px] border-brandblue/50 border-l-transparent border-r-transparent border-t-transparent focus:outline-transparent focus:ring-0"
-											/>
-										</div>
-									)}
 
-									{formData.occupation === 'EMPLOYEE' && (
-										<div>
-											<Input
-												type="text"
-												placeholder="Enter Your Company Name"
-												value={formData.company_name || ''}
-												onChange={(e) =>
-													handleChange('company_name', e.target.value)
-												}
-												className="w-full border-b-[3px] border-brandblue/50 border-l-transparent border-r-transparent border-t-transparent focus:outline-transparent focus:ring-0"
-											/>
-										</div>
-									)}
+							{/* Current question */}
+							<div className="mb-8">{renderCurrentQuestion()}</div>
 
-									{(formData.occupation === 'STARTUP' ||
-										formData.occupation === 'BUSINESS') && (
-										<div className="space-y-4">
-											<Input
-												type="text"
-												placeholder="Enter Your Company Name"
-												value={formData.company_name || ''}
-												onChange={(e) =>
-													handleChange('company_name', e.target.value)
-												}
-												className="border-b-3 w-ful[3px] border-brandblue/50 border-l-transparent border-r-transparent border-t-transparent focus:outline-transparent focus:ring-0"
-											/>
-											<Input
-												type="text"
-												placeholder="Enter Your Website URL"
-												value={formData.company_url || ''}
-												onChange={(e) =>
-													handleChange('company_url', e.target.value)
-												}
-												className="border-b-3 w-ful[3px] border-brandblue/50 border-l-transparent border-r-transparent border-t-transparent focus:outline-transparent focus:ring-0"
-											/>
-										</div>
-									)}
-								</div>
-							)}
+							{/* Error message */}
 							{errorMessage && (
 								<p className="mb-4 text-center text-destructive">
 									{errorMessage}
 								</p>
 							)}
-							{currentStep > 0 ? (
-								<div className="flex items-center justify-between gap-4">
-									<div className="flex items-center">
-										<Button
-											onClick={prevStep}
-											className="rounded-md bg-white px-6 py-2 text-brandblue hover:bg-white/90"
-										>
-											<ArrowLeft size={20} />
-										</Button>
-									</div>
-									<div className="flex items-center gap-4">
-										{currentQuestion.skippable && (
-											<Button
-												variant="outline"
-												onClick={skipStep}
-												className="text-muted-foreground"
-											>
-												Skip
-											</Button>
-										)}
-										<Button
-											onClick={nextStep}
-											className="rounded-md bg-white px-6 py-2 text-brandblue hover:bg-white/90"
-										>
-											<ArrowRight size={20} />
-										</Button>
-									</div>
-								</div>
-							) : (
-								<div className="flex flex-col items-center">
-									<Button
-										onClick={nextStep}
-										className="rounded-md bg-white px-6 py-2 text-brandblue hover:bg-white/90"
-									>
-										<ArrowRight size={20} />
-									</Button>
-									{currentQuestion.skippable && (
-										<Button
-											variant="link"
-											onClick={skipStep}
-											className="mt-2 text-muted-foreground"
-										>
-											Skip
-										</Button>
-									)}
-								</div>
-							)}
+
+							{/* Navigation buttons */}
+							{renderNavigationButtons()}
 						</div>
 					</div>
 				</div>
@@ -717,8 +395,33 @@ export default function Page() {
 		</>
 	)
 
-	// ---------- SWITCH RENDERING BASED ON FORM STATUS ----------
-	if (formStatus === 'success') return renderSuccess()
-	if (formStatus === 'waitlist') return renderWaitlist()
+	// Main render switch
+	if (formStatus === 'success') {
+		return (
+			<SuccessScreen
+				theme={theme}
+				client={client}
+				welcomeScreen={getWelcomeScreen(theme)}
+			/>
+		)
+	}
+
+	if (formStatus === 'waitlist') {
+		return <WaitlistScreen onBackHome={() => router.push('/')} />
+	}
+
 	return renderForm()
+}
+
+// Helper function for welcome screen config
+function getWelcomeScreen(theme: string | undefined) {
+	return {
+		title: 'BFM Academy',
+		subtitle: 'where web3 wizards are made',
+		img: {
+			src: `${theme == 'dark' ? '/page/logo-dark.png' : '/page/logo-light.png'}`,
+			width: 200,
+			height: 200,
+		},
+	}
 }
