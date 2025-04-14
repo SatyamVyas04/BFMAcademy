@@ -16,18 +16,20 @@ import {
 	SelectValue,
 } from '@/components/ui/select'
 import Image from 'next/image'
-import { ConnectButton } from 'thirdweb/react'
+import { ConnectButton, useActiveAccount } from 'thirdweb/react'
 import { client } from '../../actions/wallet'
 import { useTheme } from 'next-themes'
 import confetti from 'canvas-confetti'
 import { z } from 'zod'
 import { countries } from '@/lib/countries'
+// Add effect to watch for wallet connection
+import { useEffect } from 'react'
 
 const formSchema = z.object({
-	fullName: z.string(),
+	fullname: z.string(),
 	email: z.string().email({ message: 'Invalid email address' }),
-	phoneCountryCode: z.string().optional(),
-	phoneNumber: z
+	phone_country_code: z.string().optional(),
+	phone_number: z
 		.string()
 		.regex(/^\d{10,15}$/, { message: 'Invalid phone number' }),
 	socialLinks: z
@@ -38,7 +40,10 @@ const formSchema = z.object({
 		.refine((data) => !!data.linkedin || !!data.telegram, {
 			message: 'Please provide at least one social profile.',
 		}),
-	userType: z.enum(['STUDENT', 'EMPLOYEE', 'STARTUP', 'BUSINESS']),
+	occupation: z.enum(['STUDENT', 'EMPLOYEE', 'STARTUP', 'BUSINESS']),
+	wallet_id: z.string(),
+	company_name: z.string().optional(),
+	company_url: z.string().optional(),
 })
 
 /* -------------------------------
@@ -126,7 +131,7 @@ export default function Page() {
 	}
 	const questions: Question[] = [
 		{
-			id: 'fullName',
+			id: 'fullname',
 			type: 'text',
 			label: 'Enter Full Name',
 			placeholder: 'Enter Full Name',
@@ -142,7 +147,7 @@ export default function Page() {
 			skippable: false,
 		},
 		{
-			id: 'phoneNumber',
+			id: 'phone_number',
 			type: 'tel',
 			label: 'Enter Contact Number',
 			placeholder: 'Enter Contact Number',
@@ -167,7 +172,7 @@ export default function Page() {
 			skippable: true,
 		},
 		{
-			id: 'userType',
+			id: 'occupation',
 			type: 'selectButtons',
 			label: 'Who are you?',
 			options: ['STUDENT', 'EMPLOYEE', 'STARTUP', 'BUSINESS'],
@@ -184,13 +189,28 @@ export default function Page() {
 	]
 
 	// ---------- STATE MANAGEMENT ----------
-	const [currentStep, setCurrentStep] = useState(0)
-	const [formData, setFormData] = useState<Record<string, any>>({})
+	// Near the top of component where state is defined
+	const currentAccount = useActiveAccount()
+	const walletAddress = currentAccount?.address
+	const isWalletConnected = Boolean(walletAddress)
+
+	// Add to initial state
 	const [formStatus, setFormStatus] = useState<
 		'inProgress' | 'success' | 'waitlist'
-	>('inProgress')
+	>(isWalletConnected ? 'waitlist' : 'inProgress')
+
+	const [currentStep, setCurrentStep] = useState(0)
+	const [formData, setFormData] = useState<Record<string, any>>({})
+
 	const [errorMessage, setErrorMessage] = useState('')
 	const totalSteps = questions.length
+
+	useEffect(() => {
+		if (isWalletConnected && formStatus === 'success' && errorMessage === '') {
+			showConfetti()
+			setFormStatus('waitlist')
+		}
+	}, [isWalletConnected, formStatus])
 
 	// ---------- HANDLERS ----------
 	const handleChange = (id: string, value: string) => {
@@ -221,8 +241,8 @@ export default function Page() {
 					break
 				case 'tel':
 					formSchema
-						.pick({ phoneNumber: true })
-						.parse({ phoneNumber: formData.phoneNumber })
+						.pick({ phone_number: true })
+						.parse({ phone_number: formData.phone_number })
 					break
 				case 'text':
 					if (currentQuestion.required) {
@@ -237,24 +257,24 @@ export default function Page() {
 					})
 					break
 				case 'selectButtons':
-					formSchema.pick({ userType: true }).parse({
-						userType: formData.userType,
+					formSchema.pick({ occupation: true }).parse({
+						occupation: formData.occupation,
 					})
 					break
 				case 'roleSpecific':
-					if (formData.userType === 'STUDENT') {
+					if (formData.occupation === 'STUDENT') {
 						if (!formData.instituteName?.trim()) {
 							throw new Error('Institute name is required.')
 						}
-					} else if (formData.userType === 'EMPLOYEE') {
-						if (!formData.companyName?.trim()) {
+					} else if (formData.occupation === 'EMPLOYEE') {
+						if (!formData.company_name?.trim()) {
 							throw new Error('Company name is required.')
 						}
 					} else if (
-						formData.userType === 'STARTUP' ||
-						formData.userType === 'BUSINESS'
+						formData.occupation === 'STARTUP' ||
+						formData.occupation === 'BUSINESS'
 					) {
-						if (!formData.companyName?.trim()) {
+						if (!formData.company_name?.trim()) {
 							throw new Error('Company name is required.')
 						}
 					}
@@ -298,16 +318,57 @@ export default function Page() {
 
 	const submitForm = async () => {
 		try {
-			// Mock submission - in a real app this would call an API
-			console.log('Form data submitted:', formData)
+			if (isWalletConnected) {
+				// Format the data correctly
+				const submissionData = {
+					...formData,
+					company_name: formData.company_name || formData.instituteName || '',
+					linkedin: formData.linkedin || formData.socialLinks?.linkedin || '',
+					telegram: formData.telegram || formData.socialLinks?.telegram || '',
+					wallet_id: walletAddress,
+					phone_country_code: formData.phone_country_code || '91',
+				}
+
+				console.log('Submitting data:', submissionData) // Add logging
+
+				const response = await fetch('http://localhost:4000/user/', {
+					method: 'POST',
+					body: JSON.stringify(submissionData),
+					headers: {
+						'Content-Type': 'application/json',
+					},
+				})
+
+				if (!response.ok) {
+					const errorData = await response.json().catch(() => null)
+					console.error('Server error:', errorData)
+					throw new Error(
+						`Failed to submit form: ${response.status} ${response.statusText}`,
+					)
+				}
+
+				const result = await response.json()
+				console.log('Form submission successful:', result)
+
+				showConfetti()
+				setFormStatus('waitlist')
+				return
+			}
+
+			// Move to success screen to prompt wallet connection
 			setFormStatus('success')
 		} catch (error) {
 			console.error('Error submitting form:', error)
+			if (error instanceof Error) {
+				setErrorMessage(`Submission failed: ${error.message}`)
+			} else {
+				setErrorMessage('An unknown error occurred.')
+			}
 		}
 	}
 
-	const connectWallet = () => {
-		setFormStatus('waitlist')
+	// Separate confetti function to reuse
+	const showConfetti = () => {
 		const end = Date.now() + 2 * 1000 // 2 seconds
 		const colors = ['#a786ff', '#fd8bbc', '#eca184', '#f8deb1', '#212aff']
 
@@ -374,12 +435,6 @@ export default function Page() {
 									}}
 									theme={theme == 'dark' ? 'dark' : 'light'}
 								/>
-								<Button
-									onClick={connectWallet}
-									className="bg-white px-5 py-5 text-brandblue hover:bg-white/90"
-								>
-									<Wallet className="mr-2" size={20} /> Join the waitlist
-								</Button>
 							</div>
 						</div>
 					</div>
@@ -455,9 +510,9 @@ export default function Page() {
 										<div className="flex">
 											<div className="flex items-center pr-2">
 												<Select
-													value={formData['phoneCountryCode'] || 91}
+													value={formData['phone_country_code'] || 91}
 													onValueChange={(value) =>
-														handleChange('phoneCountryCode', value)
+														handleChange('phone_country_code', value)
 													}
 												>
 													<SelectTrigger className="mr-2">
@@ -549,7 +604,7 @@ export default function Page() {
 							)}
 							{currentQuestion.type === 'roleSpecific' && (
 								<div className="mb-8">
-									{formData.userType === 'STUDENT' && (
+									{formData.occupation === 'STUDENT' && (
 										<div>
 											<Input
 												type="text"
@@ -563,38 +618,38 @@ export default function Page() {
 										</div>
 									)}
 
-									{formData.userType === 'EMPLOYEE' && (
+									{formData.occupation === 'EMPLOYEE' && (
 										<div>
 											<Input
 												type="text"
 												placeholder="Enter Your Company Name"
-												value={formData.companyName || ''}
+												value={formData.company_name || ''}
 												onChange={(e) =>
-													handleChange('companyName', e.target.value)
+													handleChange('company_name', e.target.value)
 												}
 												className="w-full border-b-[3px] border-brandblue/50 border-l-transparent border-r-transparent border-t-transparent focus:outline-transparent focus:ring-0"
 											/>
 										</div>
 									)}
 
-									{(formData.userType === 'STARTUP' ||
-										formData.userType === 'BUSINESS') && (
+									{(formData.occupation === 'STARTUP' ||
+										formData.occupation === 'BUSINESS') && (
 										<div className="space-y-4">
 											<Input
 												type="text"
 												placeholder="Enter Your Company Name"
-												value={formData.companyName || ''}
+												value={formData.company_name || ''}
 												onChange={(e) =>
-													handleChange('companyName', e.target.value)
+													handleChange('company_name', e.target.value)
 												}
 												className="border-b-3 w-ful[3px] border-brandblue/50 border-l-transparent border-r-transparent border-t-transparent focus:outline-transparent focus:ring-0"
 											/>
 											<Input
 												type="text"
 												placeholder="Enter Your Website URL"
-												value={formData.websiteUrl || ''}
+												value={formData.company_url || ''}
 												onChange={(e) =>
-													handleChange('websiteUrl', e.target.value)
+													handleChange('company_url', e.target.value)
 												}
 												className="border-b-3 w-ful[3px] border-brandblue/50 border-l-transparent border-r-transparent border-t-transparent focus:outline-transparent focus:ring-0"
 											/>
