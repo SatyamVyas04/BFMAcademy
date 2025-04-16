@@ -199,7 +199,7 @@ export default function Page() {
 				})
 
 				if (!response.ok) {
-					let errorMessage = `Failed to submit form: ${response.status} ${response.statusText}`
+					let errorMessage = `${response.status} ${response.statusText}`
 					try {
 						// Try to get more specific error from response body
 						const errorData = await response.json()
