@@ -10,12 +10,14 @@ export async function POST(req: Request) {
 			email: formData.email,
 			phone_number: formData.phone_number,
 			linkedin: formData.linkedin || formData.socialLinks?.linkedin,
-			telegramid: formData.telegram || formData.socialLinks?.telegram, // Renamed from telegram
+			telegramid: formData.telegramid, // Renamed from telegram
 			occupation: formData.occupation.toLowerCase(),
 			company_name: formData.company_name || formData.instituteName,
 			company_url: formData.company_url,
 			wallet_id: formData.wallet_id,
 		}
+
+		console.log('submissionData', submissionData)
 
 		// Optional: Remove undefined fields if the backend expects them to be absent
 		Object.keys(submissionData).forEach(
@@ -25,13 +27,15 @@ export async function POST(req: Request) {
 		)
 
 		// Simulate sending data to an external API
-		const response = await fetch('http://localhost:4000/user/', {
+		const response = await fetch('https://bfma-be.onrender.com/user/', {
 			method: 'POST',
 			body: JSON.stringify(submissionData),
 			headers: {
 				'Content-Type': 'application/json',
 			},
 		})
+
+		console.log('response', response)
 
 		if (!response.ok) {
 			await response.json().catch(() => null)

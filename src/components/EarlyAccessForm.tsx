@@ -7,7 +7,7 @@ import { useTheme } from 'next-themes'
 import { useActiveAccount } from 'thirdweb/react'
 import { client } from '../../actions/wallet'
 import confetti from 'canvas-confetti'
-import { z } from 'zod'
+import { ZodError } from 'zod'
 import { Progress } from '@/components/ui/progress'
 import { ArrowRight, ArrowLeft } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -94,10 +94,11 @@ export default function Page() {
 					) {
 						throw new Error('This field is required.')
 					}
-					break
-				case 'multiInput':
+
 					formSchema.pick({ socialLinks: true }).parse({
-						socialLinks: formData.socialLinks || {},
+						socialLinks: {
+							[currentQuestion.id]: formData[currentQuestion.id],
+						},
 					})
 					break
 				case 'selectButtons':
@@ -118,26 +119,38 @@ export default function Page() {
 	}
 
 	const validateRoleSpecificFields = () => {
-		if (formData.occupation === 'STUDENT') {
-			if (!formData.instituteName?.trim()) {
-				throw new Error('Institute name is required.')
+		const occupation = formData.occupation
+		try {
+			if (occupation === 'student') {
+				formSchema.pick({ instituteName: true }).parse({
+					instituteName: formData.instituteName,
+				})
+			} else if (occupation === 'employee') {
+				formSchema.pick({ company_name: true }).parse({
+					company_name: formData.company_name,
+				})
+			} else if (occupation === 'startup' || occupation === 'business') {
+				formSchema.pick({ company_name: true }).parse({
+					company_name: formData.company_name,
+				})
+				formSchema.pick({ company_url: true }).parse({
+					company_url: formData.company_url,
+				})
 			}
-		} else if (formData.occupation === 'EMPLOYEE') {
-			if (!formData.company_name?.trim()) {
-				throw new Error('Company name is required.')
-			}
-		} else if (
-			formData.occupation === 'STARTUP' ||
-			formData.occupation === 'BUSINESS'
-		) {
-			if (!formData.company_name?.trim()) {
-				throw new Error('Company name is required.')
+			// Add more conditions for other occupations if needed
+		} catch (e) {
+			// Let the ZodError propagate up to validateStep
+			if (e instanceof ZodError) {
+				throw e
+			} else {
+				// Handle unexpected errors if necessary, or rethrow
+				throw new Error('An unexpected validation error occurred.')
 			}
 		}
 	}
 
 	const handleValidationError = (e: any) => {
-		if (e instanceof z.ZodError) {
+		if (e instanceof ZodError) {
 			const messages = e.errors.map((err) => err.message).join('. ')
 			setErrorMessage(messages)
 		} else {

@@ -37,24 +37,54 @@ export interface Question {
 
 // Zod schema for form validation
 export const formSchema = z.object({
-	fullname: z.string(),
-	email: z.string().email({ message: 'Invalid email address' }),
+	fullname: z
+		.string({ required_error: 'Full name is required' })
+		.trim()
+		.min(3, { message: 'Full name must be at least 3 characters' })
+		.max(100, { message: 'Full name must be at most 100 characters' }),
+	email: z
+		.string({ required_error: 'Email is required' })
+		.trim()
+		.toLowerCase()
+		.email({ message: 'Email is invalid' }),
 	phone_country_code: z.string().optional(),
 	phone_number: z
+		.string({ required_error: 'Phone number is required' })
+		.regex(/^\+?[0-9]{10}$/, { message: 'Phone number is invalid' }),
+	socialLinks: z.object({
+		linkedin: z
+			.string()
+			.trim()
+			.regex(/^https:\/\/(www\.)?linkedin\.com\/.*$/, {
+				message: 'LinkedIn URL is invalid',
+			})
+			.optional()
+			.or(z.literal('')), // Allow empty string
+		telegramid: z
+			.string()
+			.trim()
+			.regex(/^@?[a-zA-Z0-9_]{5,32}$/, { message: 'Telegram ID is invalid' })
+			.optional()
+			.or(z.literal('')), // Allow empty string
+	}),
+	occupation: z.enum(['student', 'employee', 'startup', 'business'], {
+		required_error: 'Occupation is required',
+		invalid_type_error: 'Occupation is invalid',
+	}),
+	company_name: z
 		.string()
-		.regex(/^\d{10,15}$/, { message: 'Invalid phone number' }),
-	socialLinks: z
-		.object({
-			linkedin: z.string().url().optional().or(z.literal('')),
-			telegram: z.string().url().optional().or(z.literal('')),
-		})
-		.refine((data) => !!data.linkedin || !!data.telegram, {
-			message: 'Please provide at least one social profile.',
-		}),
-	occupation: z.enum(['STUDENT', 'EMPLOYEE', 'STARTUP', 'BUSINESS']),
-	wallet_id: z.string(),
-	company_name: z.string().optional(),
-	company_url: z.string().optional(),
+		.trim()
+		.max(100, { message: 'Company name must be at most 100 characters' })
+		.optional()
+		.or(z.literal('')), // Allow empty string
+	company_url: z
+		.string()
+		.trim()
+		.url({ message: 'Company URL is invalid' })
+		.optional()
+		.or(z.literal('')), // Allow empty string
+	wallet_id: z.string().trim().optional().or(z.literal('')), // Allow empty string
+	instituteName: z.string().trim().optional().or(z.literal('')), // Allow empty string
 })
 
 // Form questions configuration
@@ -93,7 +123,7 @@ export const questionsList: Question[] = [
 		skippable: true,
 	},
 	{
-		id: 'telegram',
+		id: 'telegramid',
 		type: 'text',
 		label: 'Paste Telegram ID',
 		placeholder: 'Paste Telegram ID',
@@ -104,7 +134,7 @@ export const questionsList: Question[] = [
 		id: 'occupation',
 		type: 'selectButtons',
 		label: 'Who are you?',
-		options: ['STUDENT', 'EMPLOYEE', 'STARTUP', 'BUSINESS'],
+		options: ['student', 'employee', 'startup', 'business'],
 		required: true,
 		skippable: false,
 	},

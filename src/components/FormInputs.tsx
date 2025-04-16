@@ -247,8 +247,8 @@ export function OccupationSelect({
 						variant={value === option ? 'default' : 'outline'}
 						className={
 							value === option
-								? 'bg-white text-brandblue hover:bg-white/90'
-								: 'border-white bg-brandblue text-white hover:bg-brandblue/90 hover:text-white/50'
+								? 'bg-white uppercase text-brandblue hover:bg-white/90'
+								: 'border-white bg-brandblue uppercase text-white hover:bg-brandblue/90 hover:text-white/50'
 						}
 						onClick={() => onChange(option)}
 					>
@@ -273,7 +273,7 @@ export function RoleSpecificInputs({
 	onChange,
 }: RoleSpecificInputsProps) {
 	switch (occupation) {
-		case 'STUDENT':
+		case 'student':
 			return (
 				<Input
 					type="text"
@@ -284,7 +284,7 @@ export function RoleSpecificInputs({
 				/>
 			)
 
-		case 'EMPLOYEE':
+		case 'employee':
 			return (
 				<Input
 					type="text"
@@ -295,8 +295,8 @@ export function RoleSpecificInputs({
 				/>
 			)
 
-		case 'STARTUP':
-		case 'BUSINESS':
+		case 'startup':
+		case 'business':
 			return (
 				<div className="space-y-4">
 					<Input
