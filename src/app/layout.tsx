@@ -4,6 +4,7 @@ import { Montserrat } from 'next/font/google'
 import { ThemeProvider } from 'next-themes'
 import { ThirdwebProvider } from 'thirdweb/react'
 import { GoogleAnalytics } from '@next/third-parties/google'
+import { Toaster } from 'sonner'
 
 const mont = Montserrat({
 	weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
@@ -96,6 +97,7 @@ export default function RootLayout({
 						disableTransitionOnChange
 					>
 						{children}
+						<Toaster />
 					</ThemeProvider>
 				</ThirdwebProvider>
 			</body>

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react-hooks/exhaustive-deps */
 'use client'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, cache } from 'react'
 import { useRouter } from 'next/navigation'
 import { useTheme } from 'next-themes'
 import { useActiveAccount } from 'thirdweb/react'
@@ -23,6 +23,7 @@ import {
 	PhoneInput,
 	OccupationSelect,
 	RoleSpecificInputs,
+	CertificateScreen,
 } from '@/components/FormInputs'
 import { formSchema, questionsList } from '@/lib/formConfig'
 
@@ -39,7 +40,7 @@ export default function Page() {
 	const [errorMessage, setErrorMessage] = useState('')
 	const [isValidating, setIsValidating] = useState(false)
 	const [formStatus, setFormStatus] = useState<
-		'inProgress' | 'success' | 'waitlist'
+		'inProgress' | 'success' | 'waitlist' | 'certificate'
 	>('inProgress')
 
 	const questions = questionsList
@@ -83,9 +84,12 @@ export default function Page() {
 			switch (currentQuestion.type) {
 				case 'email':
 					formSchema.pick({ email: true }).parse({ email: formData.email })
-					const unique = await fetch('/api/isEmail?email=' + formData.email, {
-						method: 'GET',
+					const checkEmailUniqueness = cache(async (email: string) => {
+						return await fetch('/api/isEmail?email=' + email, {
+							method: 'GET',
+						})
 					})
+					const unique = await checkEmailUniqueness(formData.email)
 					if (!unique.ok) {
 						setCurrentStep(1)
 						throw new Error('Email already exists.')
@@ -95,12 +99,15 @@ export default function Page() {
 					formSchema
 						.pick({ phone_number: true })
 						.parse({ phone_number: formData.phone_number })
-					const uniquephone = await fetch(
-						'/api/isPhoneNumber?phone_number=' + formData.phone_number,
-						{
-							method: 'GET',
-						},
-					)
+					const checkPhoneUniqueness = cache(async (phoneNumber: string) => {
+						return await fetch(
+							'/api/isPhoneNumber?phone_number=' + phoneNumber,
+							{
+								method: 'GET',
+							},
+						)
+					})
+					const uniquephone = await checkPhoneUniqueness(formData.phone_number)
 					if (!uniquephone.ok) {
 						setCurrentStep(2)
 						throw new Error('Phone Number already exists.')
@@ -471,7 +478,18 @@ export default function Page() {
 	}
 
 	if (formStatus === 'waitlist') {
-		return <WaitlistScreen onBackHome={() => router.push('/')} />
+		return <WaitlistScreen setFormStatus={setFormStatus} />
+	}
+
+	if (formStatus === 'certificate') {
+		return (
+			<CertificateScreen
+				goBackHome={() => {
+					router.push('/')
+				}}
+				userName={formData.fullname || 'Participant'}
+			/>
+		)
 	}
 
 	return renderForm()
