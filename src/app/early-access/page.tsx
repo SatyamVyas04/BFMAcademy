@@ -1,4 +1,5 @@
 import EarlyAccessForm from '@/components/EarlyAccessForm'
+import QueryClientContextProvider from '@/components/QueryClient'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -10,5 +11,9 @@ export const metadata: Metadata = {
 }
 
 export default function page() {
-	return <EarlyAccessForm />
+	return (
+		<QueryClientContextProvider>
+			<EarlyAccessForm />
+		</QueryClientContextProvider>
+	)
 }

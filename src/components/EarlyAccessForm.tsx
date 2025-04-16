@@ -37,9 +37,10 @@ export default function Page() {
 	const [currentStep, setCurrentStep] = useState(0)
 	const [formData, setFormData] = useState<Record<string, any>>({})
 	const [errorMessage, setErrorMessage] = useState('')
+	const [isValidating, setIsValidating] = useState(false)
 	const [formStatus, setFormStatus] = useState<
 		'inProgress' | 'success' | 'waitlist'
-	>(isWalletConnected ? 'waitlist' : 'inProgress')
+	>('inProgress')
 
 	const questions = questionsList
 	const totalSteps = questions.length
@@ -75,17 +76,35 @@ export default function Page() {
 		if (errorMessage) setErrorMessage('')
 	}
 
-	const validateStep = () => {
+	const validateStep = async () => {
 		try {
+			setIsValidating(true)
 			// Field validation logic based on current question type
 			switch (currentQuestion.type) {
 				case 'email':
 					formSchema.pick({ email: true }).parse({ email: formData.email })
+					const unique = await fetch('/api/isEmail?email=' + formData.email, {
+						method: 'GET',
+					})
+					if (!unique.ok) {
+						setCurrentStep(1)
+						throw new Error('Email already exists.')
+					}
 					break
 				case 'tel':
 					formSchema
 						.pick({ phone_number: true })
 						.parse({ phone_number: formData.phone_number })
+					const uniquephone = await fetch(
+						'/api/isPhoneNumber?phone_number=' + formData.phone_number,
+						{
+							method: 'GET',
+						},
+					)
+					if (!uniquephone.ok) {
+						setCurrentStep(2)
+						throw new Error('Phone Number already exists.')
+					}
 					break
 				case 'text':
 					if (
@@ -111,9 +130,11 @@ export default function Page() {
 					break
 			}
 			setErrorMessage('')
+			setIsValidating(false)
 			return true
 		} catch (e: any) {
 			handleValidationError(e)
+			setIsValidating(false)
 			return false
 		}
 	}
@@ -158,9 +179,27 @@ export default function Page() {
 		}
 	}
 
+	// Run validation when input changes to clear errors
+	useEffect(() => {
+		if (errorMessage) {
+			// Only validate if there's an error to potentially clear
+			const timer = setTimeout(() => {
+				validateStep().catch(console.error)
+			}, 500)
+			return () => clearTimeout(timer)
+		}
+	}, [formData])
+
 	// Navigation handlers
-	const nextStep = () => {
-		if (!validateStep()) return
+	const nextStep = async () => {
+		if (isValidating || errorMessage) return
+
+		setIsValidating(true)
+		const isValid = await validateStep()
+		setIsValidating(false)
+
+		if (!isValid) return
+
 		if (currentStep < totalSteps - 1) {
 			setCurrentStep((prev) => prev + 1)
 		} else {
@@ -185,6 +224,7 @@ export default function Page() {
 	// Form submission
 	const submitForm = async () => {
 		try {
+			setIsValidating(true)
 			if (isWalletConnected) {
 				const response = await fetch('/api/waitlist', {
 					method: 'POST',
@@ -221,12 +261,15 @@ export default function Page() {
 				// If submission is successful and wallet is connected, show confetti and waitlist
 				showConfetti()
 				setFormStatus('waitlist')
+				setIsValidating(false)
 				return data // Return the successful submission data
 			} else {
 				// If wallet is not connected, move to success screen to prompt connection
 				setFormStatus('success')
+				setIsValidating(false)
 			}
 		} catch (error) {
+			setIsValidating(false)
 			if (error instanceof Error) {
 				setErrorMessage(`Submission failed: ${error.message}`)
 			} else {
@@ -318,12 +361,15 @@ export default function Page() {
 
 	// Navigation buttons
 	const renderNavigationButtons = () => {
+		const isNextButtonDisabled = !!errorMessage || isValidating
+
 		if (currentStep > 0) {
 			return (
 				<div className="flex items-center justify-between gap-4">
 					<Button
 						onClick={prevStep}
 						className="rounded-md bg-white px-6 py-2 text-brandblue hover:bg-white/90"
+						disabled={isValidating}
 					>
 						<ArrowLeft size={20} />
 					</Button>
@@ -333,13 +379,15 @@ export default function Page() {
 								variant="outline"
 								onClick={skipStep}
 								className="text-muted-foreground"
+								disabled={isValidating}
 							>
 								Skip
 							</Button>
 						)}
 						<Button
 							onClick={nextStep}
-							className="rounded-md bg-white px-6 py-2 text-brandblue hover:bg-white/90"
+							className="rounded-md bg-white px-6 py-2 text-brandblue hover:bg-white/90 disabled:cursor-not-allowed disabled:opacity-50"
+							disabled={isNextButtonDisabled}
 						>
 							<ArrowRight size={20} />
 						</Button>
@@ -352,7 +400,8 @@ export default function Page() {
 			<div className="flex flex-col items-center">
 				<Button
 					onClick={nextStep}
-					className="rounded-md bg-white px-6 py-2 text-brandblue hover:bg-white/90"
+					className="rounded-md bg-white px-6 py-2 text-brandblue hover:bg-white/90 disabled:cursor-not-allowed disabled:opacity-50"
+					disabled={isNextButtonDisabled}
 				>
 					<ArrowRight size={20} />
 				</Button>
@@ -361,6 +410,7 @@ export default function Page() {
 						variant="link"
 						onClick={skipStep}
 						className="mt-2 text-muted-foreground"
+						disabled={isValidating}
 					>
 						Skip
 					</Button>
@@ -381,10 +431,11 @@ export default function Page() {
 							<h1 className="mb-2 text-center text-3xl font-bold md:text-5xl xl:text-6xl">
 								Get Your Early Access
 							</h1>
-							<p className="mb-8 text-center text-sm text-white lg:text-base">
+							<p className="mb-4 text-center text-sm text-white lg:text-base">
 								A platform with world-class tools &amp; features.
 							</p>
-							<div className="mb-8">
+							{/* Form progress bar */}
+							<div className="mb-12">
 								<Progress value={progressPercentage} className="h-2" />
 							</div>
 
@@ -393,7 +444,7 @@ export default function Page() {
 
 							{/* Error message */}
 							{errorMessage && (
-								<p className="mb-4 text-center text-destructive">
+								<p className="mb-4 text-center font-medium text-red-300">
 									{errorMessage}
 								</p>
 							)}
