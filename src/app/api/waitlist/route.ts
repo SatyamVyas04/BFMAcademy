@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server'
 const API_BASE_URL = 'https://bfma-be.onrender.com/user'
 
 // Helper function to check for duplicates
-export async function checkDuplicate(
+async function checkDuplicate(
 	endpoint: string,
 	paramName: string,
 	value: string,
