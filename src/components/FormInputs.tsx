@@ -178,24 +178,6 @@ export function CertificateScreen({
 	const canvasRef = useRef<HTMLCanvasElement>(null)
 	const [isCanvasReady, setIsCanvasReady] = useState(false)
 
-	// Add refresh warning
-	useEffect(() => {
-		// Show warning when user attempts to refresh or navigate away
-		const handleBeforeUnload = (e: BeforeUnloadEvent) => {
-			const message =
-				'Warning: Refreshing will reset your certificate. Do you want to continue?'
-			e.preventDefault()
-			e.returnValue = message
-			return message
-		}
-
-		window.addEventListener('beforeunload', handleBeforeUnload)
-
-		return () => {
-			window.removeEventListener('beforeunload', handleBeforeUnload)
-		}
-	}, [])
-
 	useEffect(() => {
 		const certificateImg = new window.Image()
 		certificateImg.src = '/participation.png' // Your blue certificate background
@@ -292,21 +274,6 @@ export function CertificateScreen({
 		}, 'image/png')
 	}
 
-	// Enhanced confirmation for navigation
-	const handleGoBack = () => {
-		if (isCanvasReady) {
-			if (
-				window.confirm(
-					"Going back will reset your certificate. Make sure you've downloaded it first. Continue?",
-				)
-			) {
-				goBackHome()
-			}
-		} else {
-			goBackHome()
-		}
-	}
-
 	return (
 		<>
 			<Ticker />
@@ -316,7 +283,7 @@ export function CertificateScreen({
 				{/* Back button for mobile */}
 				<div className="-mt-12 mb-6 flex justify-end lg:hidden">
 					<Button
-						onClick={handleGoBack}
+						onClick={goBackHome}
 						variant="outline"
 						className="flex items-center gap-2 rounded-md border bg-white px-4 py-2 text-sm font-medium text-brandblue transition-all hover:scale-105 hover:bg-white/90 hover:text-brandblue/90"
 					>
@@ -367,7 +334,7 @@ export function CertificateScreen({
 						{/* Back Home Button (Top Right on lg+) */}
 						<div className="hidden lg:block">
 							<Button
-								onClick={handleGoBack}
+								onClick={goBackHome}
 								variant="outline"
 								className="ml-auto flex w-fit items-center justify-center gap-2 rounded-md"
 							>
