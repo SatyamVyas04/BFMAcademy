@@ -57,7 +57,7 @@ export async function GET(request: NextRequest) {
 	const searchParams = request.nextUrl.searchParams
 	const wallet = searchParams.get('wallet')
 
-	if (!wallet) {
+	if (!wallet || wallet.trim() === '') {
 		return new Response(
 			JSON.stringify({ error: 'Wallet parameter is missing.' }),
 			{

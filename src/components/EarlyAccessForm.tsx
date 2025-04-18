@@ -9,7 +9,7 @@ import { client } from '../../actions/wallet'
 import confetti from 'canvas-confetti'
 import { ZodError } from 'zod'
 import { Progress } from '@/components/ui/progress'
-import { ArrowRight, ArrowLeft } from 'lucide-react'
+import { ArrowRight, ArrowLeft, Loader2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 // Import components
@@ -39,6 +39,7 @@ export default function Page() {
 	const [formData, setFormData] = useState<Record<string, any>>({})
 	const [errorMessage, setErrorMessage] = useState('')
 	const [isValidating, setIsValidating] = useState(false)
+	const [isWalletChecking, setIsWalletChecking] = useState(true)
 	const [formStatus, setFormStatus] = useState<
 		'inProgress' | 'success' | 'waitlist' | 'certificate'
 	>('inProgress')
@@ -71,6 +72,13 @@ export default function Page() {
 		autoSubmitForm()
 
 		async function walletchecker() {
+			if (walletAddress === undefined) {
+				setIsWalletChecking(false) // Set loading to false if no wallet address
+				return
+			}
+
+			setIsWalletChecking(true) // Set loading to true when starting check
+
 			const walletCheck = cache(async (wallet: string) => {
 				return await fetch('/api/isWallet?wallet=' + wallet, {
 					method: 'GET',
@@ -88,6 +96,8 @@ export default function Page() {
 			} else {
 				setFormStatus('inProgress')
 			}
+
+			setIsWalletChecking(false) // Set loading to false when check completes
 		}
 		walletchecker()
 	}, [isWalletConnected, formStatus, errorMessage])
@@ -444,6 +454,24 @@ export default function Page() {
 					</Button>
 				)}
 			</div>
+		)
+	}
+
+	if (isWalletChecking) {
+		return (
+			<>
+				<Ticker />
+				<main className="mx-auto max-w-screen-2xl overflow-x-hidden p-3 !pb-0 text-center md:p-6 lg:p-9 xl:p-12 xl:pt-4">
+					<Navbar />
+					<div className="my-12 flex min-h-[70dvh] items-center justify-center">
+						<div className="flex flex-col items-center gap-4">
+							<Loader2 className="h-12 w-12 animate-spin text-brandblue" />
+							<p className="text-lg font-medium">Checking wallet...</p>
+						</div>
+					</div>
+					<Footer />
+				</main>
+			</>
 		)
 	}
 
