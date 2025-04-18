@@ -14,10 +14,9 @@ async function checkDuplicate(
 	try {
 		const response = await fetch(requestUrl, {
 			method: 'GET',
-			headers: {
-				'Content-Type': 'application/json',
-			},
 		})
+
+		const data = await response.json().catch(() => ({}))
 
 		if (!response.ok) {
 			// Assuming 400 Bad Request indicates a duplicate based on backend code
@@ -38,8 +37,10 @@ async function checkDuplicate(
 			)
 		}
 
-		// If response is ok (200), it means no duplicate found
-		return null
+		return NextResponse.json(
+			{ message: 'No duplicate found.', data },
+			{ status: 200 },
+		)
 	} catch (error) {
 		return NextResponse.json(
 			{
@@ -54,11 +55,11 @@ async function checkDuplicate(
 
 export async function GET(request: NextRequest) {
 	const searchParams = request.nextUrl.searchParams
-	const phoneNumber = searchParams.get('phone_number')
+	const wallet = searchParams.get('wallet')
 
-	if (!phoneNumber) {
+	if (!wallet) {
 		return new Response(
-			JSON.stringify({ error: 'Phone number parameter is missing.' }),
+			JSON.stringify({ error: 'Wallet parameter is missing.' }),
 			{
 				status: 400,
 				headers: {
@@ -68,19 +69,18 @@ export async function GET(request: NextRequest) {
 		)
 	}
 
-	// Assuming checkDuplicate can handle different field types and endpoints
-	const phoneCheckResponse = await checkDuplicate(
-		'/isPhoneNumber', // Or the relevant endpoint checkDuplicate uses internally
-		'phone_number',
-		phoneNumber,
-		'Phone number already exists.',
+	const walletCheckResponse = await checkDuplicate(
+		'/isWallet',
+		'wallet_id',
+		wallet,
+		'Wallet already exists.',
 	)
 
-	if (phoneCheckResponse) {
-		return phoneCheckResponse
+	if (walletCheckResponse) {
+		return walletCheckResponse
 	}
 
-	return new Response(JSON.stringify({ message: 'Phone number is unique.' }), {
+	return new Response(JSON.stringify({ message: 'Wallet is unique.' }), {
 		status: 200,
 		headers: {
 			'Content-Type': 'application/json',

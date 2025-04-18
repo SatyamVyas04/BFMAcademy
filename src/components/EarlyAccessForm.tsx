@@ -69,6 +69,27 @@ export default function Page() {
 			}
 		}
 		autoSubmitForm()
+
+		async function walletchecker() {
+			const walletCheck = cache(async (wallet: string) => {
+				return await fetch('/api/isWallet?wallet=' + wallet, {
+					method: 'GET',
+				})
+			})
+
+			const response = await walletCheck(walletAddress as string)
+			if (response.ok) {
+				const data = await response.json()
+				setFormData((prev) => ({
+					...prev,
+					fullname: data.data.data.fullname,
+				}))
+				setFormStatus('certificate')
+			} else {
+				setFormStatus('inProgress')
+			}
+		}
+		walletchecker()
 	}, [isWalletConnected, formStatus, errorMessage])
 
 	// Form handlers

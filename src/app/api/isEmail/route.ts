@@ -7,13 +7,9 @@ async function checkDuplicate(
 	value: string,
 	errorMessage: string,
 ) {
-	console.log(
-		`[checkDuplicate] Checking endpoint: ${endpoint}, param: ${paramName}, value: ${value}`,
-	)
 	const url = new URL(`${API_BASE_URL}${endpoint}`)
 	url.searchParams.append(paramName, value)
 	const requestUrl = url.toString()
-	console.log(`[checkDuplicate] Fetching URL: ${requestUrl}`)
 
 	try {
 		const response = await fetch(requestUrl, {
@@ -23,28 +19,16 @@ async function checkDuplicate(
 			},
 		})
 
-		console.log(
-			`[checkDuplicate] Response status for ${paramName}: ${response.status} ${response.statusText}`,
-		)
-
 		if (!response.ok) {
-			console.log(`[checkDuplicate] Response not OK for ${paramName}.`)
 			// Assuming 400 Bad Request indicates a duplicate based on backend code
 			if (response.status === 400) {
 				const errorData = await response.json().catch(() => ({}))
-				console.log(
-					`[checkDuplicate] Duplicate found for ${paramName}. Error data:`,
-					errorData,
-				)
+
 				return NextResponse.json(
 					{ error: errorData.message || errorMessage },
 					{ status: 400 },
 				)
 			}
-			// Handle other potential errors during the check
-			console.log(
-				`[checkDuplicate] Other error during check for ${paramName}. Status: ${response.status}`,
-			)
 			return NextResponse.json(
 				{
 					error: `Failed to check ${paramName}: ${response.status} ${response.statusText}`,
@@ -54,13 +38,8 @@ async function checkDuplicate(
 		}
 
 		// If response is ok (200), it means no duplicate found
-		console.log(`[checkDuplicate] No duplicate found for ${paramName}.`)
 		return null
 	} catch (error) {
-		console.error(
-			`[checkDuplicate] Error during fetch for ${paramName}:`,
-			error,
-		)
 		return NextResponse.json(
 			{
 				error: `Error checking ${paramName}: ${

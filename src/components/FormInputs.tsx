@@ -18,7 +18,13 @@ import {
 	SelectValue,
 } from '@/components/ui/select'
 import { countries } from '@/lib/countries'
-import { IconBrandLinkedin, IconDownload, IconShare } from '@tabler/icons-react'
+import {
+	IconBrandFacebook,
+	IconBrandLinkedin,
+	IconBrandWhatsapp,
+	IconBrandX,
+	IconDownload,
+} from '@tabler/icons-react'
 import { toast } from 'sonner'
 
 export function Ticker() {
@@ -286,15 +292,6 @@ export function CertificateScreen({
 		}, 'image/png')
 	}
 
-	const shareOnLinkedIn = () => {
-		const url = encodeURIComponent(window.location.href)
-		const title = encodeURIComponent('My Web3 & Crypto Space Certificate')
-		window.open(
-			`https://www.linkedin.com/sharing/share-offsite/?url=${url}&title=${title}`,
-			'_blank',
-		)
-	}
-
 	// Enhanced confirmation for navigation
 	const handleGoBack = () => {
 		if (isCanvasReady) {
@@ -391,19 +388,13 @@ export function CertificateScreen({
 									<Button
 										variant="outline"
 										onClick={shareCertificate}
-										className="flex w-fit items-center justify-center gap-2 rounded-lg px-6 py-3 text-sm font-medium"
-									>
-										<IconShare size={20} />
-										Share
-									</Button>
-
-									<Button
-										variant="outline"
-										onClick={shareOnLinkedIn}
-										className="flex w-full items-center justify-center gap-2 rounded-lg px-4 py-3 text-sm font-medium"
+										className="flex w-full items-center justify-center gap-4 rounded-lg px-6 py-3 text-sm font-medium transition-all hover:gap-6"
 									>
 										<IconBrandLinkedin size={20} />
-										Post on LinkedIn
+										<IconBrandX size={20} />
+										<div>Share</div>
+										<IconBrandWhatsapp size={20} />
+										<IconBrandFacebook size={20} />
 									</Button>
 								</div>
 
