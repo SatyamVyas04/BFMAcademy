@@ -103,6 +103,14 @@ export default function Navbar() {
 						Roadmap
 					</Button>
 				</Link>
+				<Link href="/event-archive">
+					<Button
+						className="group rounded-lg bg-zinc-700 p-5 text-white transition-all hover:bg-zinc-700/90 dark:bg-secondary dark:hover:bg-secondary/90"
+						variant="secondary"
+					>
+						Events
+					</Button>
+				</Link>
 			</div>
 
 			{/* Mobile Navigation */}
@@ -143,6 +151,13 @@ export default function Navbar() {
 								<Link href="/early-access" className="w-full">
 									<Button className="group w-full rounded-lg bg-brandblue py-6 text-base text-white shadow-none transition-all hover:bg-brandblue/90">
 										Early Access
+									</Button>
+								</Link>
+							</SheetTrigger>
+							<SheetTrigger asChild>
+								<Link href="/event-archive" className="w-full">
+									<Button className="group w-full rounded-lg bg-brandblue py-6 text-base text-white shadow-none transition-all hover:bg-brandblue/90">
+										Events
 									</Button>
 								</Link>
 							</SheetTrigger>

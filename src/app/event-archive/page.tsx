@@ -2,6 +2,7 @@ import { BlurFade } from '@/components/magicui/blur-fade'
 import Footer from '@/pages/footer'
 import Navbar from '@/pages/navbar'
 import { Metadata } from 'next'
+import Image from 'next/image'
 import React from 'react'
 
 export const metadata: Metadata = {
@@ -28,7 +29,13 @@ export default function Page() {
 					duration={0.5}
 					className="row-span-3 overflow-hidden rounded-sm lg:col-span-2 lg:rounded-lg"
 				>
-					<div className="aspect-video h-full w-full bg-zinc-200 object-cover"></div>
+					<Image
+						height={800}
+						width={800}
+						src="/event-archive/1.jpg"
+						alt="Event Archive Image"
+						className="aspect-video h-full w-full bg-brandblue/10 object-cover"
+					/>
 				</BlurFade>
 				<BlurFade
 					inView={true}
@@ -36,7 +43,13 @@ export default function Page() {
 					delay={0.1}
 					className="row-span-2 overflow-hidden rounded-sm lg:col-span-2 lg:rounded-lg"
 				>
-					<div className="aspect-video h-full w-full bg-zinc-200 object-cover"></div>
+					<Image
+						height={800}
+						width={800}
+						src="/event-archive/2.jpg"
+						alt="Event Archive Image"
+						className="aspect-video h-full w-full bg-brandblue/10 object-cover"
+					/>
 				</BlurFade>
 				<BlurFade
 					inView={true}
@@ -44,7 +57,13 @@ export default function Page() {
 					delay={0.2}
 					className="row-span-2 overflow-hidden rounded-sm lg:col-span-2 lg:rounded-lg"
 				>
-					<div className="aspect-video h-full w-full bg-zinc-200 object-cover"></div>
+					<Image
+						height={800}
+						width={800}
+						src="/event-archive/3.jpg"
+						alt="Event Archive Image"
+						className="aspect-video h-full w-full bg-brandblue/10 object-cover"
+					/>
 				</BlurFade>
 				<BlurFade
 					inView={true}
@@ -52,7 +71,13 @@ export default function Page() {
 					delay={0.3}
 					className="row-span-2 overflow-hidden rounded-sm lg:col-span-2 lg:rounded-lg"
 				>
-					<div className="aspect-video h-full w-full bg-zinc-200 object-cover"></div>
+					<Image
+						height={800}
+						width={800}
+						src="/event-archive/4.jpg"
+						alt="Event Archive Image"
+						className="aspect-video h-full w-full bg-brandblue/10 object-cover"
+					/>
 				</BlurFade>
 				<BlurFade
 					inView={true}
@@ -60,7 +85,13 @@ export default function Page() {
 					delay={0.4}
 					className="overflow-hidden rounded-sm lg:col-span-2 lg:rounded-lg"
 				>
-					<div className="aspect-video h-full w-full bg-zinc-200 object-cover"></div>
+					<Image
+						height={800}
+						width={800}
+						src="/event-archive/5.jpg"
+						alt="Event Archive Image"
+						className="aspect-video h-full w-full bg-brandblue/10 object-cover"
+					/>
 				</BlurFade>
 				<BlurFade
 					inView={true}
@@ -68,7 +99,13 @@ export default function Page() {
 					delay={0.5}
 					className="col-span-2 overflow-hidden rounded-sm lg:col-span-4 lg:rounded-lg"
 				>
-					<div className="aspect-[7/2] h-full w-full bg-zinc-200 object-cover"></div>
+					<Image
+						height={800}
+						width={800}
+						src="/event-archive/6.jpg"
+						alt="Event Archive Image"
+						className="aspect-[7/2] h-full w-full bg-brandblue/10 object-cover"
+					/>
 				</BlurFade>
 				<BlurFade
 					inView={true}
@@ -76,56 +113,104 @@ export default function Page() {
 					delay={0.6}
 					className="col-span-2 overflow-hidden rounded-sm lg:col-span-4 lg:rounded-lg"
 				>
-					<div className="aspect-video h-full w-full bg-zinc-200 object-cover"></div>
+					<Image
+						height={800}
+						width={800}
+						src="/event-archive/7.jpg"
+						alt="Event Archive Image"
+						className="aspect-video h-full w-full bg-brandblue/10 object-cover"
+					/>
 				</BlurFade>
 				<BlurFade
 					inView={true}
 					duration={0.5}
 					className="col-span-2 overflow-hidden rounded-sm lg:col-span-3 lg:rounded-lg"
 				>
-					<div className="aspect-[7/3] h-full w-full bg-zinc-200 object-cover"></div>
+					<Image
+						height={800}
+						width={800}
+						src="/event-archive/8.jpg"
+						alt="Event Archive Image"
+						className="aspect-[7/3] h-full w-full bg-brandblue/10 object-cover object-top"
+					/>
 				</BlurFade>
 				<BlurFade
 					inView={true}
 					duration={0.5}
 					className="col-span-2 overflow-hidden rounded-sm lg:col-span-1 lg:rounded-lg"
 				>
-					<div className="aspect-video h-full w-full bg-zinc-200 object-cover"></div>
+					<Image
+						height={800}
+						width={800}
+						src="/event-archive/10.jpg"
+						alt="Event Archive Image"
+						className="aspect-video h-full w-full bg-brandblue/10 object-cover"
+					/>
 				</BlurFade>
 				<BlurFade
 					inView={true}
 					duration={0.5}
 					className="col-span-2 row-span-2 overflow-hidden rounded-sm lg:rounded-lg"
 				>
-					<div className="aspect-square h-full w-full bg-zinc-200 object-cover"></div>
+					<Image
+						height={800}
+						width={800}
+						src="/event-archive/9.jpg"
+						alt="Event Archive Image"
+						className="aspect-square h-full w-full bg-brandblue/10 object-cover"
+					/>
 				</BlurFade>
 				<BlurFade
 					inView={true}
 					duration={0.5}
 					className="col-span-2 row-span-3 overflow-hidden rounded-sm lg:rounded-lg"
 				>
-					<div className="aspect-video h-full w-full bg-zinc-200 object-cover"></div>
+					<Image
+						height={800}
+						width={800}
+						src="/event-archive/11.jpg"
+						alt="Event Archive Image"
+						className="aspect-video h-full w-full bg-brandblue/10 object-cover"
+					/>
 				</BlurFade>
 				<BlurFade
 					inView={true}
 					duration={0.5}
 					className="col-span-2 overflow-hidden rounded-sm lg:rounded-lg"
 				>
-					<div className="aspect-video h-full w-full bg-zinc-200 object-cover"></div>
+					<Image
+						height={800}
+						width={800}
+						src="/event-archive/12.jpg"
+						alt="Event Archive Image"
+						className="aspect-video h-full w-full bg-brandblue/10 object-cover"
+					/>
 				</BlurFade>
 				<BlurFade
 					inView={true}
 					duration={0.5}
 					className="col-span-2 overflow-hidden rounded-sm lg:rounded-lg"
 				>
-					<div className="aspect-video h-full w-full bg-zinc-200 object-cover"></div>
+					<Image
+						height={800}
+						width={800}
+						src="/event-archive/13.jpg"
+						alt="Event Archive Image"
+						className="aspect-video h-full w-full bg-brandblue/10 object-cover"
+					/>
 				</BlurFade>
 				<BlurFade
 					inView={true}
 					duration={0.5}
 					className="col-span-2 overflow-hidden rounded-sm lg:rounded-lg"
 				>
-					<div className="aspect-video h-full w-full bg-zinc-200 object-cover"></div>
+					<Image
+						height={800}
+						width={800}
+						src="/event-archive/14.jpg"
+						alt="Event Archive Image"
+						className="aspect-video h-full w-full bg-brandblue/10 object-cover"
+					/>
 				</BlurFade>
 			</section>
 
