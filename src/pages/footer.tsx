@@ -218,6 +218,15 @@ export default function Footer() {
 									Campus Ambassador
 								</a>
 							</li>
+							<li>
+								<a
+									href="https://forms.gle/nVoYwzRp6FrtkRKR9"
+									target="_blank"
+									className="transition-all hover:text-foreground dark:hover:text-brandblue"
+								>
+									Apply as a Service Provider
+								</a>
+							</li>
 						</ul>
 						<h2 className="mb-1 mt-6 text-lg uppercase text-brandblue/50 dark:text-muted-foreground">
 							Contact Us
