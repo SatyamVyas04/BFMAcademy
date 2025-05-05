@@ -134,7 +134,7 @@ export default function Footer() {
 									White Paper
 								</a>
 							</li>
-							<li>
+							{/* <li>
 								<a
 									href="/Tokenomics.pdf"
 									target="_blank"
@@ -142,7 +142,7 @@ export default function Footer() {
 								>
 									Tokenomics
 								</a>
-							</li>
+							</li> */}
 							<li>
 								<a
 									href="/privacy-policy"
