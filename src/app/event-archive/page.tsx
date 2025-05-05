@@ -38,7 +38,7 @@ export default function Page() {
 		<main className="mx-auto max-w-screen-2xl overflow-x-hidden p-3 !pb-0 md:p-6 lg:p-9 xl:p-12 xl:pt-9">
 			<Navbar />
 			<h1 className="mb-2 text-center text-2xl font-bold md:text-3xl lg:text-5xl">
-				BFMA Event Archive
+				BFM Event Archive
 			</h1>
 			<p className="mb-12 text-center text-sm xl:text-base">
 				Learning at BFM Academy isn&apos;t just about studying - it&apos;s about
